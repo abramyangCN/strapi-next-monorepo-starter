@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_sections_hero_carousels",
+  "info": {
+    "displayName": "HeroCarousel"
+  },
+  "options": {},
+  "attributes": {
+    "carousels": {
+      "type": "component",
+      "component": "utilities.media-with-texts-and-buttons",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

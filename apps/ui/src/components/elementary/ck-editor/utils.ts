@@ -25,7 +25,7 @@ export const processLinksInHtmlContent = (html: string, locale: Locale) =>
     }
   )
 
-const processLinkHrefAttribute = (href: string, locale: Locale) =>
+export const processLinkHrefAttribute = (href: string, locale: Locale) =>
   hrefIncludesLocale(href)
     ? href
     : `/${locale}${href.startsWith("/") ? "" : "/"}${href}`

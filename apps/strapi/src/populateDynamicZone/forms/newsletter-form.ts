@@ -1,1 +1,1 @@
-export default { populate: { gdpr: true } }
+export default {}

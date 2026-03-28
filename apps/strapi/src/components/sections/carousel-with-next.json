@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_sections_carousel_with_nexts",
+  "info": {
+    "displayName": "CarouselWithNext"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "size": {
+      "type": "enumeration",
+      "enum": [
+        "md",
+        "sm"
+      ],
+      "default": "md"
+    },
+    "slides": {
+      "type": "component",
+      "component": "utilities.media-with-texts-and-link",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

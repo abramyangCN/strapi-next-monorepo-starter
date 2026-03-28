@@ -9,7 +9,16 @@ import { AppField } from "@/components/forms/AppField"
 import { AppForm } from "@/components/forms/AppForm"
 import { Button } from "@/components/ui/button"
 
-export function NewsletterForm() {
+interface NewsletterFormProps {
+  newsletter?: {
+    title?: string
+    button?: string
+    gdpr?: string
+    placeholder?: string
+  }
+}
+
+export function NewsletterForm(_props?: NewsletterFormProps) {
   const form = useForm<z.infer<FormSchemaType>>({
     resolver: zodResolver(NewsletterFormSchema),
     mode: "onBlur",

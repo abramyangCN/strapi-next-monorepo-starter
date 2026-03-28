@@ -23,3 +23,21 @@ export function useContactForm() {
     },
   })
 }
+
+export function useQuotationForm() {
+  return useMutation({
+    mutationFn: async (formData: FormData) => {
+      const response = await fetch("/api/quotations", {
+        method: "POST",
+        body: formData,
+      })
+
+      if (!response.ok) {
+        const error = await response.json()
+        throw new Error(error.error || "Failed to submit quotation form")
+      }
+
+      return response.json()
+    },
+  })
+}

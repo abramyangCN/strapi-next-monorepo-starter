@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_sections_timelines",
+  "info": {
+    "displayName": "Timeline",
+    "description": "A vertical timeline showing company history and milestones"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "items": {
+      "type": "component",
+      "component": "utilities.timeline-item",
+      "repeatable": true,
+      "required": true
+    },
+    "enableBgColor": {
+      "type": "boolean",
+      "default": false
+    },
+    "bgColor": {
+      "type": "customField",
+      "customField": "plugin::color-picker.color",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+    }
+  }
+}

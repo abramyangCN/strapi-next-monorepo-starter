@@ -133,11 +133,24 @@ export async function fetchFooter(locale: Locale) {
     return await PublicStrapiClient.fetchOne("api::footer.footer", undefined, {
       locale,
       populate: {
-        sections: { populate: { links: true } },
-        logoImage: { populate: { image: true, link: true } },
-        links: true,
+        newsletter: true,
+        affiliates: {
+          populate: {
+            logo: {
+              populate: { image: { populate: { media: true } }, link: true },
+            },
+          },
+        },
+        sections: {
+          populate: {
+            links: { populate: { links: true } },
+          },
+        },
+        contact: true,
+        socialMedias: true,
       },
-    })
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any)
   } catch (e: unknown) {
     logNonBlockingError({
       message: `Error fetching footer for locale '${locale}'`,
@@ -146,5 +159,113 @@ export async function fetchFooter(locale: Locale) {
         stack: e instanceof Error ? e.stack : undefined,
       },
     })
+  }
+}
+
+// ------ News fetching functions
+
+export async function fetchNewsListPage(locale: Locale) {
+  try {
+    return await PublicStrapiClient.fetchOne(
+      "api::news-list-page.news-list-page" as UID.ContentType,
+      undefined,
+      {
+        locale,
+        populate: {
+          heroImage: true,
+          seo: {
+            populate: {
+              metaImage: true,
+              twitter: { populate: { images: true } },
+              og: { populate: { image: true } },
+            },
+          },
+        },
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } as any
+    )
+  } catch (e: unknown) {
+    logNonBlockingError({
+      message: `Error fetching news list page for locale '${locale}'`,
+      error: {
+        error: e instanceof Error ? e.message : String(e),
+        stack: e instanceof Error ? e.stack : undefined,
+      },
+    })
+  }
+}
+
+export async function fetchNews(
+  slug: string,
+  locale: Locale,
+  requestInit?: RequestInit,
+  options?: CustomFetchOptions
+) {
+  const dm = await draftMode()
+
+  try {
+    return await PublicStrapiClient.fetchOneBySlug(
+      "api::news-article.news-article" as UID.ContentType,
+      slug,
+      {
+        locale,
+        status: dm.isEnabled ? "draft" : "published",
+        populate: {
+          content: true,
+          seo: true,
+          featuredImage: true,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } as any,
+        middlewarePopulate: ["content", "seo"],
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      } as any,
+      requestInit,
+      options
+    )
+  } catch (e: unknown) {
+    logNonBlockingError({
+      message: `Error fetching news '${slug}' for locale '${locale}'`,
+      error: {
+        error: e instanceof Error ? e.message : String(e),
+        stack: e instanceof Error ? e.stack : undefined,
+      },
+    })
+  }
+}
+
+export async function fetchAllNews(locale: Locale) {
+  try {
+    return await PublicStrapiClient.fetchAll(
+      "api::news-article.news-article" as UID.ContentType,
+      {
+        locale,
+        fields: [
+          "slug",
+          "locale",
+          "updatedAt",
+          "createdAt",
+          "title",
+          "excerpt",
+          "category",
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ] as any,
+        populate: {
+          featuredImage: true,
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        } as any,
+        status: "published",
+        sort: ["createdAt:desc"],
+      }
+    )
+  } catch (e: unknown) {
+    logNonBlockingError({
+      message: `Error fetching all news for locale '${locale}'`,
+      error: {
+        error: e instanceof Error ? e.message : String(e),
+        stack: e instanceof Error ? e.stack : undefined,
+      },
+    })
+
+    return { data: [] }
   }
 }

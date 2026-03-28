@@ -1,0 +1,59 @@
+{
+  "collectionName": "components_sections_contacts",
+  "info": {
+    "displayName": "Contact"
+  },
+  "options": {},
+  "attributes": {
+    "rightContent": {
+      "type": "enumeration",
+      "enum": [
+        "slogan",
+        "form"
+      ],
+      "default": "slogan"
+    },
+    "title": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultCkEditor"
+      }
+    },
+    "slogan": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultCkEditor"
+      }
+    },
+    "formTitle": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultCkEditor"
+      }
+    },
+    "gdpr": {
+      "type": "component",
+      "component": "utilities.link",
+      "repeatable": false
+    },
+    "phone": {
+      "type": "component",
+      "component": "elements.field",
+      "repeatable": false
+    },
+    "email": {
+      "type": "component",
+      "component": "elements.field",
+      "repeatable": false
+    },
+    "address": {
+      "type": "component",
+      "component": "elements.field",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

@@ -29,6 +29,7 @@ export default function StrapiPageView({ params, searchParams }: Props) {
   const response = use(fetchPage(fullPath, locale))
 
   const data = response?.data
+
   if (data?.content == null) {
     notFound()
   }

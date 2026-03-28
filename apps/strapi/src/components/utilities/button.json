@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_utilities_buttons",
+  "info": {
+    "displayName": "Button"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": true
+    },
+    "newTab": {
+      "type": "boolean"
+    },
+    "theme": {
+      "type": "enumeration",
+      "enum": [
+        "primary",
+        "secondary",
+        "ghost"
+      ]
+    }
+  },
+  "config": {}
+}

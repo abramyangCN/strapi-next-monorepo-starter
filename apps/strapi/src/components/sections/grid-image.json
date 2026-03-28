@@ -1,0 +1,44 @@
+{
+  "collectionName": "components_sections_grid_images",
+  "info": {
+    "displayName": "GridImage"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "enableBgColor": {
+      "type": "boolean",
+      "default": false
+    },
+    "bgColor": {
+      "type": "customField",
+      "customField": "plugin::color-picker.color",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+    },
+    "link": {
+      "type": "component",
+      "component": "utilities.link",
+      "repeatable": false
+    },
+    "style": {
+      "type": "enumeration",
+      "enum": [
+        "left",
+        "right",
+        "none"
+      ],
+      "default": "none"
+    },
+    "items": {
+      "type": "component",
+      "component": "utilities.media-with-texts-and-link",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

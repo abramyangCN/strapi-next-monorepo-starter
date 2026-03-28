@@ -70,9 +70,25 @@
         "sections.animated-logo-row",
         "forms.newsletter-form",
         "forms.contact-form",
+        "forms.quotation-form",
         "utilities.ck-editor-content",
         "utilities.ck-editor-text",
-        "utilities.tip-tap-rich-text"
+        "utilities.tip-tap-rich-text",
+        "sections.hero-carousel",
+        "sections.carousel-with-next",
+        "sections.image-with-bullets",
+        "sections.latest-news",
+        "sections.step",
+        "sections.contact",
+        "sections.office",
+        "sections.feature-cards",
+        "sections.grid-image",
+        "sections.highlight-with-list",
+        "sections.animated-numbers",
+        "sections.timeline",
+        "sections.image-with-text",
+        "sections.text-content",
+        "sections.media-showcase"
       ]
     },
     "children": {

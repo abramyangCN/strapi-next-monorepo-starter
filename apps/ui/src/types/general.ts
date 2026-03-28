@@ -1,8 +1,12 @@
 import type { Metadata } from "next"
 
+import type { routing } from "@/lib/navigation"
+
 // Use type safe message keys with `next-intl`
 // eslint-disable-next-line @typescript-eslint/consistent-type-imports
 type Messages = typeof import("../../locales/en.json")
+
+export type AppLocale = (typeof routing.locales)[number]
 
 export interface IntlMessages extends Messages {}
 
