@@ -26,6 +26,13 @@ export function Breadcrumbs({
     return null
   }
 
+  // Skip the first breadcrumb (home/root "/"）
+  const visibleBreadcrumbs = breadcrumbs.slice(1)
+
+  if (visibleBreadcrumbs.length === 0) {
+    return null
+  }
+
   const breadcrumbListSchema = locale
     ? generateBreadcrumbListSchema(breadcrumbs, locale)
     : null
@@ -36,7 +43,7 @@ export function Breadcrumbs({
         <StrapiStructuredData structuredData={breadcrumbListSchema} />
       )}
       <div>
-        {breadcrumbs.map((breadcrumb, index) => (
+        {visibleBreadcrumbs.map((breadcrumb, index) => (
           <span key={breadcrumb.fullPath}>
             {index !== 0 && (
               <span className={cn("mx-2 inline-block text-black")}>
@@ -44,7 +51,7 @@ export function Breadcrumbs({
               </span>
             )}
 
-            {index === breadcrumbs.length - 1 ? (
+            {index === visibleBreadcrumbs.length - 1 ? (
               <span
                 className={cn(
                   "tracking-sm inline-block text-xs leading-[18px] wrap-break-word text-black md:text-sm md:leading-[21px]",

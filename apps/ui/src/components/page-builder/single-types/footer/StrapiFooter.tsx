@@ -1,3 +1,4 @@
+import type { Data } from "@repo/strapi-types"
 import { ArrowUpRight, Facebook, Instagram, Linkedin } from "lucide-react"
 import Image from "next/image"
 
@@ -12,8 +13,8 @@ import type { AppLocale } from "@/types/general"
 
 export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
   const response = await fetchFooter(locale)
-  // eslint-disable-next-line @typescript-eslint/no-explicit-any
-  const component = response?.data as any
+  const component =
+    response?.data as Data.ContentType<"api::footer.footer"> | null
 
   if (component == null) {
     return null
@@ -115,20 +116,13 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
                 <h3 className="text-lg font-semibold md:text-xl">
                   {section.title}
                 </h3>
-                <div className="flex w-full shrink-0 gap-8 sm:gap-12 md:gap-24">
-                  {section.links?.map((linkGroup, i) => (
-                    <div
-                      className="flex flex-1 flex-col items-start gap-2"
-                      key={linkGroup.id ?? i}
-                    >
-                      {linkGroup.links?.map((link) => (
-                        <StrapiLink
-                          key={`${linkGroup.id}-${link.id}`}
-                          component={link}
-                          className="p-0 text-sm text-white transition-colors"
-                        />
-                      ))}
-                    </div>
+                <div className="flex flex-col items-start gap-2">
+                  {section.links?.map((link, i) => (
+                    <StrapiLink
+                      key={link.id ?? i}
+                      component={link}
+                      className="p-0 text-sm text-white transition-colors"
+                    />
                   ))}
                 </div>
               </div>

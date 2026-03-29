@@ -1,3 +1,4 @@
+import type { Data } from "@repo/strapi-types"
 import { ChevronRight } from "lucide-react"
 import type { Metadata } from "next"
 import { notFound } from "next/navigation"
@@ -30,8 +31,10 @@ export async function generateStaticParams() {
 
   const params = results
     .filter((result) => result.status === "fulfilled")
-    .flatMap((result) => result.value.data)
-    .map((news: { locale: string; slug: string }) => ({
+    .flatMap(
+      (result) => result.value.data as { locale: string; slug: string }[]
+    )
+    .map((news) => ({
       locale: news.locale,
       slug: news.slug,
     }))
@@ -111,7 +114,12 @@ export default async function NewsArticlePage(
 
   return (
     <>
-      <StrapiStructuredData structuredData={data?.seo?.structuredData} />
+      <StrapiStructuredData
+        structuredData={
+          data?.seo
+            ?.structuredData as Data.Component<"seo-utilities.seo">["structuredData"]
+        }
+      />
 
       <main className={cn("flex w-full flex-col overflow-hidden")}>
         <Container>
@@ -123,7 +131,7 @@ export default async function NewsArticlePage(
                 breadcrumbs || [
                   { title: "Home", fullPath: "/" },
                   { title: "News", fullPath: "/news" },
-                  { title: data.category, fullPath: `/news/${slug}` },
+                  { title: data.category ?? slug, fullPath: `/news/${slug}` },
                 ]
               }
               splitCharacter={

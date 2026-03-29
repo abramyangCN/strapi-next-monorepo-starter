@@ -25,23 +25,27 @@ export default async function NewsListPage(props: PageProps<"/[locale]/news">) {
     fetchAllNews(locale),
   ])
 
-  const pageData = pageResponse?.data as Record<string, unknown>
+  const pageData = pageResponse?.data as {
+    title?: string
+    description?: string | null
+    sectionTitle?: string
+    sectionDescription?: string | null
+  } | null
   const newsArticles = (newsResponse?.data ?? []) as NewsArticle[]
 
   // Get breadcrumbs from API response meta, or use defaults
-  const breadcrumbs = (
-    pageResponse?.meta as Record<string, unknown> & {
-      breadcrumbs?: { title: string; fullPath: string }[]
-    }
-  )?.breadcrumbs || [
+  const meta = pageResponse?.meta as
+    | { breadcrumbs?: { title: string; fullPath: string }[] }
+    | undefined
+  const breadcrumbs = meta?.breadcrumbs ?? [
     { title: "Home", fullPath: `/${locale}` },
     { title: "News", fullPath: `/${locale}/news` },
   ]
 
   // Default values if page data is not set
-  const title = pageData?.title || "Latest Posts"
+  const title = pageData?.title ?? "Latest Posts"
   const description = pageData?.description
-  const sectionTitle = pageData?.sectionTitle || "Trending"
+  const sectionTitle = pageData?.sectionTitle ?? "Trending"
   const sectionDescription = pageData?.sectionDescription
 
   return (

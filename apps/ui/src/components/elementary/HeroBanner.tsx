@@ -37,10 +37,10 @@ export function HeroBanner({
       style={{ ...style, backgroundColor: bgColor }}
     >
       {/* Background decorative element */}
-      {image?.media?.url && (
+      {image?.url && (
         <div className="pointer-events-none absolute inset-0 overflow-hidden">
           <Image
-            src={image?.media?.url}
+            src={image.url}
             alt="Hero banner background"
             fill
             quality={100}

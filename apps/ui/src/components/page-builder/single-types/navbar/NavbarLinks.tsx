@@ -34,7 +34,9 @@ export function NavbarLinks({ links }: NavbarLinksProps) {
           <StrapiLink
             component={link}
             key={link.href ?? link.label}
-            className={cn("flex items-center p-0 text-base font-medium")}
+            className={cn(
+              "hover:text-secondary-400 flex items-center p-0 text-base font-medium transition-colors"
+            )}
           />
         )
       })}

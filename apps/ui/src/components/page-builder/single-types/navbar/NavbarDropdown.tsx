@@ -17,7 +17,7 @@ export function NavbarDropdown({ mainLink, className }: NavbarDropdownProps) {
       <StrapiLink
         component={mainLink}
         className={cn(
-          "hover:text-secondary-400 flex items-center gap-1 text-base font-medium outline-hidden",
+          "hover:text-secondary-400 flex items-center gap-1 text-base font-medium outline-hidden transition-colors",
           className
         )}
       >

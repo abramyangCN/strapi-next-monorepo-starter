@@ -1,5 +1,27 @@
 @theme static {
   --font-sans: Roboto;
+  --color-primary-50: oklch(0.97 0.015 230.54);
+  --color-primary-100: oklch(0.93 0.025 230.54);
+  --color-primary-200: oklch(0.86 0.04 230.54);
+  --color-primary-300: oklch(0.75 0.055 230.54);
+  --color-primary-400: oklch(0.62 0.06 230.54);
+  --color-primary-500: oklch(0.5 0.062 230.54);
+  --color-primary-600: oklch(0.42 0.061 230.54);
+  --color-primary-700: oklch(0.3427 0.0604 230.54);
+  --color-primary-800: oklch(0.28 0.055 230.54);
+  --color-primary-900: oklch(0.22 0.045 230.54);
+  --color-primary-950: oklch(0.15 0.035 230.54);
+  --color-secondary-50: oklch(0.97 0.02 165.04);
+  --color-secondary-100: oklch(0.93 0.04 165.04);
+  --color-secondary-200: oklch(0.87 0.06 165.04);
+  --color-secondary-300: oklch(0.8 0.08 165.04);
+  --color-secondary-400: oklch(0.7368 0.0948 165.04);
+  --color-secondary-500: oklch(0.65 0.09 165.04);
+  --color-secondary-600: oklch(0.55 0.085 165.04);
+  --color-secondary-700: oklch(0.45 0.075 165.04);
+  --color-secondary-800: oklch(0.38 0.065 165.04);
+  --color-secondary-900: oklch(0.3 0.05 165.04);
+  --color-secondary-950: oklch(0.2 0.035 165.04);
   --color-red-50: oklch(0.971 0.013 17.38);
   --color-red-100: oklch(0.936 0.032 17.717);
   --color-red-200: oklch(0.885 0.062 18.334);
@@ -357,11 +379,13 @@
   --animate-ping: ping 1s cubic-bezier(0, 0, 0.2, 1) infinite;
   --animate-pulse: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   --animate-bounce: bounce 1s infinite;
+
   @keyframes spin {
     to {
       transform: rotate(360deg);
     }
   }
+
   @keyframes ping {
     75%,
     100% {
@@ -369,17 +393,20 @@
       opacity: 0;
     }
   }
+
   @keyframes pulse {
     50% {
       opacity: 0.5;
     }
   }
+
   @keyframes bounce {
     0%,
     100% {
       transform: translateY(-25%);
       animation-timing-function: cubic-bezier(0.8, 0, 1, 1);
     }
+
     50% {
       transform: none;
       animation-timing-function: cubic-bezier(0, 0, 0.2, 1);

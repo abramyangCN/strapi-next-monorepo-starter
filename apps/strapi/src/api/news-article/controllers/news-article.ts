@@ -12,7 +12,12 @@ export default factories.createCoreController(
 
       if (response && response.data) {
         const locale = (ctx.query.locale as string) || "en"
-        const article = response.data as any
+        const article = response.data as {
+          title?: string
+          name?: string
+          slug?: string
+          documentId?: string
+        }
 
         // 获取 news-list-page 的面包屑标题
         let newsListTitle = "News"
@@ -36,7 +41,7 @@ export default factories.createCoreController(
 
         // 生成面包屑
         response.meta = response.meta || {}
-        ;(response.meta as any).breadcrumbs = [
+        ;(response.meta as Record<string, unknown>).breadcrumbs = [
           { title: "Home", fullPath: "/" },
           { title: newsListTitle, fullPath: "/news" },
           {

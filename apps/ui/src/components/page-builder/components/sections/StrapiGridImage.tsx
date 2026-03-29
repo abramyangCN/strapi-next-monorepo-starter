@@ -1,3 +1,4 @@
+import type { Data } from "@repo/strapi-types"
 import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 
@@ -16,12 +17,12 @@ type GridImageComponent = {
   description?: string
   enableBgColor?: boolean
   bgColor?: string
-  link?: Record<string, unknown>
+  link?: Data.Component<"utilities.link"> | null
   items: {
     id?: number | string
     title?: string
     media?: { url: string; alternativeText?: string }
-    link?: Record<string, unknown>
+    link?: Data.Component<"utilities.link"> | null
   }[]
 }
 

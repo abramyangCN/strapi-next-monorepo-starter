@@ -35,7 +35,7 @@ const generatePlaceholder = async (src: string) => {
   }
 }
 
-export function ImageWithPlaiceholder(props: ImageExtendedProps) {
+export async function ImageWithPlaiceholder(props: ImageExtendedProps) {
   const src = formatStrapiMediaUrl(props.src as string)
   const fallbackSrc = formatStrapiMediaUrl(props.fallbackSrc)
 

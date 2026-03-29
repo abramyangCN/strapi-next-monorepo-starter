@@ -34,7 +34,7 @@ function processHtmlContent(html: string, locale: string) {
   return doc.innerHTML
 }
 
-function CkEditorSSRRenderer({
+async function CkEditorSSRRenderer({
   htmlContent,
   className,
   variant = "page",

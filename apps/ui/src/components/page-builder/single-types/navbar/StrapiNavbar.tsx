@@ -2,45 +2,51 @@ import type { Data } from "@repo/strapi-types"
 import { headers } from "next/headers"
 import Image from "next/image"
 import type { Locale } from "next-intl"
-import { use } from "react"
+import { Suspense } from "react"
 
 import AppLink from "@/components/elementary/AppLink"
+import { Container } from "@/components/elementary/Container"
 import LocaleSwitcher from "@/components/elementary/LocaleSwitcher"
 import StrapiImageWithLink from "@/components/page-builder/components/utilities/StrapiImageWithLink"
-import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
+import { MobileNav } from "@/components/page-builder/single-types/navbar/MobileNav"
 import { NavbarAuthSection } from "@/components/page-builder/single-types/navbar/NavbarAuthSection"
+import { NavbarLinks } from "@/components/page-builder/single-types/navbar/NavbarLinks"
 import { getSessionSSR } from "@/lib/auth"
 import { fetchNavbar } from "@/lib/strapi-api/content/server"
-import { cn } from "@/lib/styles"
+import type { AppLocale } from "@/types/general"
 
-const hardcodedLinks: NonNullable<
-  Data.ContentType<"api::navbar.navbar">["links"]
-> = [{ id: "client-page", href: "/client-page", label: "Client Page" }]
+type PopulatedNavbar = {
+  links?: Data.Component<"utilities.sub-link">[] | null
+  logoImage?: Data.Component<"utilities.image-with-link"> | null
+}
 
-export function StrapiNavbar({ locale }: { readonly locale: Locale }) {
-  const response = use(fetchNavbar(locale))
-  const navbar = response?.data
+const enableAuth = process.env.APP_ENABLE_AUTH === "true"
+
+export async function StrapiNavbar({ locale }: { readonly locale: Locale }) {
+  const response = await fetchNavbar(locale)
+  const navbar = response?.data as
+    | (PopulatedNavbar & { documentId: string })
+    | null
+    | undefined
 
   if (navbar == null) {
     return null
   }
 
-  const session = use(getSessionSSR(use(headers())))
+  const links = (navbar.links ?? []).filter((link) => link.href)
 
-  const links = (navbar.links ?? [])
-    .filter((link) => link.href)
-    .concat(...hardcodedLinks)
+  const session = enableAuth ? await getSessionSSR(await headers()) : null
 
   return (
-    <header className="sticky top-0 z-40 w-full border-b bg-white/90 shadow-sm backdrop-blur transition-colors duration-300">
-      <div className="flex h-16 items-center space-x-6 px-6 sm:space-x-0">
-        <div className="flex gap-6 md:gap-10">
+    <header className="sticky top-0 z-40 flex h-20 w-full items-center border-b bg-white shadow-sm backdrop-blur transition-colors duration-300 lg:h-25">
+      <Container className="flex justify-between">
+        <div>
           {navbar.logoImage ? (
             <StrapiImageWithLink
               component={navbar.logoImage}
-              linkProps={{ className: "flex items-center space-x-2" }}
+              linkProps={{ className: "flex items-center h-auto p-0" }}
               imageProps={{
-                forcedSizes: { width: 90, height: 60 },
+                forcedSizes: { width: 188, height: 60 },
                 hideWhenMissing: true,
               }}
             />
@@ -49,25 +55,25 @@ export function StrapiNavbar({ locale }: { readonly locale: Locale }) {
               <Image src="/images/logo.svg" alt="logo" height={23} width={82} />
             </AppLink>
           )}
-
-          {links.length > 0 ? (
-            <nav className="flex">
-              {links.map((link) => (
-                <StrapiLink
-                  component={link}
-                  key={link.href}
-                  className={cn(
-                    "flex items-center text-sm font-medium hover:text-red-600"
-                  )}
-                />
-              ))}
-            </nav>
-          ) : null}
         </div>
-
-        <NavbarAuthSection sessionSSR={session} />
-        <LocaleSwitcher locale={locale} />
-      </div>
+        {/* Desktop Navigation */}
+        <div className="hidden gap-6 lg:flex lg:gap-10">
+          <NavbarLinks links={links} />
+          <div className="flex flex-1 items-center justify-end space-x-4">
+            {enableAuth && <NavbarAuthSection sessionSSR={session} />}
+            <Suspense fallback={<div className="h-10 w-18" />}>
+              <LocaleSwitcher locale={locale as AppLocale} />
+            </Suspense>
+          </div>
+        </div>
+        {/* Mobile Navigation */}
+        <MobileNav
+          links={links}
+          locale={locale as AppLocale}
+          session={session}
+          enableAuth={enableAuth}
+        />
+      </Container>
     </header>
   )
 }

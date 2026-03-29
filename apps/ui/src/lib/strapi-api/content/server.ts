@@ -111,10 +111,15 @@ export async function fetchNavbar(locale: Locale) {
     return await PublicStrapiClient.fetchOne("api::navbar.navbar", undefined, {
       locale,
       populate: {
-        links: true,
-        logoImage: { populate: { image: true, link: true } },
+        links: {
+          populate: {
+            links: true,
+          },
+        },
+        logoImage: { populate: { image: { populate: "*" }, link: true } },
       },
-    })
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    } as any)
   } catch (e: unknown) {
     logNonBlockingError({
       message: `Error fetching navbar for locale '${locale}'`,
@@ -143,11 +148,11 @@ export async function fetchFooter(locale: Locale) {
         },
         sections: {
           populate: {
-            links: { populate: { links: true } },
+            links: true,
           },
         },
         contact: true,
-        socialMedias: true,
+        socialMedias: { populate: { link: true, icon: true } },
       },
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
     } as any)
