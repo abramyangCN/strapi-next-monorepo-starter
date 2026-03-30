@@ -1,5 +1,10 @@
 @theme static {
   --font-sans: Roboto;
+
+  /* Semantic colors for shadcn/ui compatibility */
+  --muted: oklch(0.97 0 0);
+  --muted-foreground: oklch(0.556 0 0);
+
   --color-primary-50: oklch(0.97 0.015 230.54);
   --color-primary-100: oklch(0.93 0.025 230.54);
   --color-primary-200: oklch(0.86 0.04 230.54);

@@ -1,6 +1,6 @@
 {
   "seo": {
-    "metaTitle": "SEO-TITLE",
+    "metaTitle": "Shantec Shanghai",
     "metaDescription": "SEO-DESCRIPTION",
     "metaImage": "SEO-IMAGE",
     "metaRobots": "SEO-ROBOTS",
@@ -141,13 +141,21 @@
   },
 
   "contactForm": {
-    "name": "Jméno a Přijmení",
-    "namePlaceholder": "Jan Novák",
-    "email": "Email",
-    "emailPlaceholder": "jan.novak@gmail.com",
-    "message": "Zpráva",
+    "firstNamePlaceholder": "Jméno*",
+    "lastNamePlaceholder": "Příjmení*",
+    "emailPlaceholder": "E-mail*",
+    "phonePlaceholder": "Telefon*",
+    "companyPlaceholder": "Společnost*",
+    "jobTitlePlaceholder": "Pracovní pozice",
+    "inquiryTypePlaceholder": "Kontaktujte nás ohledně...*",
+    "inquiryTypeGeneral": "Obecný dotaz",
+    "inquiryTypeTechnical": "Technická podpora",
+    "inquiryTypeQuotation": "Žádost o cenovou nabídku",
+    "inquiryTypePartnership": "Partnerská spolupráce",
+    "inquiryTypeOther": "Jiné",
+    "messagePlaceholder": "Napište zprávu*",
     "gdpr": "Odesláním souhlasíte se ",
-    "submit": "Odeslat",
+    "submit": "ODESLAT",
     "success": "Formulář byl úspěšně odeslán",
     "error": "Při odesílání formuláře došlo k chybě, zkuste to prosím znovu",
     "gdprLink": "Informace o zpracování osobních údajů"

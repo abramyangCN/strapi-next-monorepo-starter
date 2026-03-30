@@ -1,6 +1,6 @@
 {
   "seo": {
-    "metaTitle": "SEO-TITLE",
+    "metaTitle": "Shantec Shanghai",
     "metaDescription": "SEO-DESCRIPTION",
     "metaImage": "SEO-IMAGE",
     "metaRobots": "SEO-ROBOTS",
@@ -141,16 +141,24 @@
   },
 
   "contactForm": {
-    "name": "First name and last name",
-    "namePlaceholder": "John Doe",
-    "email": "Email",
-    "emailPlaceholder": "john.doe@gmail.com",
-    "message": "Message",
-    "gdpr": "I agree to the processing of personal data",
-    "submit": "Send",
+    "firstNamePlaceholder": "First name*",
+    "lastNamePlaceholder": "Last name*",
+    "emailPlaceholder": "Email*",
+    "phonePlaceholder": "Phone*",
+    "companyPlaceholder": "Company*",
+    "jobTitlePlaceholder": "Job title",
+    "inquiryTypePlaceholder": "Contact us about...*",
+    "inquiryTypeGeneral": "General inquiry",
+    "inquiryTypeTechnical": "Technical support",
+    "inquiryTypeQuotation": "Quotation request",
+    "inquiryTypePartnership": "Partnership",
+    "inquiryTypeOther": "Other",
+    "messagePlaceholder": "Write a message*",
+    "gdpr": "By submitting you agree to the",
+    "submit": "SEND",
     "success": "The form has been sent successfully.",
     "error": "The form could not be sent. Please try again later.",
-    "gdprLink": "Read more about the processing of personal data"
+    "gdprLink": "personal data processing policy"
   },
 
   "auth": {

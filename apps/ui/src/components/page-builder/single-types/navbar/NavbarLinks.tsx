@@ -25,7 +25,7 @@ export function NavbarLinks({ links }: NavbarLinksProps) {
             <NavbarDropdown
               key={link.href ?? link.label}
               mainLink={link}
-              className="p-0 py-4"
+              className="p-0! py-4"
             />
           )
         }

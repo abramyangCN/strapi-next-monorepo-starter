@@ -6,12 +6,21 @@ import { PublicStrapiClient } from "@/lib/strapi-api"
 
 export function useContactForm() {
   return useMutation({
-    mutationFn: (values: { name: string; email: string; message: string }) => {
+    mutationFn: async (values: {
+      firstName: string
+      lastName: string
+      email: string
+      phone: string
+      company: string
+      jobTitle?: string
+      inquiryType: string
+      message: string
+    }) => {
       const path = PublicStrapiClient.getStrapiApiPathByUId(
         "api::subscriber.subscriber"
       )
 
-      return PublicStrapiClient.fetchAPI(
+      const response = await PublicStrapiClient.fetchAPI(
         path,
         undefined,
         {
@@ -20,6 +29,8 @@ export function useContactForm() {
         },
         { useProxy: true }
       )
+
+      return response
     },
   })
 }

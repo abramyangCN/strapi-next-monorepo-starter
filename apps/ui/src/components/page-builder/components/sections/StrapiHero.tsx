@@ -2,14 +2,18 @@ import type { Data } from "@repo/strapi-types"
 import { Check } from "lucide-react"
 import Image from "next/image"
 
+import { Breadcrumbs } from "@/components/elementary/Breadcrumbs"
 import { Container } from "@/components/elementary/Container"
 import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
 import { cn } from "@/lib/styles"
+import type { BreadCrumb } from "@/types/api"
 
 export function StrapiHero({
   component,
+  meta,
 }: {
   readonly component: Data.Component<"sections.hero">
+  readonly meta?: { breadcrumbs?: BreadCrumb[] }
 }) {
   return (
     <section
@@ -41,6 +45,10 @@ export function StrapiHero({
           <p className="mb-4 max-w-2xl text-lg text-white/80">
             {component.subTitle}
           </p>
+        )}
+
+        {meta?.breadcrumbs && (
+          <Breadcrumbs breadcrumbs={meta.breadcrumbs} className="mb-4" />
         )}
 
         {component?.steps && component.steps.length > 0 && (

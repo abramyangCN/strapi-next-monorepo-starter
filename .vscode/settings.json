@@ -1,5 +1,9 @@
 {
-  "eslint.workingDirectories": [{ "mode": "auto" }],
+  "eslint.workingDirectories": [
+    {
+      "mode": "auto"
+    }
+  ],
   "tailwindCSS.classAttributes": [
     "class",
     "className",
@@ -18,7 +22,7 @@
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
   },
   "[typescriptreact]": {
-    "editor.defaultFormatter": "dbaeumer.vscode-eslint"
+    "editor.defaultFormatter": "vscode.typescript-language-features"
   },
   "[javascript]": {
     "editor.defaultFormatter": "dbaeumer.vscode-eslint"
@@ -28,7 +32,10 @@
   },
   "prettier.requireConfig": true,
   "typescript.tsdk": "node_modules/typescript/lib",
-  "cSpell.words": ["Strapi", "unoptimized"],
+  "cSpell.words": [
+    "Strapi",
+    "unoptimized"
+  ],
   "typescript.preferences.importModuleSpecifier": "non-relative",
   "javascript.preferences.importModuleSpecifier": "non-relative"
 }

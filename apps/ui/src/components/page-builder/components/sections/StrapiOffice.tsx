@@ -3,6 +3,7 @@ import Image from "next/image"
 
 import { Container } from "@/components/elementary/Container"
 import { Section } from "@/components/elementary/Section"
+import { formatStrapiMediaUrl } from "@/lib/strapi-helpers"
 
 export default function StrapiOffice({
   component,
@@ -31,9 +32,11 @@ export default function StrapiOffice({
 
               {/* Image */}
               {office.image && (
-                <div className="border-primary-700 relative mb-6 aspect-video w-full overflow-hidden border-1 sm:mb-8">
+                <div className="border-primary-700 relative mb-6 aspect-video w-full overflow-hidden border sm:mb-8">
                   <Image
-                    src={office.image.url}
+                    src={
+                      formatStrapiMediaUrl(office.image.url) ?? office.image.url
+                    }
                     alt={
                       office.image.alternativeText || office.name || "Office"
                     }

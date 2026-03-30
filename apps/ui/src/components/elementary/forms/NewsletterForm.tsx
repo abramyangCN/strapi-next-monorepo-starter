@@ -1,13 +1,14 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
-import { MoveRight } from "lucide-react"
+import { useState } from "react"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
 import { AppField } from "@/components/forms/AppField"
 import { AppForm } from "@/components/forms/AppForm"
-import { Button } from "@/components/ui/button"
+import { RippleButton } from "@/components/ui/ripple-button"
+import { useToast } from "@/components/ui/use-toast"
 
 interface NewsletterFormProps {
   newsletter?: {
@@ -18,7 +19,10 @@ interface NewsletterFormProps {
   }
 }
 
-export function NewsletterForm(_props?: NewsletterFormProps) {
+export function NewsletterForm({ newsletter }: NewsletterFormProps) {
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const { toast } = useToast()
+
   const form = useForm<z.infer<FormSchemaType>>({
     resolver: zodResolver(NewsletterFormSchema),
     mode: "onBlur",
@@ -26,8 +30,36 @@ export function NewsletterForm(_props?: NewsletterFormProps) {
     defaultValues: { email: "" },
   })
 
-  async function onSubmit(_values: z.infer<FormSchemaType>) {
-    // Submit logic not yet implemented
+  async function onSubmit(values: z.infer<FormSchemaType>) {
+    setIsSubmitting(true)
+
+    try {
+      const response = await fetch("/api/subscribers", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ data: { email: values.email } }),
+      })
+
+      if (!response.ok) {
+        throw new Error("Failed to subscribe")
+      }
+
+      toast({
+        title: "Success!",
+        description: "You have successfully subscribed to our newsletter.",
+        className: "border-secondary-500 bg-secondary-50 text-secondary-900",
+      })
+
+      form.reset()
+    } catch {
+      toast({
+        title: "Error",
+        description: "Failed to subscribe. Please try again later.",
+        variant: "destructive",
+      })
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   return (
@@ -37,25 +69,25 @@ export function NewsletterForm(_props?: NewsletterFormProps) {
         onSubmit={onSubmit}
         id={newsletterForm}
         className="w-full"
+        fieldsetClassName="flex flex-col gap-3 md:flex-row md:gap-0"
       >
-        <div className="relative">
-          <AppField
-            name="email"
-            type="text"
-            autoComplete="email"
-            required
-            fieldClassName="h-14 bg-white"
-            aria-label="email"
-          />
-          <Button
-            type="submit"
-            className="absolute top-1/2 right-3 -translate-y-1/2 md:w-fit"
-            form={newsletterForm}
-            aria-label="Submit form"
-          >
-            <MoveRight className="size-4" />
-          </Button>
-        </div>
+        <AppField
+          name="email"
+          type="text"
+          autoComplete="email"
+          required
+          containerClassName="flex-1"
+          fieldClassName="h-12 w-full flex-1 border border-white bg-white px-4 text-black placeholder:text-black/60 md:min-w-80"
+          aria-label="email"
+          placeholder={newsletter?.placeholder ?? "Enter your email"}
+        />
+        <RippleButton
+          type="submit"
+          disabled={isSubmitting}
+          className="flex h-12 w-full shrink-0 px-8 text-sm font-medium md:w-auto"
+        >
+          {isSubmitting ? "..." : (newsletter?.button ?? "SUBSCRIBE")}
+        </RippleButton>
       </AppForm>
     </div>
   )

@@ -125,9 +125,9 @@ export function StrapiCarouselWithNext({
               className="w-full"
             >
               <CarouselContent className={gapClass}>
-                {extendedSlides.map((slide) => (
+                {extendedSlides.map((slide, index) => (
                   <CarouselItem
-                    key={slide.id}
+                    key={`${slide.id}-${index}`}
                     className={cn(paddingClass, "md:basis-1/2 lg:basis-1/3")}
                   >
                     <Card slide={slide} size={component.size || "md"} />

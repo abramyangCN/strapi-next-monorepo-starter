@@ -1,0 +1,273 @@
+{
+  "seo": {
+    "metaTitle": "Shantec Shanghai",
+    "metaDescription": "SEO-DESCRIPTION",
+    "metaImage": "SEO-IMAGE",
+    "metaRobots": "SEO-ROBOTS",
+    "keywords": "SEO-KEYWORDS",
+    "applicationName": "SEO-APPLICATION-NAME",
+    "og": {
+      "title": "SEO-OG-TITLE",
+      "description": "SEO-OG-DESCRIPTION",
+      "url": "SEO-OG-URL",
+      "siteName": "SEO-OG-SITE-NAME",
+      "image": "SEO-OG-IMAGE"
+    },
+    "twitter": {
+      "card": "SEO-TWITTER-CARD",
+      "title": "SEO-TWITTER-TITLE",
+      "description": "SEO-TWITTER-DESCRIPTION",
+      "siteId": "SEO-TWITTER-SITE-ID",
+      "creator": "SEO-TWITTER-CREATOR",
+      "creatorId": "SEO-TWITTER-CREATOR-ID",
+      "imageUrl": "SEO-TWITTER-IMAGE-URL"
+    }
+  },
+
+  "general": {
+    "noOptionsAvailable": "暂无选项",
+    "search": "搜索",
+    "loading": "加载中",
+    "cancel": "取消",
+    "close": "关闭",
+    "submitForm": "提交",
+    "saveChanges": "保存更改"
+  },
+
+  "tables": {
+    "previousPage": "上一页",
+    "nextPage": "下一页",
+    "lastPage": "最后一页",
+    "firstPage": "第一页",
+    "rowsPerPage": "每页行数",
+    "pageXOfY": "第 {x} 页，共 {y} 页",
+    "ascending": "升序",
+    "descending": "降序",
+    "noData": "暂无数据"
+  },
+
+  "navbar": {
+    "account": "账户",
+    "actions": {
+      "profile": "个人资料",
+      "signOut": "退出登录",
+      "changePassword": "修改密码",
+      "signIn": "登录"
+    }
+  },
+
+  "comps": {
+    "fileInput": {
+      "label": "选择文件",
+      "dragAndDrop": "拖放文件或点击选择",
+      "validFileTypes": "文件必须为 {validFileTypes} 格式",
+      "wrongFileType": "不支持此文件类型",
+      "selectedFile": "已选文件：{fileName}",
+      "removeFile": "删除文件"
+    },
+    "datePicker": {
+      "label": "选择日期"
+    },
+    "dateRangePicker": {
+      "label": "选择日期范围"
+    },
+    "themeToggle": {
+      "label": "切换主题"
+    },
+    "dialog": {
+      "confirmClose": "确定要关闭吗？所有未保存的更改将会丢失。"
+    }
+  },
+
+  "errors": {
+    "global": {
+      "title": "发生未知错误",
+      "tryAgain": "重试",
+      "invalidContent": "此内容无法显示",
+      "somethingWentWrong": "出了点问题 🥺"
+    },
+
+    "notFound": {
+      "title": "页面未找到",
+      "description": "您查找的页面不存在。",
+      "solution": "请检查您输入的网址是否正确，或返回首页。",
+      "redirect": "返回首页"
+    },
+
+    "forms": {
+      "errorsInForm": "表单包含错误",
+      "checkFormForErrors": "请检查是否有缺失的值"
+    },
+
+    "zodValidation": {
+      "invalid_type": "期望类型为 {expected}，但收到 {received}",
+      "invalid_type_received_undefined": "此字段为必填项",
+      "invalid_literal": "无效的值，期望 {expected}",
+      "invalid_union": "无效的值",
+
+      "invalid_string": {
+        "regex": "格式无效"
+      },
+      "too_small": {
+        "string": {
+          "exact": "字符串必须恰好包含 {minimum} 个字符",
+          "inclusive": "字符串必须至少包含 {minimum} 个字符",
+          "not_inclusive": "字符串必须超过 {minimum} 个字符"
+        },
+        "number": {
+          "exact": "值必须恰好为 {minimum}",
+          "inclusive": "最小值为 {minimum}",
+          "not_inclusive": "数字必须大于 {minimum}"
+        }
+      },
+      "too_big": {
+        "string": {
+          "exact": "字符串必须恰好包含 {maximum} 个字符",
+          "inclusive": "字符串最多包含 {maximum} 个字符",
+          "not_inclusive": "字符串必须少于 {maximum} 个字符"
+        },
+        "number": {
+          "exact": "值必须恰好为 {maximum}",
+          "inclusive": "最大值为 {maximum}",
+          "not_inclusive": "数字必须小于 {maximum}"
+        }
+      },
+      "custom": {
+        "password": "密码不匹配",
+        "passwordWithNumber": "字符串必须包含至少 1 个数字",
+        "phoneNumber": "此字段必须包含 9 位数字"
+      }
+    }
+  },
+
+  "contactForm": {
+    "firstNamePlaceholder": "名*",
+    "lastNamePlaceholder": "姓*",
+    "emailPlaceholder": "邮箱*",
+    "phonePlaceholder": "电话*",
+    "companyPlaceholder": "公司*",
+    "jobTitlePlaceholder": "职位",
+    "inquiryTypePlaceholder": "联系我们关于...*",
+    "inquiryTypeGeneral": "一般咨询",
+    "inquiryTypeTechnical": "技术支持",
+    "inquiryTypeQuotation": "报价申请",
+    "inquiryTypePartnership": "合作伙伴",
+    "inquiryTypeOther": "其他",
+    "messagePlaceholder": "请留言*",
+    "gdpr": "提交即表示您同意",
+    "submit": "发送",
+    "success": "表单已成功提交。",
+    "error": "表单提交失败，请稍后重试。",
+    "gdprLink": "个人数据处理政策"
+  },
+
+  "auth": {
+    "signIn": {
+      "status": {
+        "fail": "登录失败",
+        "success": "登录成功",
+        "checkCredentials": "请检查您的登录凭据"
+      },
+      "errors": {
+        "CredentialsSignin": "您输入了错误的登录凭据。",
+        "unexpectedError": "登录失败，请稍后重试。"
+      },
+      "header": "登录",
+      "description": "输入您的登录信息。",
+      "email": "邮箱",
+      "password": "密码",
+      "submit": "登录",
+      "signingIn": "正在登录...",
+      "forgotPassword": "忘记密码",
+      "createAccount": "创建账户"
+    },
+
+    "register": {
+      "status": {
+        "fail": "注册失败",
+        "success": "注册成功",
+        "checkCredentials": "请检查您的凭据"
+      },
+      "errors": {
+        "credentials": "提供了错误的凭据",
+        "unexpectedError": "注册失败，请稍后重试。",
+        "emailUsernameTaken": "邮箱已被使用，请选择其他邮箱。"
+      },
+      "header": "注册",
+      "description": "创建账户以访问系统。",
+      "email": "电子邮件地址",
+      "password": "创建密码",
+      "checkPassword": "确认密码",
+      "submit": "创建账户",
+      "forgotPassword": "已有账户？立即登录。",
+      "checkEmail": "请按照邮件中的说明确认您的邮箱地址。",
+      "signInLinkLinkDescription": "已有账户？",
+      "signInLink": "登录"
+    },
+
+    "changePassword": {
+      "errors": {
+        "invalidCurrentPassword": "当前密码不正确",
+        "unexpectedError": "发生意外错误，请稍后重试。",
+        "newPasswordSameAsCurrent": "新密码必须与当前密码不同"
+      },
+      "successfullyChanged": "密码已成功修改",
+      "header": "修改密码",
+      "description": "选择新密码用于登录。",
+      "currentPassword": "当前密码",
+      "password": "新密码",
+      "confirmPassword": "确认新密码",
+      "submit": "修改密码"
+    },
+
+    "accountActivation": {
+      "successfullySet": "账户已成功激活，现在可以登录。",
+      "errors": {
+        "incorrectCodeProvided": "为您生成的链接不正确，请联系支持团队。"
+      },
+      "welcome": "欢迎",
+      "activateAccount": "已使用邮箱 {email} 创建了新账户。",
+      "invalidLink": "此链接无效。",
+      "activate": "激活账户",
+      "header": "设置密码",
+      "description": "选择用于登录的密码。",
+      "submit": "激活账户",
+      "password": "新密码",
+      "confirmPassword": "确认密码"
+    },
+
+    "resetPassword": {
+      "successfullySet": "密码已成功修改。",
+      "header": "重置密码",
+      "description": "选择新密码用于登录。",
+      "submit": "设置密码",
+      "password": "新密码",
+      "confirmPassword": "确认密码",
+      "errors": {
+        "incorrectCodeProvided": "无效或已过期的验证码，请重新申请密码重置。"
+      }
+    },
+
+    "forgotPassword": {
+      "passwordChangeEmailSent": "包含密码重置说明的邮件已发送给您。",
+      "header": "忘记密码",
+      "description": "输入您常用的登录邮箱，我们将向此邮箱发送密码重置说明。",
+      "email": "邮箱",
+      "submit": "恢复账户",
+      "errors": {
+        "failedToSendPasswordResetEmail": "发送密码重置邮件失败"
+      }
+    },
+
+    "oauth": {
+      "orContinueWith": "或继续使用",
+      "signingIn": "正在登录...",
+      "signedInSuccessfully": "登录成功",
+      "redirecting": "正在跳转...",
+      "errors": {
+        "signInFailed": "OAuth 登录失败"
+      },
+      "withGithub": "使用 GitHub 登录"
+    }
+  }
+}

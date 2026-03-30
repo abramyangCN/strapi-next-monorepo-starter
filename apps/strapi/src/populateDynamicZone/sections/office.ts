@@ -1,5 +1,9 @@
 export default {
   populate: {
-    offices: true,
+    offices: {
+      populate: {
+        image: true,
+      },
+    },
   },
 }

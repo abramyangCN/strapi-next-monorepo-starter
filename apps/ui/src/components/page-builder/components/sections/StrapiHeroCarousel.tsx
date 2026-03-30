@@ -163,9 +163,11 @@ export function StrapiHeroCarousel({
                       <div className="flex flex-col items-start gap-4">
                         {carousel.title && (
                           <div className="text-3xl font-thin whitespace-pre-wrap text-white lg:text-7xl [&>*:nth-child(2)]:font-bold">
-                            {carousel.title.split("\n").map((line) => (
-                              <div key={line}>{line}</div>
-                            ))}
+                            {carousel.title
+                              .split("\n")
+                              .map((line, lineIndex) => (
+                                <div key={lineIndex}>{line}</div>
+                              ))}
                           </div>
                         )}
                         {carousel.description && (

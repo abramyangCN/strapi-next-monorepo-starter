@@ -974,12 +974,25 @@ export interface ApiSubscriberSubscriber extends Struct.CollectionTypeSchema {
     draftAndPublish: false
   }
   attributes: {
+    company: Schema.Attribute.String
     content: Schema.Attribute.Text &
       Schema.Attribute.CustomField<"plugin::tiptap-editor.RichText">
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
     email: Schema.Attribute.Email
+    firstName: Schema.Attribute.String
+    inquiryType: Schema.Attribute.Enumeration<
+      [
+        "general-inquiry",
+        "technical-support",
+        "quotation-request",
+        "partnership",
+        "other",
+      ]
+    >
+    jobTitle: Schema.Attribute.String
+    lastName: Schema.Attribute.String
     locale: Schema.Attribute.String & Schema.Attribute.Private
     localizations: Schema.Attribute.Relation<
       "oneToMany",
@@ -988,6 +1001,7 @@ export interface ApiSubscriberSubscriber extends Struct.CollectionTypeSchema {
       Schema.Attribute.Private
     message: Schema.Attribute.Text
     name: Schema.Attribute.String
+    phone: Schema.Attribute.String
     publishedAt: Schema.Attribute.DateTime
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
