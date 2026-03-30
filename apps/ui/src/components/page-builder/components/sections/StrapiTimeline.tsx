@@ -18,10 +18,10 @@ import type { StrapiImageMedia } from "@/types/api"
 interface TimelineItemProps {
   readonly item: Data.Component<"utilities.timeline-item">
   readonly index: number
-  readonly isLeft: boolean
+  readonly isLast: boolean
 }
 
-function TimelineItem({ item, index, isLeft }: TimelineItemProps) {
+function TimelineItem({ item, index, isLast }: TimelineItemProps) {
   const [isVisible, setIsVisible] = useState(false)
   const itemRef = useRef<HTMLDivElement>(null)
 
@@ -57,11 +57,14 @@ function TimelineItem({ item, index, isLeft }: TimelineItemProps) {
       ? "bg-secondary-500 border-secondary-500"
       : "bg-primary-700 border-primary-700"
 
+  const yearColorClass =
+    item.dotColor === "secondary" ? "text-secondary-500" : "text-primary-700"
+
   return (
     <div
       ref={itemRef}
       className={cn(
-        "relative grid grid-cols-1 gap-8 md:grid-cols-2 md:gap-24",
+        "flex gap-4 lg:gap-16",
         "opacity-0 transition-all duration-700",
         isVisible && "opacity-100"
       )}
@@ -69,30 +72,36 @@ function TimelineItem({ item, index, isLeft }: TimelineItemProps) {
         transform: isVisible ? "translateY(0)" : "translateY(30px)",
       }}
     >
-      {/* Left side content */}
-      <div
-        className={cn(
-          "flex flex-col",
-          isLeft ? "md:items-end md:text-right" : "md:order-2"
-        )}
-      >
-        {/* Year */}
+      {/* Year column */}
+      <div className="shrink-0 pt-0.5 text-right">
         <h3
           className={cn(
-            "mb-4 text-4xl font-bold md:text-left md:text-5xl",
-            item.dotColor === "secondary" ? "text-left" : "text-right",
-            isLeft && "md:text-right",
-            item.dotColor === "secondary"
-              ? "text-secondary-500"
-              : "text-primary-700"
+            "text-xl leading-tight font-bold lg:text-2xl",
+            yearColorClass
           )}
         >
           {item.year}
         </h3>
+      </div>
 
+      {/* Dot + vertical line column */}
+      <div className="flex shrink-0 flex-col items-center">
+        <div
+          className={cn(
+            "mt-1 h-4 w-4 shrink-0 rounded-full border-4 bg-white",
+            dotColorClass,
+            "transition-transform duration-500",
+            isVisible ? "scale-100" : "scale-0"
+          )}
+        />
+        {!isLast && <div className="mt-1 w-0.5 flex-1 bg-gray-300" />}
+      </div>
+
+      {/* Content column */}
+      <div className={cn("min-w-0 flex-1 pb-4 lg:pb-8", isLast && "pb-0")}>
         {/* Title */}
         {item.title && (
-          <h4 className="mb-2 text-xl font-semibold text-gray-900">
+          <h4 className="mb-1 text-base font-semibold text-gray-900 sm:text-lg">
             {item.title}
           </h4>
         )}
@@ -101,20 +110,13 @@ function TimelineItem({ item, index, isLeft }: TimelineItemProps) {
         {item.description && (
           <HtmlContent
             html={item.description}
-            className="prose prose-sm max-w-none text-gray-600"
+            className="prose lg:prose-lg max-w-none text-gray-600 [&_img]:w-[150px]! [&_img]:min-w-0!"
           />
         )}
-      </div>
 
-      {/* Right side content (image) */}
-      <div
-        className={cn(
-          "flex items-center justify-center",
-          isLeft ? "md:order-2" : ""
-        )}
-      >
+        {/* Image */}
         {item.image && (
-          <div className="relative h-40 w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg">
+          <div className="relative mt-3 h-36 w-full max-w-xs overflow-hidden rounded-lg bg-white shadow-lg">
             <ImageWithFallback
               src={
                 formatStrapiMediaUrl((item.image as StrapiImageMedia)?.url) ??
@@ -132,19 +134,6 @@ function TimelineItem({ item, index, isLeft }: TimelineItemProps) {
             />
           </div>
         )}
-      </div>
-
-      {/* Center dot - only visible on md+ screens */}
-      <div className="absolute top-0 left-1/2 hidden -translate-x-1/2 md:block">
-        <div
-          className={cn(
-            "h-6 w-6 rounded-full border-4 bg-white",
-            dotColorClass,
-            "transition-transform duration-500",
-            isVisible && "scale-100",
-            !isVisible && "scale-0"
-          )}
-        />
       </div>
     </div>
   )
@@ -180,17 +169,14 @@ export function StrapiTimeline({
 
         {/* Timeline */}
         <div className="relative">
-          {/* Center vertical line - only visible on md+ screens */}
-          <div className="absolute top-0 bottom-0 left-1/2 hidden w-0.5 -translate-x-1/2 bg-gray-300 md:block" />
-
           {/* Timeline items */}
-          <div className="space-y-16 md:space-y-24">
+          <div className="flex flex-col">
             {component.items.map((item, index) => (
               <TimelineItem
                 key={item.id || index}
                 item={item}
                 index={index}
-                isLeft={index % 2 === 0}
+                isLast={index === (component.items?.length ?? 0) - 1}
               />
             ))}
           </div>
