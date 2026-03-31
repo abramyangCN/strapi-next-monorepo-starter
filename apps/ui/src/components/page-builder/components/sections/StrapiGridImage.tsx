@@ -44,8 +44,8 @@ export default function StrapiGridImage({
   return (
     <Section
       className={cn(
-        style === "left" && "lg:mb-36",
-        style === "right" && "lg:mt-36",
+        style === "left" && "lg:mb-8",
+        style === "right" && "lg:mt-8",
         component.enableBgColor && component.bgColor ? "" : undefined
       )}
       style={{
@@ -56,11 +56,16 @@ export default function StrapiGridImage({
       }}
     >
       <Container>
-        <div className="flex flex-col items-start gap-8 lg:flex-row lg:gap-12">
+        <div
+          className={cn(
+            "flex flex-col items-start gap-8 lg:flex-row lg:gap-12",
+            style === "left" && "lg:items-end"
+          )}
+        >
           {/* Text Card - Left side for 'left' style */}
           {style === "left" && (
-            <div className="flex flex-col justify-center lg:w-5/12 lg:translate-y-36">
-              <div className="bg-[#1a4d5c] px-6 py-10 text-white sm:px-8 sm:py-16 lg:px-12 lg:py-20">
+            <div className="relative flex flex-col items-end justify-center lg:w-5/12">
+              <div className="bg-[#1a4d5c] px-6 py-10 text-white sm:px-8 sm:py-16 lg:absolute lg:-bottom-24 lg:px-12 lg:py-20">
                 {component.title && (
                   <h2 className="mb-6 text-4xl font-bold lg:text-5xl">
                     {component.title}
@@ -132,8 +137,8 @@ export default function StrapiGridImage({
 
           {/* Text Card - Right side for 'right' style */}
           {style === "right" && (
-            <div className="order-first flex flex-col justify-center lg:order-none lg:w-5/12 lg:-translate-y-36">
-              <div className="bg-[#1a4d5c] px-6 py-10 text-white sm:px-8 sm:py-16 lg:px-12 lg:py-20">
+            <div className="relative order-first flex flex-col justify-center lg:order-none lg:w-5/12">
+              <div className="bg-[#1a4d5c] px-6 py-10 text-white sm:px-8 sm:py-16 lg:absolute lg:-top-24 lg:px-12 lg:py-20">
                 {component.title && (
                   <h2 className="mb-6 text-4xl font-bold lg:text-5xl">
                     {component.title}
