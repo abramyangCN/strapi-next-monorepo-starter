@@ -5,14 +5,12 @@ import Image from "next/image"
 import { Container } from "@/components/elementary/Container"
 import { Section } from "@/components/elementary/Section"
 import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
-import {
-  StrapiSectionDescription,
-  StrapiSectionTitle,
-} from "@/components/page-builder/components/utilities/StrapiSectionHeader"
+import { StrapiSectionDescription } from "@/components/page-builder/components/utilities/StrapiSectionHeader"
 import { cn } from "@/lib/styles"
 
 type GridImageComponent = {
   style?: string
+  columns?: "2" | "4"
   title?: string
   description?: string
   enableBgColor?: boolean
@@ -35,90 +33,12 @@ export default function StrapiGridImage({
     return null
   }
 
-  const style = component.style || "none"
-
-  // Style: None - Original centered layout
-  if (style === "none") {
-    return (
-      <Section
-        className={cn(
-          component.enableBgColor && component.bgColor ? "" : undefined
-        )}
-        style={{
-          backgroundColor:
-            component.enableBgColor && component.bgColor
-              ? component.bgColor
-              : undefined,
-        }}
-      >
-        <Container>
-          {/* Section Header */}
-          {(component.title || component.description) && (
-            <div className="mb-12 flex flex-col items-center text-center">
-              <StrapiSectionTitle title={component.title} />
-              <StrapiSectionDescription description={component.description} />
-            </div>
-          )}
-
-          <div className="grid grid-cols-2 gap-4 lg:grid-cols-8">
-            {component.items.map((item, index) => (
-              <div
-                key={item.id ?? index}
-                className="group flex flex-col overflow-hidden bg-white transition-all duration-300 hover:z-10 hover:scale-125 hover:rounded-4xl hover:shadow-lg"
-              >
-                {/* Image */}
-                {item.media && (
-                  <div className="relative aspect-square w-full overflow-hidden">
-                    <Image
-                      src={item.media.url}
-                      alt={item.media.alternativeText || item.title || ""}
-                      fill
-                      className="object-cover transition-transform group-hover:scale-150"
-                    />
-                  </div>
-                )}
-
-                {/* Content */}
-                <div className="flex justify-center py-3">
-                  {item.title && <h3 className="text-base">{item.title}</h3>}
-
-                  {item.link?.href && (
-                    <div className="mt-auto">
-                      <StrapiLink
-                        component={item.link}
-                        className="text-primary-700 inline-flex items-center font-medium hover:underline"
-                      >
-                        <svg
-                          className="ml-2 h-4 w-4"
-                          fill="none"
-                          stroke="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M9 5l7 7-7 7"
-                          />
-                        </svg>
-                      </StrapiLink>
-                    </div>
-                  )}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Section Link */}
-          {component.link && (
-            <div className="mt-12 flex justify-center">
-              <StrapiLink component={component.link} variant="primary" />
-            </div>
-          )}
-        </Container>
-      </Section>
-    )
-  }
+  const style = component.style || "left"
+  const columns = component.columns || "4"
+  const ctaGridClass =
+    columns === "2"
+      ? "aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d]"
+      : "col-span-2 row-span-2 aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d] lg:col-start-4 lg:row-start-3"
 
   // Style: Left or Right - Card + Grid layout
   return (
@@ -160,7 +80,14 @@ export default function StrapiGridImage({
 
           {/* Grid Items */}
           <div className="w-full lg:w-7/12">
-            <div className="grid grid-cols-2 gap-2 sm:grid-cols-3 sm:gap-3 md:grid-cols-4 lg:grid-cols-5 lg:gap-4">
+            <div
+              className={cn(
+                "grid gap-2 sm:gap-3 lg:gap-4",
+                columns === "2"
+                  ? "grid-cols-2"
+                  : "grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+              )}
+            >
               {component.items.map((item, index) => (
                 <div
                   key={item.id ?? index}
@@ -186,7 +113,7 @@ export default function StrapiGridImage({
 
               {/* CTA Button as last grid item */}
               {component.link && (
-                <div className="col-span-2 row-span-2 flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d] sm:col-start-2 md:col-start-3 lg:col-start-4 lg:row-start-3">
+                <div className={ctaGridClass}>
                   <StrapiLink
                     component={component.link}
                     className="flex h-full w-full flex-col items-end gap-3 px-6 py-8 text-center sm:gap-4 sm:px-10 sm:py-12 lg:px-14 lg:py-16"

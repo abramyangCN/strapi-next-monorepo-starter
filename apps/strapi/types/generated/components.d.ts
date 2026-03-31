@@ -257,6 +257,8 @@ export interface SectionsGridImage extends Struct.ComponentSchema {
   attributes: {
     bgColor: Schema.Attribute.String &
       Schema.Attribute.CustomField<"plugin::color-picker.color">
+    columns: Schema.Attribute.Enumeration<["2", "4"]> &
+      Schema.Attribute.DefaultTo<"4">
     description: Schema.Attribute.Text
     enableBgColor: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     items: Schema.Attribute.Component<
