@@ -11,6 +11,11 @@
         "preset": "defaultCkEditor"
       },
       "customField": "plugin::ckeditor5.CKEditor"
+    },
+    "link": {
+      "type": "component",
+      "repeatable": false,
+      "component": "utilities.link"
     }
   }
 }

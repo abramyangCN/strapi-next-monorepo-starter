@@ -516,6 +516,7 @@ export interface SectionsTimeline extends Struct.ComponentSchema {
     enableBgColor: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     items: Schema.Attribute.Component<"utilities.timeline-item", true> &
       Schema.Attribute.Required
+    link: Schema.Attribute.Component<"utilities.link", false>
     title: Schema.Attribute.String
   }
 }
@@ -746,6 +747,7 @@ export interface UtilitiesCkEditorContent extends Struct.ComponentSchema {
           preset: "defaultCkEditor"
         }
       >
+    link: Schema.Attribute.Component<"utilities.link", false>
   }
 }
 

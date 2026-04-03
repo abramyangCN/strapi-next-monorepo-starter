@@ -1,20 +1,22 @@
 import type { Data } from "@repo/strapi-types"
 
 import CKEditorRenderer from "@/components/elementary/ck-editor"
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
+import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
 
 export function StrapiCkEditorContent({
   component,
 }: {
   readonly component: Data.Component<"utilities.ck-editor-content">
 }) {
-  removeThisWhenYouNeedMe("StrapiCkEditorContent")
-
   return (
-    <CKEditorRenderer
-      htmlContent={component.content}
-      className="mx-auto w-full max-w-[1296px] px-4 py-8 lg:py-12"
-    />
+    <div className="mx-auto w-full max-w-[1296px] px-4 py-8 lg:py-12">
+      <CKEditorRenderer htmlContent={component.content} />
+      {component.link && (
+        <div className="mt-6 flex justify-center">
+          <StrapiLink component={component.link} variant="primary" />
+        </div>
+      )}
+    </div>
   )
 }
 

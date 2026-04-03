@@ -6,6 +6,7 @@ import { useEffect, useRef, useState } from "react"
 import { Container } from "@/components/elementary/Container"
 import { ImageWithFallback } from "@/components/elementary/ImageWithFallback"
 import { Section } from "@/components/elementary/Section"
+import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
 import {
   StrapiSectionDescription,
   StrapiSectionTitle,
@@ -181,6 +182,13 @@ export function StrapiTimeline({
             ))}
           </div>
         </div>
+
+        {/* Bottom link */}
+        {component.link && (
+          <div className="mt-10 flex justify-center">
+            <StrapiLink component={component.link} variant="primary" />
+          </div>
+        )}
       </Container>
     </Section>
   )

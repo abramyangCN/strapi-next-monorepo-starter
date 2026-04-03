@@ -257,6 +257,8 @@ export interface SectionsGridImage extends Struct.ComponentSchema {
   attributes: {
     bgColor: Schema.Attribute.String &
       Schema.Attribute.CustomField<"plugin::color-picker.color">
+    columns: Schema.Attribute.Enumeration<["2", "4"]> &
+      Schema.Attribute.DefaultTo<"4">
     description: Schema.Attribute.Text
     enableBgColor: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     items: Schema.Attribute.Component<
@@ -514,6 +516,7 @@ export interface SectionsTimeline extends Struct.ComponentSchema {
     enableBgColor: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>
     items: Schema.Attribute.Component<"utilities.timeline-item", true> &
       Schema.Attribute.Required
+    link: Schema.Attribute.Component<"utilities.link", false>
     title: Schema.Attribute.String
   }
 }
@@ -744,6 +747,7 @@ export interface UtilitiesCkEditorContent extends Struct.ComponentSchema {
           preset: "defaultCkEditor"
         }
       >
+    link: Schema.Attribute.Component<"utilities.link", false>
   }
 }
 
