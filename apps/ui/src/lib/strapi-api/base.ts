@@ -2,6 +2,10 @@ import type { FindFirst, FindMany, ID, Result, UID } from "@repo/strapi-types"
 
 import { getEnvVar } from "@/lib/env-vars"
 import { isDevelopment } from "@/lib/general-helpers"
+import {
+  normalizeStrapiResponseLocales,
+  toStrapiLocale,
+} from "@/lib/locale-mapping"
 import type {
   APIResponse,
   APIResponseCollection,
@@ -36,7 +40,7 @@ export default abstract class BaseStrapiClient {
         ...params,
         ...(options?.doNotAddLocaleQueryParams
           ? {}
-          : { locale: params.locale }),
+          : { locale: toStrapiLocale(params.locale as string | undefined) }),
       },
       requestInit,
       options
@@ -56,6 +60,7 @@ export default abstract class BaseStrapiClient {
     })
 
     const { json, text } = await this.parseResponse(response)
+    const normalizedJson = json ? normalizeStrapiResponseLocales(json) : json
 
     if (text) {
       const appError: AppError = {
@@ -69,7 +74,7 @@ export default abstract class BaseStrapiClient {
     }
 
     if (!response.ok) {
-      const { error } = json
+      const { error } = normalizedJson
       const appError: AppError = {
         name: error?.name,
         message: error?.message,
@@ -84,7 +89,7 @@ export default abstract class BaseStrapiClient {
       throw new Error(JSON.stringify(appError))
     }
 
-    return json
+    return normalizedJson
   }
 
   /**
