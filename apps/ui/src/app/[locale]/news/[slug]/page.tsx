@@ -12,7 +12,11 @@ import { PageContentComponents } from "@/components/page-builder"
 import StrapiStructuredData from "@/components/page-builder/components/seo-utilities/StrapiStructuredData"
 import { isDevelopment } from "@/lib/general-helpers"
 import { routing } from "@/lib/navigation"
-import { fetchAllNews, fetchNews } from "@/lib/strapi-api/content/server"
+import {
+  fetchAllNews,
+  fetchFooter,
+  fetchNews,
+} from "@/lib/strapi-api/content/server"
 import { cn } from "@/lib/styles"
 import type { AppLocale } from "@/types/general"
 
@@ -73,7 +77,17 @@ export default async function NewsArticlePage(
 
   setRequestLocale(locale)
 
-  const response = await fetchNews(slug, locale)
+  const [response, footerResponse] = await Promise.all([
+    fetchNews(slug, locale),
+    fetchFooter(locale),
+  ])
+
+  const footerData = footerResponse?.data as {
+    socialMedias?: Data.Component<"elements.social-media">[]
+  } | null
+  const socialMedias = footerData?.socialMedias?.filter(
+    (s) => s.social !== "wechat"
+  )
 
   const data = response?.data as Record<string, unknown> & {
     content?: ({ __component: string; id: string | number } & Record<
@@ -150,7 +164,7 @@ export default async function NewsArticlePage(
             <div className="flex items-center justify-between">
               {formattedDate && (
                 <time
-                  className="text-muted-foreground text-sm"
+                  className="text-muted-foreground text-lg font-bold"
                   dateTime={publishDate}
                 >
                   {formattedDate}
@@ -158,7 +172,7 @@ export default async function NewsArticlePage(
               )}
 
               {/* Share buttons */}
-              <ShareButtons />
+              <ShareButtons socialMedias={socialMedias} />
             </div>
           </header>
         </Container>

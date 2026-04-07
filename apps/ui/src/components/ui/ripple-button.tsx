@@ -6,11 +6,15 @@ import { cn } from "@/lib/styles"
 
 export interface RippleButtonProps extends React.ButtonHTMLAttributes<HTMLButtonElement> {
   children: React.ReactNode
+  hoverClassName?: string
+  rippleClassName?: string
 }
 
 export function RippleButton({
   children,
   className,
+  hoverClassName = "bg-primary-500",
+  rippleClassName = "bg-primary-100",
   ...props
 }: RippleButtonProps) {
   const [isHovered, setIsHovered] = useState(false)
@@ -63,11 +67,17 @@ export function RippleButton({
       {...props}
     >
       <span
-        className="bg-primary-500 pointer-events-none absolute inset-0 z-0 transition-opacity duration-800"
+        className={cn(
+          "pointer-events-none absolute inset-0 z-0 transition-opacity duration-800",
+          hoverClassName
+        )}
         style={{ opacity: isHovered ? 0.5 : 0 }}
       />
       <span
-        className="bg-primary-100 pointer-events-none absolute top-1/2 left-1/2 z-0 aspect-square w-[200%] -translate-x-1/2 -translate-y-1/2 rounded-full"
+        className={cn(
+          "pointer-events-none absolute top-1/2 left-1/2 z-0 aspect-square w-[200%] -translate-x-1/2 -translate-y-1/2 rounded-full",
+          rippleClassName
+        )}
         style={{
           transform: isActive ? "scale(3)" : "scale(0)",
           opacity: isActive ? 0 : 0.8,

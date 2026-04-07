@@ -117,6 +117,26 @@ export const defaultCkEditorConfig: Preset = {
     // simple toolbar that will be exanded
     balloonToolbar,
 
+    image: {
+      resizeUnit: "px",
+      resizeOptions: [
+        { name: "resizeImage:original", value: null, label: "Original" },
+        { name: "resizeImage:200", value: "200", label: "200px" },
+        { name: "resizeImage:400", value: "400", label: "400px" },
+        { name: "resizeImage:600", value: "600", label: "600px" },
+        { name: "resizeImage:800", value: "800", label: "800px" },
+      ],
+      toolbar: [
+        "imageStyle:block",
+        "imageStyle:side",
+        "|",
+        "toggleImageCaption",
+        "imageTextAlternative",
+        "|",
+        "resizeImage",
+      ],
+    },
+
     toolbar: [
       "showBlocks",
       "|",

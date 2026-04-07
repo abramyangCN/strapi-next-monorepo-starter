@@ -3,6 +3,7 @@
 @import "@repo/design-system/custom-styles.css";
 
 @plugin "tailwindcss-animate";
+@plugin "@tailwindcss/typography";
 
 /*
   The default border color has changed to `currentColor` in Tailwind CSS v4,

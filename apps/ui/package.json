@@ -39,6 +39,7 @@
     "@repo/shared-data": "workspace:*",
     "@sentry/nextjs": "10.35.0",
     "@t3-oss/env-nextjs": "^0.13.10",
+    "@tailwindcss/typography": "^0.5.19",
     "@tanstack/react-query": "^5.90.20",
     "@tanstack/react-table": "^8.21.3",
     "@tiptap/core": "^3.19.0",
