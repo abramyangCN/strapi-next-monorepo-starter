@@ -107,58 +107,6 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
 
         {/* Main Footer Content */}
         <div className="flex flex-col justify-between gap-8 md:flex-row md:gap-12 lg:gap-24">
-          <div className="flex flex-col gap-8 sm:flex-row sm:gap-12 md:shrink-0 md:gap-16">
-            {sections?.map((section, sectionIndex) => (
-              <div
-                key={section.id ?? sectionIndex}
-                className="flex shrink-0 flex-col items-start gap-4 md:gap-12"
-              >
-                <h3 className="text-lg font-semibold md:text-xl">
-                  {section.title}
-                </h3>
-                <div className="flex flex-col items-start gap-2">
-                  {section.links?.map((link, i) => (
-                    <StrapiLink
-                      key={link.id ?? i}
-                      component={link}
-                      className="p-0 text-sm text-white transition-colors"
-                    />
-                  ))}
-                </div>
-              </div>
-            ))}
-          </div>
-
-          {/* Contact Section */}
-          {contact && (
-            <div className="flex flex-col gap-4 md:gap-12">
-              <h3 className="text-lg font-semibold md:text-xl">
-                {contact.title}
-              </h3>
-              <div className="flex flex-col gap-2 text-sm md:text-base">
-                {contact.phone && (
-                  <a
-                    href={`tel:${contact.phone}`}
-                    className="hover:text-secondary-400 h-9"
-                  >
-                    {contact.phone}
-                  </a>
-                )}
-                {contact.email && (
-                  <a
-                    href={`mailto:${contact.email}`}
-                    className="hover:text-secondary-400 h-9"
-                  >
-                    {contact.email}
-                  </a>
-                )}
-                {contact.address && (
-                  <p className="whitespace-pre-line">{contact.address}</p>
-                )}
-              </div>
-            </div>
-          )}
-
           <div className="flex flex-row items-start gap-6 md:flex-col md:gap-4">
             {/* WeChat QR Code Section */}
             {wechatMedia && (
@@ -212,6 +160,58 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
               </div>
             )}
           </div>
+
+          <div className="flex flex-col gap-8 sm:flex-row sm:gap-12 md:shrink-0 md:gap-16">
+            {sections?.map((section, sectionIndex) => (
+              <div
+                key={section.id ?? sectionIndex}
+                className="flex shrink-0 flex-col items-start gap-4 md:gap-12"
+              >
+                <h3 className="text-lg font-semibold md:text-xl">
+                  {section.title}
+                </h3>
+                <div className="flex flex-col items-start gap-2">
+                  {section.links?.map((link, i) => (
+                    <StrapiLink
+                      key={link.id ?? i}
+                      component={link}
+                      className="p-0 text-sm text-white transition-colors"
+                    />
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+
+          {/* Contact Section */}
+          {contact && (
+            <div className="flex flex-col gap-4 md:gap-12">
+              <h3 className="text-lg font-semibold md:text-xl">
+                {contact.title}
+              </h3>
+              <div className="flex flex-col gap-2 text-sm md:text-base">
+                {contact.phone && (
+                  <a
+                    href={`tel:${contact.phone}`}
+                    className="hover:text-secondary-400 h-9"
+                  >
+                    {contact.phone}
+                  </a>
+                )}
+                {contact.email && (
+                  <a
+                    href={`mailto:${contact.email}`}
+                    className="hover:text-secondary-400 h-9"
+                  >
+                    {contact.email}
+                  </a>
+                )}
+                {contact.address && (
+                  <p className="whitespace-pre-line">{contact.address}</p>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </Container>
     </footer>
