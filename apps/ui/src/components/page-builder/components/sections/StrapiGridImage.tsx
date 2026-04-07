@@ -1,8 +1,8 @@
 import type { Data } from "@repo/strapi-types"
-import { ArrowRight } from "lucide-react"
 import Image from "next/image"
 
 import { Container } from "@/components/elementary/Container"
+import { MoveRightSVG } from "@/components/elementary/icons"
 import { Section } from "@/components/elementary/Section"
 import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
 import { StrapiSectionDescription } from "@/components/page-builder/components/utilities/StrapiSectionHeader"
@@ -124,7 +124,7 @@ export default function StrapiGridImage({
                     className="flex h-full w-full flex-col items-end gap-3 px-6 py-8 text-center sm:gap-4 sm:px-10 sm:py-12 lg:px-14 lg:py-16"
                   >
                     <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white transition-transform group-hover:translate-x-1 group-hover:opacity-30 sm:h-14 sm:w-14 lg:h-16 lg:w-16">
-                      <ArrowRight className="h-6 w-6 sm:h-7 sm:w-7 lg:h-8 lg:w-8" />
+                      <MoveRightSVG className="size-6 lg:size-8" />
                     </div>
                     <span className="text-base font-light tracking-wider uppercase sm:text-lg lg:text-xl">
                       {component.link.label || "Get a Quote"}

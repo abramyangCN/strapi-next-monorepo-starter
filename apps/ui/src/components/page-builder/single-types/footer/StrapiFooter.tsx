@@ -1,9 +1,10 @@
 import type { Data } from "@repo/strapi-types"
-import { ArrowUpRight, Facebook, Instagram, Linkedin } from "lucide-react"
+import { Facebook, Instagram, Linkedin } from "lucide-react"
 import Image from "next/image"
 
 import { Container } from "@/components/elementary/Container"
 import { NewsletterForm } from "@/components/elementary/forms/NewsletterForm"
+import { MoveUpRightSVG } from "@/components/elementary/icons"
 import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
 import { Divider } from "@/components/ui/divider"
 import { HtmlContent } from "@/components/ui/html-content"
@@ -95,8 +96,8 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
                         className="w-50 object-contain md:w-60 lg:w-75"
                       />
                     )}
-                    <div className="text-primary-700 flex h-10 w-10 items-center justify-center rounded-full bg-white md:h-12 md:w-12">
-                      <ArrowUpRight className="h-5 w-5 md:h-6 md:w-6" />
+                    <div className="text-primary-700 flex h-10 w-10 items-center justify-center rounded-full bg-white lg:h-12 lg:w-12">
+                      <MoveUpRightSVG className="size-10 lg:size-12" />
                     </div>
                   </div>
                 </StrapiLink>

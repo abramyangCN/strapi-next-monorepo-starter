@@ -1,18 +1,15 @@
 import type { Data } from "@repo/strapi-types"
-import { ArrowRight } from "lucide-react"
 
 import { Container } from "@/components/elementary/Container"
+import { MoveRightSVG } from "@/components/elementary/icons"
 import { Section } from "@/components/elementary/Section"
 import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
 
 interface StrapiStepProps {
   readonly component: Data.Component<"sections.step">
 }
 
 export function StrapiStep({ component }: StrapiStepProps) {
-  removeThisWhenYouNeedMe("StrapiStep")
-
   return (
     <Section className="bg-background">
       <Container>
@@ -28,7 +25,7 @@ export function StrapiStep({ component }: StrapiStepProps) {
                 {component.form1.label}
               </span>
               <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-white transition-transform group-hover:translate-x-1 sm:h-12 sm:w-12">
-                <ArrowRight className="h-5 w-5 sm:h-6 sm:w-6" />
+                <MoveRightSVG className="size-6 lg:size-8" />
               </div>
             </StrapiLink>
           )}
@@ -43,7 +40,7 @@ export function StrapiStep({ component }: StrapiStepProps) {
                 {component.form2.label}
               </span>
               <div className="flex h-10 w-10 flex-shrink-0 items-center justify-center rounded-full border border-white transition-transform group-hover:translate-x-1 sm:h-12 sm:w-12">
-                <ArrowRight className="h-5 w-5 sm:h-6 sm:w-6" />
+                <MoveRightSVG className="size-6 lg:size-8" />
               </div>
             </StrapiLink>
           )}

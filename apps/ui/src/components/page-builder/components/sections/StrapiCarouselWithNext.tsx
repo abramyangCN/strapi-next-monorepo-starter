@@ -1,10 +1,11 @@
 "use client"
 
 import type { Data } from "@repo/strapi-types"
-import { ArrowUpRight, ChevronRight } from "lucide-react"
+import { ChevronRight } from "lucide-react"
 import { useState } from "react"
 
 import { Container } from "@/components/elementary/Container"
+import { MoveUpRightSVG } from "@/components/elementary/icons"
 import { Section } from "@/components/elementary/Section"
 import { StrapiBasicImage } from "@/components/page-builder/components/utilities/StrapiBasicImage"
 import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
@@ -49,7 +50,7 @@ function Card({
         {/* Link Icon Overlay */}
         {slide.link && (
           <div className="group-hover:text-primary-700 absolute top-6 right-6 flex h-12 w-12 items-center justify-center rounded-full border-2 border-white bg-transparent text-white transition-all duration-300 group-hover:bg-white">
-            <ArrowUpRight className="h-6 w-6" />
+            <MoveUpRightSVG className="size-12" />
           </div>
         )}
       </div>

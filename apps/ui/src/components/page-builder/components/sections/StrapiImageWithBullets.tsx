@@ -1,7 +1,7 @@
 import type { Data } from "@repo/strapi-types"
-import { ArrowUpRight } from "lucide-react"
 
 import { Container } from "@/components/elementary/Container"
+import { MoveUpRightSVG } from "@/components/elementary/icons"
 import { ImageWithFallback } from "@/components/elementary/ImageWithFallback"
 import { Section } from "@/components/elementary/Section"
 import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
@@ -83,7 +83,7 @@ function BulletItem({ bullet }: BulletItemProps) {
 
       {/* Arrow Icon */}
       <div className="border-primary-700 bg-primary-700 group-hover:text-primary-700 flex h-10 w-10 shrink-0 items-center justify-center rounded-full border text-white group-hover:border-white/30 group-hover:bg-white md:h-12 md:w-12">
-        <ArrowUpRight className="h-5 w-5 md:h-6 md:w-6" />
+        <MoveUpRightSVG className="size-6 lg:size-10" />
       </div>
       <StrapiLink
         className="absolute inset-0 z-10 h-full w-full"

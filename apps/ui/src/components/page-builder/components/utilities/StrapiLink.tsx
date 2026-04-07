@@ -5,6 +5,7 @@ import type React from "react"
 import { useState } from "react"
 
 import AppLink from "@/components/elementary/AppLink"
+import { MoveRightSVG } from "@/components/elementary/icons"
 
 export interface StrapiLinkProps {
   readonly component: Data.Component<"utilities.link"> | undefined | null
@@ -40,7 +41,7 @@ function PrimaryLink({
     <div
       role="button"
       tabIndex={0}
-      className="bg-primary-700 relative inline-flex overflow-hidden rounded-none border border-white"
+      className="group bg-primary-700 relative inline-flex overflow-hidden rounded-none border border-white"
       onMouseEnter={() => {
         setIsHovered(true)
       }}
@@ -84,6 +85,7 @@ function PrimaryLink({
         rel={newTab ? "noopener noreferrer" : undefined}
       >
         {children}
+        <MoveRightSVG className="size-8 transition-transform duration-300 group-hover:translate-x-1" />
       </AppLink>
     </div>
   )
