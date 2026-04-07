@@ -33,7 +33,7 @@ function CkEditorRenderer({
 
   return htmlContent ? (
     <div
-      className={cn(`ck-editor-rich-text-${variant}`, className)}
+      className={cn(`ck-editor-rich-text-${variant} ck-content`, className)}
       dangerouslySetInnerHTML={{
         __html: processHtmlContent(htmlContent, locale),
       }}
