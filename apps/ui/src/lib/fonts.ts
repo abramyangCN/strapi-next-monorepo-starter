@@ -2,6 +2,7 @@ import { Roboto } from "next/font/google"
 
 export const fontRoboto = Roboto({
   subsets: ["latin"],
-  weight: ["100", "300", "400", "500", "700"],
+  weight: ["100", "300", "400", "500", "700", "900"],
+  style: ["normal", "italic"],
   variable: "--font-roboto",
 })

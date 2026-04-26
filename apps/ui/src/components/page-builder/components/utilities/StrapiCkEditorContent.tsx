@@ -9,7 +9,7 @@ export function StrapiCkEditorContent({
   readonly component: Data.Component<"utilities.ck-editor-content">
 }) {
   return (
-    <div className="mx-auto w-full max-w-[1296px] px-4 py-8 lg:py-12">
+    <div className="mx-auto w-full max-w-[1296px] px-6 py-8 lg:py-12">
       <CKEditorRenderer htmlContent={component.content} />
       {component.link && (
         <div className="mt-6 flex justify-center">

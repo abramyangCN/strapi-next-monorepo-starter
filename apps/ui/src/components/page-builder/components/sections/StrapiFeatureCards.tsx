@@ -25,7 +25,7 @@ function FeatureCard({ card }: FeatureCardProps) {
       {card.description && (
         <HtmlContent
           html={card.description}
-          className="prose prose-xs max-w-none text-xs text-gray-600 lg:text-base"
+          className="prose prose-xs max-w-none text-xs text-gray-600 [--tw-prose-body:inherit] [--tw-prose-bold:inherit] [--tw-prose-bullets:inherit] [--tw-prose-captions:inherit] [--tw-prose-code:inherit] [--tw-prose-counters:inherit] [--tw-prose-headings:inherit] [--tw-prose-links:inherit] lg:text-base"
         />
       )}
     </div>

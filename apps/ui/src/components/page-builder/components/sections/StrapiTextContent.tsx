@@ -53,7 +53,7 @@ export function StrapiTextContent({
           {component.content && (
             <HtmlContent
               html={component.content}
-              className="prose prose-lg max-w-none"
+              className="prose prose-lg max-w-none [--tw-prose-body:inherit] [--tw-prose-bold:inherit] [--tw-prose-bullets:inherit] [--tw-prose-captions:inherit] [--tw-prose-code:inherit] [--tw-prose-counters:inherit] [--tw-prose-headings:inherit] [--tw-prose-links:inherit]"
             />
           )}
         </div>

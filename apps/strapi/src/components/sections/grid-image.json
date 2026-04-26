@@ -38,6 +38,7 @@
       "type": "enumeration",
       "enum": [
         "2",
+        "3",
         "4"
       ],
       "default": "4"

@@ -78,7 +78,7 @@ export function StrapiHighlightWithList({
                 {highlightCard.description && (
                   <HtmlContent
                     html={highlightCard.description}
-                    className="prose prose-invert prose-sm max-w-none text-white/90"
+                    className="prose prose-invert prose-sm max-w-none text-white/90 [--tw-prose-body:inherit] [--tw-prose-bold:inherit] [--tw-prose-bullets:inherit] [--tw-prose-captions:inherit] [--tw-prose-code:inherit] [--tw-prose-counters:inherit] [--tw-prose-headings:inherit] [--tw-prose-links:inherit]"
                   />
                 )}
               </div>
@@ -109,7 +109,7 @@ export function StrapiHighlightWithList({
                 {item.description && (
                   <HtmlContent
                     html={item.description}
-                    className="prose prose-invert prose-sm max-w-none text-white/80"
+                    className="prose prose-invert prose-sm max-w-none text-white/80 [--tw-prose-body:inherit] [--tw-prose-bold:inherit] [--tw-prose-bullets:inherit] [--tw-prose-captions:inherit] [--tw-prose-code:inherit] [--tw-prose-counters:inherit] [--tw-prose-headings:inherit] [--tw-prose-links:inherit]"
                   />
                 )}
               </div>

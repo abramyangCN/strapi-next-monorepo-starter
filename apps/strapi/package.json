@@ -31,6 +31,7 @@
     "@notum-cz/strapi-plugin-tiptap-editor": "^1.0.1",
     "@repo/design-system": "workspace:*",
     "@repo/shared-data": "workspace:*",
+    "@strapi/data-transfer": "5.36.0",
     "@strapi/database": "5.36.0",
     "@strapi/design-system": "2.1.2",
     "@strapi/plugin-color-picker": "5.36.0",

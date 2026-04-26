@@ -111,7 +111,7 @@ function TimelineItem({ item, index, isLast }: TimelineItemProps) {
         {item.description && (
           <HtmlContent
             html={item.description}
-            className="prose prose-sm lg:prose-lg max-w-none text-gray-600"
+            className="prose prose-sm lg:prose-lg max-w-none text-gray-600 [--tw-prose-body:inherit] [--tw-prose-bold:inherit] [--tw-prose-bullets:inherit] [--tw-prose-captions:inherit] [--tw-prose-code:inherit] [--tw-prose-counters:inherit] [--tw-prose-headings:inherit] [--tw-prose-links:inherit]"
           />
         )}
 

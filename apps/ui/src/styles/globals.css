@@ -101,6 +101,7 @@
 @layer base {
   * {
     @apply border-gray-300 outline-purple-500/50;
+    font-family: inherit;
   }
 
   body {

@@ -10,7 +10,7 @@ import { cn } from "@/lib/styles"
 
 type GridImageComponent = {
   style?: string
-  columns?: "2" | "4"
+  columns?: "2" | "3" | "4"
   title?: string
   description?: string
   enableBgColor?: boolean
@@ -38,7 +38,9 @@ export default function StrapiGridImage({
   const ctaGridClass =
     columns === "2"
       ? "aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d]"
-      : "col-span-2 row-span-2 aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d] lg:col-start-4 lg:row-start-3"
+      : columns === "3"
+        ? "col-span-1 row-span-1 aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d]"
+        : "col-span-2 row-span-2 aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d] lg:col-start-4 lg:row-start-3"
 
   // Style: Left or Right - Card + Grid layout
   return (
@@ -90,7 +92,9 @@ export default function StrapiGridImage({
                 "grid gap-2 sm:gap-3 lg:gap-4",
                 columns === "2"
                   ? "grid-cols-2"
-                  : "grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+                  : columns === "3"
+                    ? "grid-cols-2 sm:grid-cols-3"
+                    : "grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
               )}
             >
               {component.items.map((item, index) => (

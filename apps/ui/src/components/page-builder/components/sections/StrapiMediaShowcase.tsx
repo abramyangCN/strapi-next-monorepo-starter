@@ -51,7 +51,7 @@ export function StrapiMediaShowcase({
       )}
 
       <Container className="relative z-10">
-        <div className="mx-auto max-w-5xl">
+        <div className="mx-auto">
           {/* Title */}
           {component.title && (
             <div
