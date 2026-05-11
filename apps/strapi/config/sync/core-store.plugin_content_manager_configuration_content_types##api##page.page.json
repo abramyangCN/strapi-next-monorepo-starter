@@ -6,8 +6,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "slug",
-      "defaultSortBy": "fullPath",
+      "mainField": "title",
+      "defaultSortBy": "title",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -64,10 +64,10 @@
       "fullPath": {
         "edit": {
           "label": "fullPath",
-          "description": "Full path will be calculated by system",
+          "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": false
+          "editable": true
         },
         "list": {
           "label": "fullPath",
@@ -95,7 +95,7 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": false,
+          "editable": true,
           "mainField": "title"
         },
         "list": {
@@ -125,26 +125,10 @@
           "description": "",
           "placeholder": "",
           "visible": true,
-          "editable": true,
-          "mainField": "metaTitle"
+          "editable": true
         },
         "list": {
           "label": "seo",
-          "searchable": false,
-          "sortable": false
-        }
-      },
-      "redirects": {
-        "edit": {
-          "label": "redirects",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "source"
-        },
-        "list": {
-          "label": "redirects",
           "searchable": false,
           "sortable": false
         }
@@ -206,22 +190,24 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "title",
+        "breadcrumbTitle",
+        "slug"
+      ],
       "edit": [
-        [
-          {
-            "name": "slug",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "fullPath",
-            "size": 12
-          }
-        ],
         [
           {
             "name": "title",
@@ -234,17 +220,27 @@
         ],
         [
           {
+            "name": "slug",
+            "size": 6
+          },
+          {
+            "name": "fullPath",
+            "size": 6
+          }
+        ],
+        [
+          {
             "name": "content",
             "size": 12
           }
         ],
         [
           {
-            "name": "parent",
+            "name": "children",
             "size": 6
           },
           {
-            "name": "children",
+            "name": "parent",
             "size": 6
           }
         ],
@@ -253,19 +249,7 @@
             "name": "seo",
             "size": 12
           }
-        ],
-        [
-          {
-            "name": "redirects",
-            "size": 6
-          }
         ]
-      ],
-      "list": [
-        "id",
-        "title",
-        "slug",
-        "fullPath"
       ]
     },
     "uid": "api::page.page"

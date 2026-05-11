@@ -6,9 +6,9 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "error",
-      "defaultSortBy": "createdAt",
-      "defaultSortOrder": "DESC"
+      "mainField": "relatedDocumentId",
+      "defaultSortBy": "relatedDocumentId",
+      "defaultSortOrder": "ASC"
     },
     "metadatas": {
       "id": {
@@ -47,6 +47,34 @@
           "sortable": true
         }
       },
+      "targetLocale": {
+        "edit": {
+          "label": "targetLocale",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "targetLocale",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "slug": {
+        "edit": {
+          "label": "slug",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "slug",
+          "searchable": true,
+          "sortable": true
+        }
+      },
       "payload": {
         "edit": {
           "label": "payload",
@@ -59,6 +87,20 @@
           "label": "payload",
           "searchable": false,
           "sortable": false
+        }
+      },
+      "documentType": {
+        "edit": {
+          "label": "documentType",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "documentType",
+          "searchable": true,
+          "sortable": true
         }
       },
       "state": {
@@ -146,26 +188,24 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "jobType",
+        "relatedDocumentId",
+        "targetLocale"
+      ],
       "edit": [
-        [
-          {
-            "name": "payload",
-            "size": 12
-          }
-        ],
-        [
-          {
-            "name": "state",
-            "size": 6
-          },
-          {
-            "name": "error",
-            "size": 6
-          }
-        ],
         [
           {
             "name": "jobType",
@@ -175,14 +215,39 @@
             "name": "relatedDocumentId",
             "size": 6
           }
+        ],
+        [
+          {
+            "name": "targetLocale",
+            "size": 6
+          },
+          {
+            "name": "slug",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "payload",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "documentType",
+            "size": 6
+          },
+          {
+            "name": "state",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "error",
+            "size": 6
+          }
         ]
-      ],
-      "list": [
-        "id",
-        "jobType",
-        "state",
-        "relatedDocumentId",
-        "createdAt"
       ]
     },
     "uid": "api::internal-job.internal-job"

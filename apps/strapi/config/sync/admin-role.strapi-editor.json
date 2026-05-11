@@ -1,24 +1,293 @@
 {
+  "documentId": "zyvsf3i5u2r9yhuqvn0vemls",
   "name": "Editor",
   "code": "strapi-editor",
   "description": "Editors can manage and publish contents including those of other users.",
-  "documentId": "uaj3gip6ihunjf5ms8pki9w5",
   "locale": null,
   "permissions": [
     {
+      "documentId": "l4uoo3jfgsj48qgf6tkxdphq",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::contact.contact",
+      "properties": {
+        "fields": [
+          "firstName",
+          "lastName",
+          "email",
+          "phone",
+          "company",
+          "jobTitle",
+          "inquiryType",
+          "message"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "tuwtghm409yedvjq1k9m0mfc",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::contact.contact",
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "upoz12vesqf1f0ybyi7284es",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::contact.contact",
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "jnilftkor7jowkfdi9gjctan",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::contact.contact",
+      "properties": {
+        "fields": [
+          "firstName",
+          "lastName",
+          "email",
+          "phone",
+          "company",
+          "jobTitle",
+          "inquiryType",
+          "message"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "bkp9i4186auhth1gpigbh0cb",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::contact.contact",
+      "properties": {
+        "fields": [
+          "firstName",
+          "lastName",
+          "email",
+          "phone",
+          "company",
+          "jobTitle",
+          "inquiryType",
+          "message"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "td1pkglhgsn8wuxdgww65k4i",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::footer.footer",
       "properties": {
         "fields": [
+          "newsletter.title",
+          "newsletter.description",
+          "newsletter.gdpr",
+          "newsletter.placeholder",
+          "newsletter.button",
+          "affiliates.title",
+          "affiliates.description",
+          "affiliates.logo.image.media",
+          "affiliates.logo.image.alt",
+          "affiliates.logo.image.width",
+          "affiliates.logo.image.height",
+          "affiliates.logo.image.fallbackSrc",
+          "affiliates.logo.link.label",
+          "affiliates.logo.link.href",
+          "affiliates.logo.link.newTab",
           "sections.title",
           "sections.links.label",
           "sections.links.href",
           "sections.links.newTab",
-          "links.label",
-          "links.href",
-          "links.newTab",
-          "copyRight",
+          "contact.title",
+          "contact.phone",
+          "contact.email",
+          "contact.address",
+          "socialMedias.social",
+          "socialMedias.link.label",
+          "socialMedias.link.href",
+          "socialMedias.link.newTab",
+          "socialMedias.icon"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "p6b03vfuo1lnohzl9cnlni2n",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::footer.footer",
+      "properties": {
+        "fields": [
+          "newsletter.title",
+          "newsletter.description",
+          "newsletter.gdpr",
+          "newsletter.placeholder",
+          "newsletter.button",
+          "affiliates.title",
+          "affiliates.description",
+          "affiliates.logo.image.media",
+          "affiliates.logo.image.alt",
+          "affiliates.logo.image.width",
+          "affiliates.logo.image.height",
+          "affiliates.logo.image.fallbackSrc",
+          "affiliates.logo.link.label",
+          "affiliates.logo.link.href",
+          "affiliates.logo.link.newTab",
+          "sections.title",
+          "sections.links.label",
+          "sections.links.href",
+          "sections.links.newTab",
+          "contact.title",
+          "contact.phone",
+          "contact.email",
+          "contact.address",
+          "socialMedias.social",
+          "socialMedias.link.label",
+          "socialMedias.link.href",
+          "socialMedias.link.newTab",
+          "socialMedias.icon"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "cny96l9wui138x8506pidlm0",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::footer.footer",
+      "properties": {
+        "fields": [
+          "newsletter.title",
+          "newsletter.description",
+          "newsletter.gdpr",
+          "newsletter.placeholder",
+          "newsletter.button",
+          "affiliates.title",
+          "affiliates.description",
+          "affiliates.logo.image.media",
+          "affiliates.logo.image.alt",
+          "affiliates.logo.image.width",
+          "affiliates.logo.image.height",
+          "affiliates.logo.image.fallbackSrc",
+          "affiliates.logo.link.label",
+          "affiliates.logo.link.href",
+          "affiliates.logo.link.newTab",
+          "sections.title",
+          "sections.links.label",
+          "sections.links.href",
+          "sections.links.newTab",
+          "contact.title",
+          "contact.phone",
+          "contact.email",
+          "contact.address",
+          "socialMedias.social",
+          "socialMedias.link.label",
+          "socialMedias.link.href",
+          "socialMedias.link.newTab",
+          "socialMedias.icon"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "wiipupaz03epzq83sperkwae",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::internal-job.internal-job",
+      "properties": {
+        "fields": [
+          "jobType",
+          "relatedDocumentId",
+          "targetLocale",
+          "slug",
+          "payload",
+          "documentType",
+          "state",
+          "error"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "id4cd5z2x3ardhrgd00e7vji",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::internal-job.internal-job",
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "jx6pogdvm76cw93u6qtvv3r6",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::internal-job.internal-job",
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "sk6dgzyn7mz76y098a5g8sh3",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::internal-job.internal-job",
+      "properties": {
+        "fields": [
+          "jobType",
+          "relatedDocumentId",
+          "targetLocale",
+          "slug",
+          "payload",
+          "documentType",
+          "state",
+          "error"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "utst1q1gb93ei6u9qxw95pa8",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::internal-job.internal-job",
+      "properties": {
+        "fields": [
+          "jobType",
+          "relatedDocumentId",
+          "targetLocale",
+          "slug",
+          "payload",
+          "documentType",
+          "state",
+          "error"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "j7v5y5asv9wpppj9nscccl2r",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::navbar.navbar",
+      "properties": {
+        "fields": [
           "logoImage.image.media",
           "logoImage.image.alt",
           "logoImage.image.width",
@@ -26,27 +295,25 @@
           "logoImage.image.fallbackSrc",
           "logoImage.link.label",
           "logoImage.link.href",
-          "logoImage.link.newTab"
-        ]
-      },
-      "conditions": [],
-      "documentId": "yauanzcg52k0xfbqqjy51gre",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.read",
-      "actionParameters": {},
-      "subject": "api::footer.footer",
-      "properties": {
-        "fields": [
-          "sections.title",
-          "sections.links.label",
-          "sections.links.href",
-          "sections.links.newTab",
+          "logoImage.link.newTab",
           "links.label",
           "links.href",
           "links.newTab",
-          "copyRight",
+          "links.links.label",
+          "links.links.href",
+          "links.links.newTab"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "zx2jidnqugpw7l1yawcchtda",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::navbar.navbar",
+      "properties": {
+        "fields": [
           "logoImage.image.media",
           "logoImage.image.alt",
           "logoImage.image.width",
@@ -54,27 +321,25 @@
           "logoImage.image.fallbackSrc",
           "logoImage.link.label",
           "logoImage.link.href",
-          "logoImage.link.newTab"
-        ]
-      },
-      "conditions": [],
-      "documentId": "j4rh6d80mggstrcyt76epi5u",
-      "locale": null
-    },
-    {
-      "action": "plugin::content-manager.explorer.update",
-      "actionParameters": {},
-      "subject": "api::footer.footer",
-      "properties": {
-        "fields": [
-          "sections.title",
-          "sections.links.label",
-          "sections.links.href",
-          "sections.links.newTab",
+          "logoImage.link.newTab",
           "links.label",
           "links.href",
           "links.newTab",
-          "copyRight",
+          "links.links.label",
+          "links.links.href",
+          "links.links.newTab"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "zn9z8xjtohv6dpfgtsdlfl5p",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::navbar.navbar",
+      "properties": {
+        "fields": [
           "logoImage.image.media",
           "logoImage.image.alt",
           "logoImage.image.width",
@@ -82,94 +347,276 @@
           "logoImage.image.fallbackSrc",
           "logoImage.link.label",
           "logoImage.link.href",
-          "logoImage.link.newTab"
+          "logoImage.link.newTab",
+          "links.label",
+          "links.href",
+          "links.newTab",
+          "links.links.label",
+          "links.links.href",
+          "links.links.newTab"
         ]
       },
       "conditions": [],
-      "documentId": "hvm2qp20n0mj6tngl6y892hj",
       "locale": null
     },
     {
+      "documentId": "dtt14r2br22cjmbrhh1cbxe6",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
-      "subject": "api::navbar.navbar",
+      "subject": "api::news-article.news-article",
       "properties": {
         "fields": [
-          "links.href",
-          "links.newTab",
-          "links.label",
-          "logoImage.image.media",
-          "logoImage.image.alt",
-          "logoImage.image.width",
-          "logoImage.image.height",
-          "logoImage.image.fallbackSrc",
-          "logoImage.link.href",
-          "logoImage.link.newTab",
-          "logoImage.link.label"
+          "title",
+          "slug",
+          "excerpt",
+          "category",
+          "featuredImage",
+          "content",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.keywords",
+          "seo.twitter.card",
+          "seo.twitter.title",
+          "seo.twitter.description",
+          "seo.twitter.siteId",
+          "seo.twitter.creator",
+          "seo.twitter.creatorId",
+          "seo.twitter.images",
+          "seo.og.title",
+          "seo.og.description",
+          "seo.og.url",
+          "seo.og.type",
+          "seo.og.image",
+          "seo.og.siteName",
+          "seo.applicationName",
+          "seo.canonicalUrl",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "tags"
         ]
       },
       "conditions": [],
-      "documentId": "odlv1m01pgydyvdmawgpgkz5",
       "locale": null
     },
     {
+      "documentId": "c64967wznujaxlfzsebm7f34",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
-      "subject": "api::navbar.navbar",
+      "subject": "api::news-article.news-article",
       "properties": {
         "fields": [
-          "links.href",
-          "links.newTab",
-          "links.label",
-          "logoImage.image.media",
-          "logoImage.image.alt",
-          "logoImage.image.width",
-          "logoImage.image.height",
-          "logoImage.image.fallbackSrc",
-          "logoImage.link.href",
-          "logoImage.link.newTab",
-          "logoImage.link.label"
+          "title",
+          "slug",
+          "excerpt",
+          "category",
+          "featuredImage",
+          "content",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.keywords",
+          "seo.twitter.card",
+          "seo.twitter.title",
+          "seo.twitter.description",
+          "seo.twitter.siteId",
+          "seo.twitter.creator",
+          "seo.twitter.creatorId",
+          "seo.twitter.images",
+          "seo.og.title",
+          "seo.og.description",
+          "seo.og.url",
+          "seo.og.type",
+          "seo.og.image",
+          "seo.og.siteName",
+          "seo.applicationName",
+          "seo.canonicalUrl",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "tags"
         ]
       },
       "conditions": [],
-      "documentId": "q7x2yhimf8habcu73yu6cmdo",
       "locale": null
     },
     {
+      "documentId": "c27yjhsyn90yghlw7atwsvcq",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
-      "subject": "api::navbar.navbar",
+      "subject": "api::news-article.news-article",
       "properties": {
         "fields": [
-          "links.href",
-          "links.newTab",
-          "links.label",
-          "logoImage.image.media",
-          "logoImage.image.alt",
-          "logoImage.image.width",
-          "logoImage.image.height",
-          "logoImage.image.fallbackSrc",
-          "logoImage.link.href",
-          "logoImage.link.newTab",
-          "logoImage.link.label"
+          "title",
+          "slug",
+          "excerpt",
+          "category",
+          "featuredImage",
+          "content",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.keywords",
+          "seo.twitter.card",
+          "seo.twitter.title",
+          "seo.twitter.description",
+          "seo.twitter.siteId",
+          "seo.twitter.creator",
+          "seo.twitter.creatorId",
+          "seo.twitter.images",
+          "seo.og.title",
+          "seo.og.description",
+          "seo.og.url",
+          "seo.og.type",
+          "seo.og.image",
+          "seo.og.siteName",
+          "seo.applicationName",
+          "seo.canonicalUrl",
+          "seo.metaRobots",
+          "seo.structuredData",
+          "tags"
         ]
       },
       "conditions": [],
-      "documentId": "bv2bbvfglhjum6ghxu6j7z7u",
       "locale": null
     },
     {
+      "documentId": "efvyzio6xuwrohccbm9otlkz",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::news-list-page.news-list-page",
+      "properties": {
+        "fields": [
+          "title",
+          "breadcrumbTitle",
+          "slug",
+          "description",
+          "heroImage",
+          "sectionTitle",
+          "sectionDescription",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.keywords",
+          "seo.twitter.card",
+          "seo.twitter.title",
+          "seo.twitter.description",
+          "seo.twitter.siteId",
+          "seo.twitter.creator",
+          "seo.twitter.creatorId",
+          "seo.twitter.images",
+          "seo.og.title",
+          "seo.og.description",
+          "seo.og.url",
+          "seo.og.type",
+          "seo.og.image",
+          "seo.og.siteName",
+          "seo.applicationName",
+          "seo.canonicalUrl",
+          "seo.metaRobots",
+          "seo.structuredData"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "oelkkdhds4r4te9a8wea4sek",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::news-list-page.news-list-page",
+      "properties": {
+        "fields": [
+          "title",
+          "breadcrumbTitle",
+          "slug",
+          "description",
+          "heroImage",
+          "sectionTitle",
+          "sectionDescription",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.keywords",
+          "seo.twitter.card",
+          "seo.twitter.title",
+          "seo.twitter.description",
+          "seo.twitter.siteId",
+          "seo.twitter.creator",
+          "seo.twitter.creatorId",
+          "seo.twitter.images",
+          "seo.og.title",
+          "seo.og.description",
+          "seo.og.url",
+          "seo.og.type",
+          "seo.og.image",
+          "seo.og.siteName",
+          "seo.applicationName",
+          "seo.canonicalUrl",
+          "seo.metaRobots",
+          "seo.structuredData"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "g1c35q80ob5khex89fm79szm",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::news-list-page.news-list-page",
+      "properties": {
+        "fields": [
+          "title",
+          "breadcrumbTitle",
+          "slug",
+          "description",
+          "heroImage",
+          "sectionTitle",
+          "sectionDescription",
+          "seo.metaTitle",
+          "seo.metaDescription",
+          "seo.metaImage",
+          "seo.keywords",
+          "seo.twitter.card",
+          "seo.twitter.title",
+          "seo.twitter.description",
+          "seo.twitter.siteId",
+          "seo.twitter.creator",
+          "seo.twitter.creatorId",
+          "seo.twitter.images",
+          "seo.og.title",
+          "seo.og.description",
+          "seo.og.url",
+          "seo.og.type",
+          "seo.og.image",
+          "seo.og.siteName",
+          "seo.applicationName",
+          "seo.canonicalUrl",
+          "seo.metaRobots",
+          "seo.structuredData"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "jvqa70dc173zie3ozsz3zzic",
       "action": "plugin::content-manager.explorer.create",
       "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
         "fields": [
+          "title",
+          "breadcrumbTitle",
           "slug",
+          "fullPath",
+          "content",
+          "children",
+          "parent",
           "seo.metaTitle",
           "seo.metaDescription",
           "seo.metaImage",
           "seo.keywords",
-          "seo.metaRobots",
           "seo.twitter.card",
           "seo.twitter.title",
           "seo.twitter.description",
@@ -177,29 +624,39 @@
           "seo.twitter.creator",
           "seo.twitter.creatorId",
           "seo.twitter.images",
+          "seo.og.title",
+          "seo.og.description",
+          "seo.og.url",
+          "seo.og.type",
+          "seo.og.image",
+          "seo.og.siteName",
           "seo.applicationName",
-          "seo.siteName",
-          "seo.email",
-          "content",
-          "title"
+          "seo.canonicalUrl",
+          "seo.metaRobots",
+          "seo.structuredData"
         ]
       },
       "conditions": [],
-      "documentId": "zpksbnn5lannzjwpzcotjg96",
       "locale": null
     },
     {
+      "documentId": "vetv8aj3u0xjj9fzq7tgz1kf",
       "action": "plugin::content-manager.explorer.read",
       "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
         "fields": [
+          "title",
+          "breadcrumbTitle",
           "slug",
+          "fullPath",
+          "content",
+          "children",
+          "parent",
           "seo.metaTitle",
           "seo.metaDescription",
           "seo.metaImage",
           "seo.keywords",
-          "seo.metaRobots",
           "seo.twitter.card",
           "seo.twitter.title",
           "seo.twitter.description",
@@ -207,29 +664,39 @@
           "seo.twitter.creator",
           "seo.twitter.creatorId",
           "seo.twitter.images",
+          "seo.og.title",
+          "seo.og.description",
+          "seo.og.url",
+          "seo.og.type",
+          "seo.og.image",
+          "seo.og.siteName",
           "seo.applicationName",
-          "seo.siteName",
-          "seo.email",
-          "content",
-          "title"
+          "seo.canonicalUrl",
+          "seo.metaRobots",
+          "seo.structuredData"
         ]
       },
       "conditions": [],
-      "documentId": "gvid0qjy0s9ygusm9vcb58u0",
       "locale": null
     },
     {
+      "documentId": "c92qdnbc7sh25br02dklanjf",
       "action": "plugin::content-manager.explorer.update",
       "actionParameters": {},
       "subject": "api::page.page",
       "properties": {
         "fields": [
+          "title",
+          "breadcrumbTitle",
           "slug",
+          "fullPath",
+          "content",
+          "children",
+          "parent",
           "seo.metaTitle",
           "seo.metaDescription",
           "seo.metaImage",
           "seo.keywords",
-          "seo.metaRobots",
           "seo.twitter.card",
           "seo.twitter.title",
           "seo.twitter.description",
@@ -237,69 +704,370 @@
           "seo.twitter.creator",
           "seo.twitter.creatorId",
           "seo.twitter.images",
+          "seo.og.title",
+          "seo.og.description",
+          "seo.og.url",
+          "seo.og.type",
+          "seo.og.image",
+          "seo.og.siteName",
           "seo.applicationName",
-          "seo.siteName",
-          "seo.email",
-          "content",
-          "title"
+          "seo.canonicalUrl",
+          "seo.metaRobots",
+          "seo.structuredData"
         ]
       },
       "conditions": [],
-      "documentId": "hm5t18hwrfckkgnyaugyo273",
       "locale": null
     },
     {
+      "documentId": "qpdr8o3k74n9tj3o8brs1p7w",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::quotation.quotation",
+      "properties": {
+        "fields": [
+          "formType",
+          "firstName",
+          "lastName",
+          "email",
+          "phone",
+          "company",
+          "jobTitle",
+          "address",
+          "quantityOfParts",
+          "materials",
+          "technology",
+          "complianceCertificates",
+          "finish",
+          "surfaceCondition",
+          "message",
+          "files"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "ooovexghlm4us7vrwxibvuar",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::quotation.quotation",
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "nc6x1zkq8rub2wizw0op7pjz",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::quotation.quotation",
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "zh39h97wx7thco9rdh0rpi74",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::quotation.quotation",
+      "properties": {
+        "fields": [
+          "formType",
+          "firstName",
+          "lastName",
+          "email",
+          "phone",
+          "company",
+          "jobTitle",
+          "address",
+          "quantityOfParts",
+          "materials",
+          "technology",
+          "complianceCertificates",
+          "finish",
+          "surfaceCondition",
+          "message",
+          "files"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "ch1gtywpxc4748oixecpe282",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::quotation.quotation",
+      "properties": {
+        "fields": [
+          "formType",
+          "firstName",
+          "lastName",
+          "email",
+          "phone",
+          "company",
+          "jobTitle",
+          "address",
+          "quantityOfParts",
+          "materials",
+          "technology",
+          "complianceCertificates",
+          "finish",
+          "surfaceCondition",
+          "message",
+          "files"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "phgmu5qa7izjlhcyy8wljmao",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::redirect.redirect",
+      "properties": {
+        "fields": [
+          "source",
+          "destination",
+          "permanent"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "xabcy8hk8hhay62jznbcehmd",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::redirect.redirect",
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "olmvvlu2qnmc85yyyzrmcogt",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::redirect.redirect",
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "ydh7sb1h4bhsorwwerioyftu",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::redirect.redirect",
+      "properties": {
+        "fields": [
+          "source",
+          "destination",
+          "permanent"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "q7zr0l0q2g8f14ue3xsnmcav",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::redirect.redirect",
+      "properties": {
+        "fields": [
+          "source",
+          "destination",
+          "permanent"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "uuneul33egminhd6gvkxy1tb",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::subscriber.subscriber",
+      "properties": {
+        "fields": [
+          "name",
+          "firstName",
+          "lastName",
+          "email",
+          "phone",
+          "company",
+          "jobTitle",
+          "inquiryType",
+          "message",
+          "content"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "nyndro5tnh3rqabkba0n1x2h",
+      "action": "plugin::content-manager.explorer.delete",
+      "actionParameters": {},
+      "subject": "api::subscriber.subscriber",
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "abeo3cyzw7s5hzloi46jpse4",
+      "action": "plugin::content-manager.explorer.publish",
+      "actionParameters": {},
+      "subject": "api::subscriber.subscriber",
+      "properties": {},
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "vpfe7ayucu060eba7ayuvg33",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::subscriber.subscriber",
+      "properties": {
+        "fields": [
+          "name",
+          "firstName",
+          "lastName",
+          "email",
+          "phone",
+          "company",
+          "jobTitle",
+          "inquiryType",
+          "message",
+          "content"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "r8dn6agb9za76ehufv1mnyj3",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::subscriber.subscriber",
+      "properties": {
+        "fields": [
+          "name",
+          "firstName",
+          "lastName",
+          "email",
+          "phone",
+          "company",
+          "jobTitle",
+          "inquiryType",
+          "message",
+          "content"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "f4y8t4sx157uaxra1ien54hz",
+      "action": "plugin::content-manager.explorer.create",
+      "actionParameters": {},
+      "subject": "api::tag.tag",
+      "properties": {
+        "fields": [
+          "name",
+          "slug",
+          "description",
+          "news_articles"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "w1yjjt9h7r2hsiljcgiwealz",
+      "action": "plugin::content-manager.explorer.read",
+      "actionParameters": {},
+      "subject": "api::tag.tag",
+      "properties": {
+        "fields": [
+          "name",
+          "slug",
+          "description",
+          "news_articles"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "tlpx20341xtfu6yjtcw8x271",
+      "action": "plugin::content-manager.explorer.update",
+      "actionParameters": {},
+      "subject": "api::tag.tag",
+      "properties": {
+        "fields": [
+          "name",
+          "slug",
+          "description",
+          "news_articles"
+        ]
+      },
+      "conditions": [],
+      "locale": null
+    },
+    {
+      "documentId": "c50u9mznveqt57g32slq7m9w",
       "action": "plugin::upload.assets.copy-link",
       "actionParameters": {},
       "subject": null,
       "properties": {},
       "conditions": [],
-      "documentId": "ei4yguplldmy820vmmsqnrqw",
       "locale": null
     },
     {
+      "documentId": "s2v2u96uhjgktljyjjl1p6cg",
       "action": "plugin::upload.assets.create",
       "actionParameters": {},
       "subject": null,
       "properties": {},
       "conditions": [],
-      "documentId": "cfhx7j6kxaqotfeb5sd39kq8",
       "locale": null
     },
     {
+      "documentId": "q08h68q8r70da5yr7m2iub0f",
       "action": "plugin::upload.assets.download",
       "actionParameters": {},
       "subject": null,
       "properties": {},
       "conditions": [],
-      "documentId": "rd7fpj9zb5z3vcoryy7tt5vf",
       "locale": null
     },
     {
+      "documentId": "e47scvow0zoz5zahspaa9h2a",
       "action": "plugin::upload.assets.update",
       "actionParameters": {},
       "subject": null,
       "properties": {},
       "conditions": [],
-      "documentId": "zb1t99rvse9no58dqgezohpu",
       "locale": null
     },
     {
+      "documentId": "q56bblgvb1m0zy6u4f6po1ci",
       "action": "plugin::upload.configure-view",
       "actionParameters": {},
       "subject": null,
       "properties": {},
       "conditions": [],
-      "documentId": "m5s1h181mhv6cw071nx56c8r",
       "locale": null
     },
     {
+      "documentId": "bv30jgjbljgtl69jca2anode",
       "action": "plugin::upload.read",
       "actionParameters": {},
       "subject": null,
       "properties": {},
       "conditions": [],
-      "documentId": "dwbd9d605ns4drugz4e2kk7o",
       "locale": null
     }
   ]

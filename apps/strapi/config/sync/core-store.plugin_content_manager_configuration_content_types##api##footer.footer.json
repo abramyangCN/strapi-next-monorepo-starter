@@ -6,8 +6,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "copyRight",
-      "defaultSortBy": "copyRight",
+      "mainField": "documentId",
+      "defaultSortBy": "documentId",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -17,6 +17,34 @@
           "label": "id",
           "searchable": true,
           "sortable": true
+        }
+      },
+      "newsletter": {
+        "edit": {
+          "label": "newsletter",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "newsletter",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "affiliates": {
+        "edit": {
+          "label": "affiliates",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "affiliates",
+          "searchable": false,
+          "sortable": false
         }
       },
       "sections": {
@@ -33,44 +61,30 @@
           "sortable": false
         }
       },
-      "links": {
+      "contact": {
         "edit": {
-          "label": "links",
+          "label": "contact",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "links",
+          "label": "contact",
           "searchable": false,
           "sortable": false
         }
       },
-      "copyRight": {
+      "socialMedias": {
         "edit": {
-          "label": "copyRight",
+          "label": "socialMedias",
           "description": "",
           "placeholder": "",
           "visible": true,
           "editable": true
         },
         "list": {
-          "label": "copyRight",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "logoImage": {
-        "edit": {
-          "label": "logoImage",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "logoImage",
+          "label": "socialMedias",
           "searchable": false,
           "sortable": false
         }
@@ -132,14 +146,36 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
       "list": [
         "id",
-        "logoImage"
+        "newsletter",
+        "affiliates",
+        "sections"
       ],
       "edit": [
+        [
+          {
+            "name": "newsletter",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "affiliates",
+            "size": 12
+          }
+        ],
         [
           {
             "name": "sections",
@@ -148,19 +184,13 @@
         ],
         [
           {
-            "name": "links",
+            "name": "contact",
             "size": 12
           }
         ],
         [
           {
-            "name": "copyRight",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "logoImage",
+            "name": "socialMedias",
             "size": 12
           }
         ]
