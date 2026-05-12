@@ -73,14 +73,14 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
                     </div>
                   )}
                   {affiliate.description && (
-                    <div className="text-xs whitespace-pre text-white">
+                    <div className="text-xs whitespace-pre text-white lg:text-base">
                       {affiliate.description}
                     </div>
                   )}
                 </div>
                 <StrapiLink
                   component={affiliate.logo?.link}
-                  className="group transition-opacity hover:opacity-80"
+                  className="group h-auto transition-opacity hover:opacity-80"
                 >
                   <div className="flex items-center gap-4 md:gap-6">
                     {affiliate.logo?.image?.media?.url && (
@@ -107,7 +107,7 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
         )}
 
         {/* Main Footer Content */}
-        <div className="flex flex-col justify-between gap-8 md:flex-row md:gap-12 lg:gap-24">
+        <div className="flex flex-col justify-between gap-8 md:flex-row md:gap-12 lg:gap-16">
           <div className="flex flex-row items-start gap-6 md:flex-col md:gap-4">
             {/* WeChat QR Code Section */}
             {wechatMedia && (
@@ -162,14 +162,14 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
             )}
           </div>
 
-          <div className="flex flex-col gap-8 sm:flex-row sm:gap-12 md:shrink-0 md:gap-16">
+          <div className="grid grid-cols-2 gap-8 lg:flex lg:shrink-0 lg:gap-16">
             {sections?.map((section, sectionIndex) => (
               <div
                 key={section.id ?? sectionIndex}
                 className="flex shrink-0 flex-col items-start gap-4 md:gap-12"
               >
-                <h3 className="text-lg font-semibold md:text-xl">
-                  {section.title}
+                <h3 className="min-h-7 shrink-0 text-lg font-semibold whitespace-nowrap md:text-xl">
+                  {section?.title}
                 </h3>
                 <div className="flex flex-col items-start gap-2">
                   {section.links?.map((link, i) => (
@@ -186,7 +186,7 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
 
           {/* Contact Section */}
           {contact && (
-            <div className="flex flex-col gap-4 md:gap-12">
+            <div className="flex flex-col gap-4 lg:gap-16">
               <h3 className="text-lg font-semibold md:text-xl">
                 {contact.title}
               </h3>
