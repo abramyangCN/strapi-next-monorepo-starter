@@ -217,11 +217,11 @@ export async function fetchNews(
         status: dm.isEnabled ? "draft" : "published",
         populate: {
           content: true,
-          seo: true,
+          seo: seoPopulate,
           featuredImage: true,
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
         } as any,
-        middlewarePopulate: ["content", "seo"],
+        populateDynamicZone: { content: true },
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
       } as any,
       requestInit,
