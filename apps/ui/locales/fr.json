@@ -76,6 +76,9 @@
     },
     "dialog": {
       "confirmClose": "Voulez-vous fermer la boîte de dialogue ? Vous perdrez toutes les modifications non enregistrées."
+    },
+    "newsCard": {
+      "readMore": "En savoir plus"
     }
   },
 

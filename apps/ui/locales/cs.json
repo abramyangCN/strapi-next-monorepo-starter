@@ -76,6 +76,9 @@
     },
     "dialog": {
       "confirmClose": "Chcete zavřít dialog? Ztratíte tím všechny rozpracované změny."
+    },
+    "newsCard": {
+      "readMore": "Číst více"
     }
   },
 

@@ -112,10 +112,29 @@ export default function StrapiGridImage({
                   )}
                   {item.title && (
                     <div className="absolute inset-0 flex items-center justify-center bg-black/40 p-2 opacity-100 transition-opacity sm:opacity-0 sm:group-hover:opacity-100">
-                      <p className="text-center text-xs text-white sm:text-sm">
-                        {item.title}
-                      </p>
+                      <div className="flex flex-col items-center gap-3">
+                        <p className="text-center text-xs text-white sm:text-sm">
+                          {item.title}
+                        </p>
+                        {item.link?.label && (
+                          <span className="inline-flex items-center gap-2 border border-white px-3 py-1 text-[10px] font-medium tracking-wider text-white uppercase sm:text-xs">
+                            {item.link.label}
+                            <MoveRightSVG className="size-4" />
+                          </span>
+                        )}
+                      </div>
                     </div>
+                  )}
+
+                  {item.link && (
+                    <StrapiLink
+                      component={item.link}
+                      className="absolute inset-0 z-10 h-auto"
+                    >
+                      <span className="sr-only">
+                        {item.link.label || item.title || "Open item"}
+                      </span>
+                    </StrapiLink>
                   )}
                 </div>
               ))}

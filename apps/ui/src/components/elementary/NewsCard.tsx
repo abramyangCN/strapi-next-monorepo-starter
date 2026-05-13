@@ -1,6 +1,7 @@
 import { ChevronRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
+import { useTranslations } from "next-intl"
 
 import { routing } from "@/lib/navigation"
 import { formatStrapiMediaUrl } from "@/lib/strapi-helpers"
@@ -25,6 +26,7 @@ interface NewsCardProps {
 }
 
 export function NewsCard({ news, locale, basePath = "/news" }: NewsCardProps) {
+  const t = useTranslations("comps.newsCard")
   const imageUrl = news.featuredImage?.url
     ? formatStrapiMediaUrl(news.featuredImage.url)
     : null
@@ -78,7 +80,7 @@ export function NewsCard({ news, locale, basePath = "/news" }: NewsCardProps) {
         href={newsHref}
         className="group/link text-foreground hover:text-primary mt-auto inline-flex items-center text-sm font-medium transition-colors"
       >
-        Read more
+        {t("readMore")}
         <ChevronRight className="ml-1 h-4 w-4 transition-transform group-hover/link:translate-x-1" />
       </Link>
     </article>

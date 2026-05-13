@@ -118,13 +118,15 @@ export const defaultCkEditorConfig: Preset = {
     balloonToolbar,
 
     image: {
-      resizeUnit: "px",
+      resizeUnit: "%",
       resizeOptions: [
         { name: "resizeImage:original", value: null, label: "Original" },
-        { name: "resizeImage:200", value: "200", label: "200px" },
-        { name: "resizeImage:400", value: "400", label: "400px" },
-        { name: "resizeImage:600", value: "600", label: "600px" },
-        { name: "resizeImage:800", value: "800", label: "800px" },
+        { name: "resizeImage:25", value: "25", label: "25%" },
+        { name: "resizeImage:33", value: "33", label: "33%" },
+        { name: "resizeImage:50", value: "50", label: "50%" },
+        { name: "resizeImage:66", value: "66", label: "66%" },
+        { name: "resizeImage:75", value: "75", label: "75%" },
+        { name: "resizeImage:100", value: "100", label: "100%" },
       ],
       toolbar: [
         "imageStyle:block",

@@ -76,6 +76,9 @@
     },
     "dialog": {
       "confirmClose": "确定要关闭吗？所有未保存的更改将会丢失。"
+    },
+    "newsCard": {
+      "readMore": "阅读更多"
     }
   },
 

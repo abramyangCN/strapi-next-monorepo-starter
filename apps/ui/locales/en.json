@@ -76,6 +76,9 @@
     },
     "dialog": {
       "confirmClose": "Do you want to close the dialog? You will lose all unsaved changes."
+    },
+    "newsCard": {
+      "readMore": "Read more"
     }
   },
 
