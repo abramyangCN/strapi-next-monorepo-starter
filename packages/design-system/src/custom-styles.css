@@ -1,11 +1,12 @@
 .ck-editor__main .image,
 .ck-content .image {
-  @apply mb-0!;
+  @apply mb-0;
 }
 
 .ck-editor__main {
   @import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
 }
+
 .ck-editor__main,
 .ck-content {
   word-break: break-word;
@@ -28,7 +29,7 @@
 .ck-editor__main h4,
 .ck-editor__main h5,
 .ck-editor__main h6 {
-  @apply mt-0! pt-0!;
+  @apply mt-0 pt-0;
 }
 
 .ck-content iframe[src^="https://www.youtube.com"] {
@@ -112,7 +113,7 @@
 .ck-editor__main .ck-content .typo-p-medium,
 .typo-p-medium,
 .tip-tap-editor-wrapper p {
-  @apply mb-0.5 text-sm;
+  @apply mb-0.5 text-base;
 }
 
 .ck-editor-rich-text-page .typo-p-large,
