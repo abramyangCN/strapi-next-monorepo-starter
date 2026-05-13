@@ -64,10 +64,10 @@ export function AppSelect({
             <FormControl>
               <SelectTrigger
                 className={cn(
-                  "data-[placeholder]:text-muted-foreground data-[placeholder]:[&_[data-slot=select-value]]:text-muted-foreground h-14! w-full rounded-none! border-gray-200 bg-white px-4",
+                  "h-14! w-full rounded-none! border-gray-200 bg-white px-4",
                   {
                     "border-secondary-400": fieldState.invalid,
-                    "text-muted-foreground": !field.value,
+                    "text-[#888888]": !field.value,
                   },
                   fieldClassName
                 )}
