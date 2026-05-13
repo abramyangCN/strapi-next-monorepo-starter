@@ -32,7 +32,8 @@ export default async function StrapiPageView({ params, searchParams }: Props) {
     const newsResponse = await fetchNewsByFullPath(fullPath, locale)
 
     if (newsResponse?.data) {
-      const articleSlug = fullPath.split("/").findLast(Boolean)
+      // eslint-disable-next-line unicorn/prefer-array-find
+      const articleSlug = fullPath.split("/").filter(Boolean).pop()
 
       if (articleSlug) {
         return <NewsArticleView locale={locale} slug={articleSlug} />

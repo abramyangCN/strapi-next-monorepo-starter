@@ -114,7 +114,8 @@ export async function generateMetadata(
   }
 
   const newsResponse = await fetchNewsByFullPath(fullPath, locale)
-  const slug = fullPath.split("/").findLast(Boolean)
+  // eslint-disable-next-line unicorn/prefer-array-find
+  const slug = fullPath.split("/").filter(Boolean).pop()
 
   if (newsResponse?.data && slug) {
     const response = await fetchNews(slug, locale)
