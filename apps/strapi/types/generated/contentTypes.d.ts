@@ -830,6 +830,7 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         "sections.carousel-with-next",
         "sections.image-with-bullets",
         "sections.latest-news",
+        "sections.news-list",
         "sections.step",
         "sections.contact",
         "sections.office",
@@ -858,6 +859,13 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
+    isNewsListPage: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }> &
+      Schema.Attribute.DefaultTo<false>
     locale: Schema.Attribute.String
     localizations: Schema.Attribute.Relation<"oneToMany", "api::page.page">
     parent: Schema.Attribute.Relation<"manyToOne", "api::page.page">

@@ -33,6 +33,15 @@
         }
       }
     },
+    "isNewsListPage": {
+      "type": "boolean",
+      "default": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    },
     "slug": {
       "type": "string",
       "pluginOptions": {
@@ -78,6 +87,7 @@
         "sections.carousel-with-next",
         "sections.image-with-bullets",
         "sections.latest-news",
+        "sections.news-list",
         "sections.step",
         "sections.contact",
         "sections.office",

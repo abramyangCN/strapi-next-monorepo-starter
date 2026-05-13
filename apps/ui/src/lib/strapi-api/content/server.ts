@@ -77,6 +77,41 @@ export async function fetchAllPages(
   }
 }
 
+export async function fetchNewsRootPage(locale: Locale) {
+  try {
+    const response = await PublicStrapiClient.fetchMany("api::page.page", {
+      locale,
+      filters: {
+        isNewsListPage: {
+          $eq: true,
+        },
+      },
+      fields: [
+        "title",
+        "breadcrumbTitle",
+        "fullPath",
+        "slug",
+        "locale",
+        "documentId",
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      ] as any,
+      status: "published",
+    })
+
+    return response.data[0] ?? null
+  } catch (e: unknown) {
+    logNonBlockingError({
+      message: `Error fetching news root page for locale '${locale}'`,
+      error: {
+        error: e instanceof Error ? e.message : String(e),
+        stack: e instanceof Error ? e.stack : undefined,
+      },
+    })
+  }
+
+  return null
+}
+
 // ------ SEO fetching functions
 
 export async function fetchSeo(
@@ -169,37 +204,6 @@ export async function fetchFooter(locale: Locale) {
 
 // ------ News fetching functions
 
-export async function fetchNewsListPage(locale: Locale) {
-  try {
-    return await PublicStrapiClient.fetchOne(
-      "api::news-list-page.news-list-page" as UID.ContentType,
-      undefined,
-      {
-        locale,
-        populate: {
-          heroImage: true,
-          seo: {
-            populate: {
-              metaImage: true,
-              twitter: { populate: { images: true } },
-              og: { populate: { image: true } },
-            },
-          },
-        },
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      } as any
-    )
-  } catch (e: unknown) {
-    logNonBlockingError({
-      message: `Error fetching news list page for locale '${locale}'`,
-      error: {
-        error: e instanceof Error ? e.message : String(e),
-        stack: e instanceof Error ? e.stack : undefined,
-      },
-    })
-  }
-}
-
 export async function fetchNews(
   slug: string,
   locale: Locale,
@@ -209,7 +213,7 @@ export async function fetchNews(
   const dm = await draftMode()
 
   try {
-    return await PublicStrapiClient.fetchOneBySlug(
+    const response = await PublicStrapiClient.fetchOneBySlug(
       "api::news-article.news-article" as UID.ContentType,
       slug,
       {
@@ -227,6 +231,53 @@ export async function fetchNews(
       requestInit,
       options
     )
+
+    if (response.data == null) {
+      return response
+    }
+
+    const article = response.data as {
+      title?: string | null
+      slug?: string | null
+    }
+
+    const newsRootPage = await fetchNewsRootPage(locale)
+
+    if (!newsRootPage?.fullPath) {
+      return response
+    }
+
+    const newsRootResponse = await fetchPage(
+      newsRootPage.fullPath,
+      locale,
+      requestInit,
+      options
+    )
+
+    const parentBreadcrumbs = (
+      newsRootResponse?.meta as {
+        breadcrumbs?: { title: string; fullPath: string }[]
+      }
+    )?.breadcrumbs ?? [
+      {
+        title: newsRootPage.breadcrumbTitle ?? newsRootPage.title ?? "News",
+        fullPath: newsRootPage.fullPath,
+      },
+    ]
+
+    return {
+      ...response,
+      meta: {
+        ...response.meta,
+        breadcrumbs: [
+          ...parentBreadcrumbs,
+          {
+            title: article.title ?? "Article",
+            fullPath: `${newsRootPage.fullPath.replace(/\/$/, "")}/${article.slug ?? slug}`,
+          },
+        ],
+      },
+    }
   } catch (e: unknown) {
     logNonBlockingError({
       message: `Error fetching news '${slug}' for locale '${locale}'`,
@@ -236,6 +287,29 @@ export async function fetchNews(
       },
     })
   }
+}
+
+export async function fetchNewsByFullPath(fullPath: string, locale: Locale) {
+  const newsRootPage = await fetchNewsRootPage(locale)
+
+  if (!newsRootPage?.fullPath) {
+    return null
+  }
+
+  const newsRootFullPath = newsRootPage.fullPath.replace(/\/$/, "")
+  const normalizedFullPath = fullPath.replace(/\/$/, "")
+
+  if (!normalizedFullPath.startsWith(`${newsRootFullPath}/`)) {
+    return null
+  }
+
+  const slug = normalizedFullPath.slice(newsRootFullPath.length + 1)
+
+  if (!slug || slug.includes("/")) {
+    return null
+  }
+
+  return fetchNews(slug, locale)
 }
 
 export async function fetchAllNews(locale: Locale) {

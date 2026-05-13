@@ -452,6 +452,18 @@ export interface SectionsMediaShowcase extends Struct.ComponentSchema {
   }
 }
 
+export interface SectionsNewsList extends Struct.ComponentSchema {
+  collectionName: "components_sections_news_list"
+  info: {
+    description: "Section to display all news articles on a page"
+    displayName: "News List"
+  }
+  attributes: {
+    sectionDescription: Schema.Attribute.Text
+    sectionTitle: Schema.Attribute.String & Schema.Attribute.Required
+  }
+}
+
 export interface SectionsOffice extends Struct.ComponentSchema {
   collectionName: "components_sections_offices"
   info: {
@@ -1037,6 +1049,7 @@ declare module "@strapi/strapi" {
       "sections.image-with-text": SectionsImageWithText
       "sections.latest-news": SectionsLatestNews
       "sections.media-showcase": SectionsMediaShowcase
+      "sections.news-list": SectionsNewsList
       "sections.office": SectionsOffice
       "sections.step": SectionsStep
       "sections.text-content": SectionsTextContent

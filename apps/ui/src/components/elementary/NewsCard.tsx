@@ -2,6 +2,7 @@ import { ChevronRight } from "lucide-react"
 import Image from "next/image"
 import Link from "next/link"
 
+import { routing } from "@/lib/navigation"
 import { formatStrapiMediaUrl } from "@/lib/strapi-helpers"
 import type { StrapiImageMedia } from "@/types/api"
 
@@ -20,18 +21,21 @@ export interface NewsArticle {
 interface NewsCardProps {
   news: NewsArticle
   locale: string
+  basePath?: string
 }
 
-export function NewsCard({ news, locale }: NewsCardProps) {
+export function NewsCard({ news, locale, basePath = "/news" }: NewsCardProps) {
   const imageUrl = news.featuredImage?.url
     ? formatStrapiMediaUrl(news.featuredImage.url)
     : null
+  const localePrefix = locale === routing.defaultLocale ? "" : `/${locale}`
+  const newsHref = `${localePrefix}${basePath}/${news.slug}`
 
   return (
     <article className="group flex flex-col">
       {/* Image */}
       <Link
-        href={`/${locale}/news/${news.slug}`}
+        href={newsHref}
         className="bg-muted relative mb-4 aspect-[16/10] overflow-hidden"
       >
         {imageUrl ? (
@@ -56,7 +60,7 @@ export function NewsCard({ news, locale }: NewsCardProps) {
       )}
 
       {/* Title */}
-      <Link href={`/${locale}/news/${news.slug}`}>
+      <Link href={newsHref}>
         <h3 className="group-hover:text-secondary-400 mb-2 text-lg leading-tight font-semibold transition-colors">
           {news.title}
         </h3>
@@ -71,7 +75,7 @@ export function NewsCard({ news, locale }: NewsCardProps) {
 
       {/* Read more link */}
       <Link
-        href={`/${locale}/news/${news.slug}`}
+        href={newsHref}
         className="group/link text-foreground hover:text-primary mt-auto inline-flex items-center text-sm font-medium transition-colors"
       >
         Read more

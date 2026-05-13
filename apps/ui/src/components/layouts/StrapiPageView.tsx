@@ -2,12 +2,12 @@ import { ROOT_PAGE_PATH } from "@repo/shared-data"
 import { notFound } from "next/navigation"
 import type { Locale } from "next-intl"
 import { setRequestLocale } from "next-intl/server"
-import { use } from "react"
 
 import { ErrorBoundary } from "@/components/elementary/ErrorBoundary"
+import NewsArticleView from "@/components/layouts/NewsArticleView"
 import { PageContentComponents } from "@/components/page-builder"
 import StrapiStructuredData from "@/components/page-builder/components/seo-utilities/StrapiStructuredData"
-import { fetchPage } from "@/lib/strapi-api/content/server"
+import { fetchNewsByFullPath, fetchPage } from "@/lib/strapi-api/content/server"
 import { cn } from "@/lib/styles"
 
 interface Props {
@@ -18,17 +18,27 @@ interface Props {
   searchParams?: Record<string, string | string[] | undefined>
 }
 
-export default function StrapiPageView({ params, searchParams }: Props) {
+export default async function StrapiPageView({ params, searchParams }: Props) {
   const locale = params.locale as Locale
 
   setRequestLocale(locale)
 
   const fullPath = ROOT_PAGE_PATH + (params.rest ?? []).join("/")
-  const response = use(fetchPage(fullPath, locale))
+  const response = await fetchPage(fullPath, locale)
 
   const data = response?.data
 
   if (data?.content == null) {
+    const newsResponse = await fetchNewsByFullPath(fullPath, locale)
+
+    if (newsResponse?.data) {
+      const articleSlug = fullPath.split("/").findLast(Boolean)
+
+      if (articleSlug) {
+        return <NewsArticleView locale={locale} slug={articleSlug} />
+      }
+    }
+
     notFound()
   }
 

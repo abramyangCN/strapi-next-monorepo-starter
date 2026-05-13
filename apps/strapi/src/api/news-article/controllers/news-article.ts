@@ -4,6 +4,8 @@
 
 import { factories } from "@strapi/strapi"
 
+import { generateBreadcrumbs } from "../../../utils/breadcrumbs"
+
 export default factories.createCoreController(
   "api::news-article.news-article",
   ({ strapi }) => ({
@@ -19,34 +21,46 @@ export default factories.createCoreController(
           documentId?: string
         }
 
-        // 获取 news-list-page 的面包屑标题
-        let newsListTitle = "News"
+        let parentBreadcrumbs: { title: string; fullPath: string }[] = [
+          { title: "Home", fullPath: "/" },
+          { title: "News", fullPath: "/news" },
+        ]
+        let newsListFullPath = "/news"
+
         try {
           const newsListPage = await strapi
-            .documents("api::news-list-page.news-list-page")
+            .documents("api::page.page")
             .findFirst({
+              filters: { isNewsListPage: { $eq: true } },
+              fields: [
+                "title",
+                "breadcrumbTitle",
+                "fullPath",
+                "documentId",
+                "locale",
+              ],
+              populate: { parent: true },
               locale,
-              fields: ["breadcrumbTitle", "title"],
             })
+
           if (newsListPage) {
-            newsListTitle =
-              newsListPage.breadcrumbTitle || newsListPage.title || "News"
+            newsListFullPath = newsListPage.fullPath || newsListFullPath
+            parentBreadcrumbs = await generateBreadcrumbs(
+              // generateBreadcrumbs expects a page document with fullPath/documentId/locale
+              newsListPage as never,
+              "api::page.page"
+            )
           }
         } catch (error) {
-          strapi.log.warn(
-            "Failed to fetch news-list-page for breadcrumb:",
-            error
-          )
+          strapi.log.warn("Failed to fetch news page for breadcrumb:", error)
         }
 
-        // 生成面包屑
         response.meta = response.meta || {}
         ;(response.meta as Record<string, unknown>).breadcrumbs = [
-          { title: "Home", fullPath: "/" },
-          { title: newsListTitle, fullPath: "/news" },
+          ...parentBreadcrumbs,
           {
             title: article.title || article.name || "Article",
-            fullPath: `/news/${article.slug || article.documentId}`,
+            fullPath: `${newsListFullPath}/${article.slug || article.documentId}`,
           },
         ]
       }

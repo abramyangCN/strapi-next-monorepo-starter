@@ -21,6 +21,7 @@ import StrapiImageWithCTAButton from "@/components/page-builder/components/secti
 import StrapiImageWithText from "@/components/page-builder/components/sections/StrapiImageWithText"
 import StrapiLatestNews from "@/components/page-builder/components/sections/StrapiLatestNews"
 import StrapiMediaShowcase from "@/components/page-builder/components/sections/StrapiMediaShowcase"
+import StrapiNewsList from "@/components/page-builder/components/sections/StrapiNewsList"
 import StrapiOffice from "@/components/page-builder/components/sections/StrapiOffice"
 import StrapiStep from "@/components/page-builder/components/sections/StrapiStep"
 import StrapiTextContent from "@/components/page-builder/components/sections/StrapiTextContent"
@@ -63,6 +64,7 @@ export const PageContentComponents: Partial<
   "sections.image-with-text": StrapiImageWithText,
   "sections.latest-news": StrapiLatestNews,
   "sections.media-showcase": StrapiMediaShowcase,
+  "sections.news-list": StrapiNewsList,
   "sections.office": StrapiOffice,
   "sections.step": StrapiStep,
   "sections.text-content": StrapiTextContent,
