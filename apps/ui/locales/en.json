@@ -164,6 +164,32 @@
     "gdprLink": "personal data processing policy"
   },
 
+  "quotationForm": {
+    "firstNamePlaceholder": "First Name*",
+    "lastNamePlaceholder": "Last Name*",
+    "emailPlaceholder": "E-mail*",
+    "phonePlaceholder": "Phone*",
+    "companyPlaceholder": "Company*",
+    "jobTitlePlaceholder": "Job title",
+    "addressPlaceholder": "Address*",
+    "quantityOfPartsPlaceholder": "Quantity of Parts*",
+    "materialsPlaceholder": "Materials*",
+    "technologyPlaceholder": "Technology*",
+    "complianceCertificatesPlaceholder": "Compliance Certificates*",
+    "finishPlaceholder": "Finish*",
+    "surfaceConditionPlaceholder": "Surface Condition*",
+    "messagePlaceholder": "Write Message",
+    "filesLabel": "Upload Technical Drawings or CAD Files",
+    "filesDescription": "Accepted formats: PDF, DWG, DXF, STEP, IGES, STL, OBJ (Max 10MB per file)",
+    "sampleDocumentLink": "View sample document",
+    "gdpr": "By submitting, you agree to our",
+    "gdprLink": "Privacy Policy",
+    "submit": "FINALIZE MY REQUEST",
+    "submitting": "Submitting...",
+    "success": "Request submitted successfully!",
+    "error": "Failed to submit request"
+  },
+
   "auth": {
     "signIn": {
       "status": {

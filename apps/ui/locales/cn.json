@@ -164,6 +164,32 @@
     "gdprLink": "个人数据处理政策"
   },
 
+  "quotationForm": {
+    "firstNamePlaceholder": "名*",
+    "lastNamePlaceholder": "姓*",
+    "emailPlaceholder": "邮箱*",
+    "phonePlaceholder": "电话*",
+    "companyPlaceholder": "公司*",
+    "jobTitlePlaceholder": "职位",
+    "addressPlaceholder": "地址*",
+    "quantityOfPartsPlaceholder": "零件数量*",
+    "materialsPlaceholder": "材料*",
+    "technologyPlaceholder": "工艺*",
+    "complianceCertificatesPlaceholder": "合规认证*",
+    "finishPlaceholder": "表面处理*",
+    "surfaceConditionPlaceholder": "表面状态*",
+    "messagePlaceholder": "请留言",
+    "filesLabel": "上传技术图纸或 CAD 文件",
+    "filesDescription": "支持格式：PDF、DWG、DXF、STEP、IGES、STL、OBJ（每个文件最大 10MB）",
+    "sampleDocumentLink": "查看示例文件",
+    "gdpr": "提交即表示您同意我们的",
+    "gdprLink": "隐私政策",
+    "submit": "提交我的需求",
+    "submitting": "提交中...",
+    "success": "需求提交成功！",
+    "error": "提交失败，请稍后重试"
+  },
+
   "auth": {
     "signIn": {
       "status": {

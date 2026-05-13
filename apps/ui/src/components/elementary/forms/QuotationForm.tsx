@@ -1,6 +1,7 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useTranslations } from "next-intl"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
 
@@ -25,9 +26,10 @@ interface QuotationFormProps {
 export function QuotationForm({
   formType,
   gdpr,
-  buttonText = "FINALIZE MY REQUEST",
+  buttonText,
   sampleDocumentLink,
 }: QuotationFormProps) {
+  const t = useTranslations("quotationForm")
   const { toast } = useToast()
   const quotationMutation = useQuotationForm()
 
@@ -78,14 +80,14 @@ export function QuotationForm({
       onSuccess: () => {
         toast({
           variant: "default",
-          description: "Request submitted successfully!",
+          description: t("success"),
         })
         form.reset()
       },
       onError: () => {
         toast({
           variant: "destructive",
-          description: "Failed to submit request",
+          description: t("error"),
         })
       },
     })
@@ -107,7 +109,7 @@ export function QuotationForm({
               name="quantityOfParts"
               type="text"
               required
-              placeholder="Quantity of Parts*"
+              placeholder={t("quantityOfPartsPlaceholder")}
             />
 
             <AppField
@@ -115,7 +117,7 @@ export function QuotationForm({
               name="materials"
               type="text"
               required
-              placeholder="Materials*"
+              placeholder={t("materialsPlaceholder")}
             />
 
             <AppField
@@ -123,7 +125,7 @@ export function QuotationForm({
               name="technology"
               type="text"
               required
-              placeholder="Technology*"
+              placeholder={t("technologyPlaceholder")}
             />
 
             {formType === "low-volume" ? (
@@ -132,7 +134,7 @@ export function QuotationForm({
                 name="complianceCertificates"
                 type="text"
                 required
-                placeholder="Compliance Certificates*"
+                placeholder={t("complianceCertificatesPlaceholder")}
               />
             ) : (
               <AppField
@@ -140,7 +142,7 @@ export function QuotationForm({
                 name="finish"
                 type="text"
                 required
-                placeholder="Finish*"
+                placeholder={t("finishPlaceholder")}
               />
             )}
 
@@ -149,7 +151,7 @@ export function QuotationForm({
               name="surfaceCondition"
               type="text"
               required
-              placeholder="Surface Condition*"
+              placeholder={t("surfaceConditionPlaceholder")}
             />
           </div>
 
@@ -160,14 +162,14 @@ export function QuotationForm({
               name="firstName"
               type="text"
               required
-              placeholder="First Name*"
+              placeholder={t("firstNamePlaceholder")}
             />
             <AppField
               containerClassName="col-span-1"
               name="lastName"
               type="text"
               required
-              placeholder="Last Name*"
+              placeholder={t("lastNamePlaceholder")}
             />
 
             <AppField
@@ -176,7 +178,7 @@ export function QuotationForm({
               type="email"
               autoComplete="email"
               required
-              placeholder="E-mail*"
+              placeholder={t("emailPlaceholder")}
             />
 
             <AppField
@@ -185,7 +187,7 @@ export function QuotationForm({
               type="tel"
               autoComplete="tel"
               required
-              placeholder="Phone*"
+              placeholder={t("phonePlaceholder")}
             />
 
             <AppField
@@ -193,19 +195,19 @@ export function QuotationForm({
               name="company"
               type="text"
               required
-              placeholder="Company*"
+              placeholder={t("companyPlaceholder")}
             />
             <AppField
               containerClassName="col-span-1"
               name="jobTitle"
               type="text"
-              placeholder="Job title"
+              placeholder={t("jobTitlePlaceholder")}
             />
 
             <AppField
               containerClassName="col-span-1 sm:col-span-2"
               name="address"
-              placeholder="Address*"
+              placeholder={t("addressPlaceholder")}
               required
             />
           </div>
@@ -213,17 +215,17 @@ export function QuotationForm({
           <AppTextArea
             containerClassName="order-3 col-span-1 lg:order-0 lg:col-span-12"
             name="message"
-            placeholder="Write Message"
+            placeholder={t("messagePlaceholder")}
           />
 
           <AppFileUpload
             containerClassName="order-4 col-span-1 lg:order-0 lg:col-span-12"
             name="files"
-            label="Upload Technical Drawings or CAD Files"
+            label={t("filesLabel")}
             accept=".pdf,.dwg,.dxf,.step,.stp,.iges,.igs,.stl,.obj"
             multiple
             maxSize={10}
-            description="Accepted formats: PDF, DWG, DXF, STEP, IGES, STL, OBJ (Max 10MB per file)"
+            description={t("filesDescription")}
           />
         </div>
 
@@ -235,7 +237,7 @@ export function QuotationForm({
                 openExternalInNewTab={sampleDocumentLink.newTab}
                 className="text-primary-700 inline-flex min-h-[44px] items-center hover:underline active:opacity-80"
               >
-                {sampleDocumentLink.label || "View sample document"}
+                {sampleDocumentLink.label || t("sampleDocumentLink")}
               </AppLink>
             </div>
           </div>
@@ -245,13 +247,13 @@ export function QuotationForm({
       <div className="flex w-full flex-col gap-3 sm:gap-4">
         {gdpr?.href && (
           <div className="flex flex-col items-start gap-1 text-sm text-gray-600 sm:flex-row sm:items-center sm:gap-0">
-            <span>By submitting, you agree to our </span>
+            <span>{t("gdpr")} </span>
             <AppLink
               openExternalInNewTab={gdpr.newTab}
               className="text-primary-700 font-medium hover:underline active:opacity-80 sm:ml-1"
               href={gdpr.href}
             >
-              {gdpr.label || "Privacy Policy"}
+              {gdpr.label || t("gdprLink")}
             </AppLink>
           </div>
         )}
@@ -262,13 +264,15 @@ export function QuotationForm({
           form={quotationFormName}
           disabled={quotationMutation.isPending}
         >
-          {quotationMutation.isPending ? "Submitting..." : buttonText}
+          {quotationMutation.isPending
+            ? t("submitting")
+            : (buttonText ?? t("submit"))}
         </Button>
       </div>
 
       {quotationMutation.error && (
         <div className="mt-4 text-center text-red-500">
-          <p>{quotationMutation.error.message || "Failed to submit request"}</p>
+          <p>{quotationMutation.error.message || t("error")}</p>
         </div>
       )}
     </div>

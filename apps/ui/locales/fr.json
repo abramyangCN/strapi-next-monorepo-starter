@@ -164,6 +164,32 @@
     "gdprLink": "politique de traitement des données personnelles"
   },
 
+  "quotationForm": {
+    "firstNamePlaceholder": "Prénom*",
+    "lastNamePlaceholder": "Nom de famille*",
+    "emailPlaceholder": "E-mail*",
+    "phonePlaceholder": "Téléphone*",
+    "companyPlaceholder": "Société*",
+    "jobTitlePlaceholder": "Intitulé du poste",
+    "addressPlaceholder": "Adresse*",
+    "quantityOfPartsPlaceholder": "Quantité de pièces*",
+    "materialsPlaceholder": "Matériaux*",
+    "technologyPlaceholder": "Technologie*",
+    "complianceCertificatesPlaceholder": "Certificats de conformité*",
+    "finishPlaceholder": "Finition*",
+    "surfaceConditionPlaceholder": "État de surface*",
+    "messagePlaceholder": "Rédigez un message",
+    "filesLabel": "Télécharger les dessins techniques ou fichiers CAD",
+    "filesDescription": "Formats acceptés : PDF, DWG, DXF, STEP, IGES, STL, OBJ (10 Mo max par fichier)",
+    "sampleDocumentLink": "Voir un document exemple",
+    "gdpr": "En envoyant, vous acceptez notre",
+    "gdprLink": "politique de confidentialité",
+    "submit": "FINALISER MA DEMANDE",
+    "submitting": "Envoi en cours...",
+    "success": "Demande envoyée avec succès !",
+    "error": "Échec de l'envoi de la demande"
+  },
+
   "auth": {
     "signIn": {
       "status": {

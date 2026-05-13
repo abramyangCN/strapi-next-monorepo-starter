@@ -164,6 +164,32 @@
     "gdprLink": "Informace o zpracování osobních údajů"
   },
 
+  "quotationForm": {
+    "firstNamePlaceholder": "Jméno*",
+    "lastNamePlaceholder": "Příjmení*",
+    "emailPlaceholder": "E-mail*",
+    "phonePlaceholder": "Telefon*",
+    "companyPlaceholder": "Společnost*",
+    "jobTitlePlaceholder": "Pracovní pozice",
+    "addressPlaceholder": "Adresa*",
+    "quantityOfPartsPlaceholder": "Počet dílů*",
+    "materialsPlaceholder": "Materiály*",
+    "technologyPlaceholder": "Technologie*",
+    "complianceCertificatesPlaceholder": "Certifikáty shody*",
+    "finishPlaceholder": "Povrchová úprava*",
+    "surfaceConditionPlaceholder": "Stav povrchu*",
+    "messagePlaceholder": "Napište zprávu",
+    "filesLabel": "Nahrajte technické výkresy nebo CAD soubory",
+    "filesDescription": "Podporované formáty: PDF, DWG, DXF, STEP, IGES, STL, OBJ (max. 10 MB na soubor)",
+    "sampleDocumentLink": "Zobrazit vzorový dokument",
+    "gdpr": "Odesláním souhlasíte s našimi",
+    "gdprLink": "zásadami ochrany osobních údajů",
+    "submit": "DOKONČIT MOJI POPTÁVKU",
+    "submitting": "Odesílání...",
+    "success": "Poptávka byla úspěšně odeslána!",
+    "error": "Nepodařilo se odeslat poptávku"
+  },
+
   "auth": {
     "signIn": {
       "status": {
