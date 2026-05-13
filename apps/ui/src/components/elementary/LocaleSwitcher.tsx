@@ -66,16 +66,14 @@ function SuspensedLocaleSwitcher({
   // Inline mode - display all locales horizontally
   if (inline) {
     return (
-      <div className={cn("flex items-center gap-3", className)}>
+      <div className={cn("flex w-full items-center", className)}>
         {routing.locales.map((loc) => (
           <button
             key={loc}
             type="button"
             className={cn(
-              "px-3 py-2 text-base font-medium uppercase transition-colors",
-              loc === locale
-                ? "text-white underline underline-offset-4"
-                : "text-white/70 hover:text-white"
+              "flex-1 px-3 py-2 text-center text-base font-medium uppercase transition-colors",
+              loc === locale ? "text-white" : "text-white/60 hover:text-white"
             )}
             onClick={() => handleLocaleChange(loc as Locale)}
           >

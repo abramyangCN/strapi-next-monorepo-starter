@@ -108,7 +108,7 @@ export function MobileNav({
         </nav>
 
         {/* Bottom Section - Auth & Language Switcher */}
-        <div className="flex flex-col items-center gap-4">
+        <div className="flex flex-col items-center gap-4 pt-4">
           {enableAuth && (
             <>
               {session?.user ? (
@@ -127,7 +127,11 @@ export function MobileNav({
             </>
           )}
           <Suspense fallback={<div className="h-10 w-18" />}>
-            <LocaleSwitcher locale={locale} />
+            <LocaleSwitcher
+              locale={locale}
+              inline
+              className="border-t border-white/20 pt-4"
+            />
           </Suspense>
         </div>
       </div>
