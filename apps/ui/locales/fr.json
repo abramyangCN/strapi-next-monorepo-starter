@@ -166,7 +166,7 @@
     "messagePlaceholder": "Rédigez un message*",
     "gdpr": "En envoyant, vous acceptez la",
     "submit": "ENVOYER",
-    "success": "Le formulaire a été envoyé avec succès.",
+    "success": "Envoi réussi.",
     "error": "Le formulaire n'a pas pu être envoyé. Veuillez réessayer plus tard.",
     "gdprLink": "politique de traitement des données personnelles"
   },
@@ -193,8 +193,15 @@
     "gdprLink": "politique de confidentialité",
     "submit": "FINALISER MA DEMANDE",
     "submitting": "Envoi en cours...",
-    "success": "Demande envoyée avec succès !",
+    "success": "Envoi réussi.",
     "error": "Échec de l'envoi de la demande"
+  },
+
+  "newsletterForm": {
+    "successTitle": "Succès",
+    "success": "Envoi réussi.",
+    "errorTitle": "Une erreur est survenue",
+    "error": "Nous n'avons pas pu finaliser votre inscription. Veuillez réessayer plus tard."
   },
 
   "auth": {

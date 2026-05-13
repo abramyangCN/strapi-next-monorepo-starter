@@ -166,7 +166,7 @@
     "messagePlaceholder": "Napište zprávu*",
     "gdpr": "Odesláním souhlasíte se ",
     "submit": "ODESLAT",
-    "success": "Formulář byl úspěšně odeslán",
+    "success": "Odesláno úspěšně.",
     "error": "Při odesílání formuláře došlo k chybě, zkuste to prosím znovu",
     "gdprLink": "Informace o zpracování osobních údajů"
   },
@@ -193,8 +193,15 @@
     "gdprLink": "zásadami ochrany osobních údajů",
     "submit": "DOKONČIT MOJI POPTÁVKU",
     "submitting": "Odesílání...",
-    "success": "Poptávka byla úspěšně odeslána!",
+    "success": "Odesláno úspěšně.",
     "error": "Nepodařilo se odeslat poptávku"
+  },
+
+  "newsletterForm": {
+    "successTitle": "Úspěch",
+    "success": "Odesláno úspěšně.",
+    "errorTitle": "Něco se nepovedlo",
+    "error": "Odběr se nepodařilo dokončit. Zkuste to prosím znovu později."
   },
 
   "auth": {

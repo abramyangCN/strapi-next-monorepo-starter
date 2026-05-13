@@ -1,6 +1,7 @@
 "use client"
 
 import { zodResolver } from "@hookform/resolvers/zod"
+import { useTranslations } from "next-intl"
 import { useState } from "react"
 import { useForm } from "react-hook-form"
 import * as z from "zod"
@@ -21,6 +22,7 @@ interface NewsletterFormProps {
 
 export function NewsletterForm({ newsletter }: NewsletterFormProps) {
   const [isSubmitting, setIsSubmitting] = useState(false)
+  const t = useTranslations("newsletterForm")
   const { toast } = useToast()
 
   const form = useForm<z.infer<FormSchemaType>>({
@@ -45,16 +47,16 @@ export function NewsletterForm({ newsletter }: NewsletterFormProps) {
       }
 
       toast({
-        title: "Success!",
-        description: "You have successfully subscribed to our newsletter.",
+        title: t("successTitle"),
+        description: t("success"),
         className: "border-secondary-500 bg-secondary-50 text-secondary-900",
       })
 
       form.reset()
     } catch {
       toast({
-        title: "Error",
-        description: "Failed to subscribe. Please try again later.",
+        title: t("errorTitle"),
+        description: t("error"),
         variant: "destructive",
       })
     } finally {

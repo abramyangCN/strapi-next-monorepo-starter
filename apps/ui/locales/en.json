@@ -166,7 +166,7 @@
     "messagePlaceholder": "Write a message*",
     "gdpr": "By submitting you agree to the",
     "submit": "SEND",
-    "success": "The form has been sent successfully.",
+    "success": "Submitted successfully.",
     "error": "The form could not be sent. Please try again later.",
     "gdprLink": "personal data processing policy"
   },
@@ -193,8 +193,15 @@
     "gdprLink": "Privacy Policy",
     "submit": "FINALIZE MY REQUEST",
     "submitting": "Submitting...",
-    "success": "Request submitted successfully!",
+    "success": "Submitted successfully.",
     "error": "Failed to submit request"
+  },
+
+  "newsletterForm": {
+    "successTitle": "Success",
+    "success": "Submitted successfully.",
+    "errorTitle": "Something went wrong",
+    "error": "We couldn't complete your subscription. Please try again later."
   },
 
   "auth": {
