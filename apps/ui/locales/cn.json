@@ -60,10 +60,15 @@
     "fileInput": {
       "label": "选择文件",
       "dragAndDrop": "拖放文件或点击选择",
+      "clickToUpload": "点击上传",
+      "orDragAndDrop": "或拖放文件",
       "validFileTypes": "文件必须为 {validFileTypes} 格式",
       "wrongFileType": "不支持此文件类型",
       "selectedFile": "已选文件：{fileName}",
-      "removeFile": "删除文件"
+      "removeFile": "删除文件",
+      "anyFileType": "任意文件类型",
+      "acceptedFileTypes": "{fileTypes}（每个文件最大 {maxSize}MB）",
+      "maxSizeExceeded": "部分文件超过了 {maxSize}MB 大小限制"
     },
     "datePicker": {
       "label": "选择日期"
@@ -103,42 +108,44 @@
     },
 
     "zodValidation": {
-      "invalid_type": "期望类型为 {expected}，但收到 {received}",
+      "required": "此字段为必填项",
+      "invalid_type": "输入内容格式不正确",
       "invalid_type_received_undefined": "此字段为必填项",
-      "invalid_literal": "无效的值，期望 {expected}",
-      "invalid_union": "无效的值",
+      "invalid_literal": "请选择有效的内容",
+      "invalid_union": "请选择有效的内容",
 
       "invalid_string": {
-        "regex": "格式无效"
+        "regex": "请输入有效的内容",
+        "email": "请输入有效的邮箱地址"
       },
       "too_small": {
         "string": {
-          "exact": "字符串必须恰好包含 {minimum} 个字符",
-          "inclusive": "字符串必须至少包含 {minimum} 个字符",
-          "not_inclusive": "字符串必须超过 {minimum} 个字符"
+          "exact": "请输入正好 {minimum} 个字符",
+          "inclusive": "请至少输入 {minimum} 个字符",
+          "not_inclusive": "请输入多于 {minimum} 个字符"
         },
         "number": {
-          "exact": "值必须恰好为 {minimum}",
-          "inclusive": "最小值为 {minimum}",
-          "not_inclusive": "数字必须大于 {minimum}"
+          "exact": "请输入正好 {minimum}",
+          "inclusive": "请输入不小于 {minimum} 的数值",
+          "not_inclusive": "请输入大于 {minimum} 的数值"
         }
       },
       "too_big": {
         "string": {
-          "exact": "字符串必须恰好包含 {maximum} 个字符",
-          "inclusive": "字符串最多包含 {maximum} 个字符",
-          "not_inclusive": "字符串必须少于 {maximum} 个字符"
+          "exact": "请输入正好 {maximum} 个字符",
+          "inclusive": "请输入不超过 {maximum} 个字符",
+          "not_inclusive": "请输入少于 {maximum} 个字符"
         },
         "number": {
-          "exact": "值必须恰好为 {maximum}",
-          "inclusive": "最大值为 {maximum}",
-          "not_inclusive": "数字必须小于 {maximum}"
+          "exact": "请输入正好 {maximum}",
+          "inclusive": "请输入不大于 {maximum} 的数值",
+          "not_inclusive": "请输入小于 {maximum} 的数值"
         }
       },
       "custom": {
         "password": "密码不匹配",
-        "passwordWithNumber": "字符串必须包含至少 1 个数字",
-        "phoneNumber": "此字段必须包含 9 位数字"
+        "passwordWithNumber": "密码至少需要包含 1 个数字",
+        "phoneNumber": "请输入有效的电话号码"
       }
     }
   },

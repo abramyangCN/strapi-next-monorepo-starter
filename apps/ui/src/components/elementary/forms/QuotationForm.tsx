@@ -272,7 +272,7 @@ export function QuotationForm({
 
       {quotationMutation.error && (
         <div className="mt-4 text-center text-red-500">
-          <p>{quotationMutation.error.message || t("error")}</p>
+          <p>{t("error")}</p>
         </div>
       )}
     </div>
@@ -281,38 +281,36 @@ export function QuotationForm({
 
 const lowVolumeSchema = z.object({
   formType: z.literal("low-volume" as const),
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().min(1, "Phone is required"),
-  company: z.string().min(1, "Company is required"),
+  firstName: z.string().min(1),
+  lastName: z.string().min(1),
+  email: z.string().email(),
+  phone: z.string().min(1),
+  company: z.string().min(1),
   jobTitle: z.string().optional(),
-  address: z.string().min(1, "Address is required"),
-  quantityOfParts: z.string().min(1, "Quantity is required"),
-  materials: z.string().min(1, "Materials are required"),
-  technology: z.string().min(1, "Technology is required"),
-  complianceCertificates: z
-    .string()
-    .min(1, "Compliance certificates are required"),
-  surfaceCondition: z.string().min(1, "Surface condition is required"),
+  address: z.string().min(1),
+  quantityOfParts: z.string().min(1),
+  materials: z.string().min(1),
+  technology: z.string().min(1),
+  complianceCertificates: z.string().min(1),
+  surfaceCondition: z.string().min(1),
   message: z.string().optional(),
   files: z.any().optional(),
 })
 
 const prototypingSchema = z.object({
   formType: z.literal("prototyping" as const),
-  firstName: z.string().min(1, "First name is required"),
-  lastName: z.string().min(1, "Last name is required"),
-  email: z.string().email("Invalid email address"),
-  phone: z.string().min(1, "Phone is required"),
-  company: z.string().min(1, "Company is required"),
+  firstName: z.string().min(1),
+  lastName: z.string().min(1),
+  email: z.string().email(),
+  phone: z.string().min(1),
+  company: z.string().min(1),
   jobTitle: z.string().optional(),
-  address: z.string().min(1, "Address is required"),
-  quantityOfParts: z.string().min(1, "Quantity is required"),
-  materials: z.string().min(1, "Materials are required"),
-  technology: z.string().min(1, "Technology is required"),
-  finish: z.string().min(1, "Finish is required"),
-  surfaceCondition: z.string().min(1, "Surface condition is required"),
+  address: z.string().min(1),
+  quantityOfParts: z.string().min(1),
+  materials: z.string().min(1),
+  technology: z.string().min(1),
+  finish: z.string().min(1),
+  surfaceCondition: z.string().min(1),
   message: z.string().optional(),
   files: z.any().optional(),
 })

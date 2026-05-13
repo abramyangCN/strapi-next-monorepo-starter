@@ -60,10 +60,15 @@
     "fileInput": {
       "label": "Vybrat soubor",
       "dragAndDrop": "Přidejte soubor přetažením nebo vyberte kliknutím",
+      "clickToUpload": "Klikněte pro nahrání",
+      "orDragAndDrop": "nebo přetáhněte soubor",
       "validFileTypes": "Soubor musí být ve formátu {validFileTypes}",
       "wrongFileType": "Tento typ souboru není podporován",
       "selectedFile": "Vybraný soubor: {fileName}",
-      "removeFile": "Odstranit soubor"
+      "removeFile": "Odstranit soubor",
+      "anyFileType": "Libovolný typ souboru",
+      "acceptedFileTypes": "{fileTypes} (max. {maxSize} MB na soubor)",
+      "maxSizeExceeded": "Některé soubory překračují maximální velikost {maxSize} MB"
     },
     "datePicker": {
       "label": "Vyberte datum"
@@ -103,42 +108,44 @@
     },
 
     "zodValidation": {
-      "invalid_type": "Požadovaný typ je {expected}, zadán byl {received}",
+      "required": "Toto pole je povinné",
+      "invalid_type": "Zadaná hodnota není platná",
       "invalid_type_received_undefined": "Pole je požadované",
-      "invalid_literal": "Nesprávná hodnota, očekává sa {expected}",
-      "invalid_union": "Nesprávná hodnota",
+      "invalid_literal": "Vyberte prosím platnou hodnotu",
+      "invalid_union": "Vyberte prosím platnou hodnotu",
 
       "invalid_string": {
-        "regex": "Nesprávný formát"
+        "regex": "Zadejte prosím platnou hodnotu",
+        "email": "Zadejte prosím platnou e-mailovou adresu"
       },
       "too_small": {
         "string": {
-          "exact": "Řetězec musí obsahovat přesně {minimum} znaků",
-          "inclusive": "Řetězec musí obsahovat alespoň {minimum} znaků",
-          "not_inclusive": "Řetězec musí obsahovat více jak {minimum} znaků"
+          "exact": "Zadejte přesně {minimum} znaků",
+          "inclusive": "Zadejte alespoň {minimum} znaků",
+          "not_inclusive": "Zadejte více než {minimum} znaků"
         },
         "number": {
-          "exact": "Hodnota musí být přesně {minimum}",
-          "inclusive": "Minimální hodnota je {minimum}",
-          "not_inclusive": "Číslo musí být větší než {minimum}"
+          "exact": "Zadejte přesně {minimum}",
+          "inclusive": "Zadejte hodnotu alespoň {minimum}",
+          "not_inclusive": "Zadejte hodnotu větší než {minimum}"
         }
       },
       "too_big": {
         "string": {
-          "exact": "Řetězec musí obsahovat přesně {maximum} znaků",
-          "inclusive": "Řetězec musí obsahovat maximálně {maximum} znaků",
-          "not_inclusive": "Řetězec musí obsahovat méně jak {maximum} znaků"
+          "exact": "Zadejte přesně {maximum} znaků",
+          "inclusive": "Zadejte nejvýše {maximum} znaků",
+          "not_inclusive": "Zadejte méně než {maximum} znaků"
         },
         "number": {
-          "exact": "Hodnota musí být přesně {maximum}",
-          "inclusive": "Maximální hodnota je {maximum}",
-          "not_inclusive": "Číslo musí být menší než {maximum}"
+          "exact": "Zadejte přesně {maximum}",
+          "inclusive": "Zadejte hodnotu nejvýše {maximum}",
+          "not_inclusive": "Zadejte hodnotu menší než {maximum}"
         }
       },
       "custom": {
         "password": "Hesla se neshodují",
-        "passwordWithNumber": "Řetězec musí obsahovat alespoň 1 číslo",
-        "phoneNumber": "Toto pole musí obsahovat 9 čísel"
+        "passwordWithNumber": "Heslo musí obsahovat alespoň jedno číslo",
+        "phoneNumber": "Zadejte prosím platné telefonní číslo"
       }
     }
   },

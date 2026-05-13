@@ -21,27 +21,54 @@ export async function POST(request: Request) {
       }
     }
 
-    const strapiFormData = new FormData()
-    strapiFormData.append("data", JSON.stringify(data))
-
-    for (const file of files) {
-      strapiFormData.append("files.files", file, file.name)
-    }
-
     const strapiUrl = getEnvVar("STRAPI_URL", true)
-    const url = `${strapiUrl}/api/quotations`
-
     const authHeader = await createStrapiAuthHeader({
       isReadOnly: false,
       isPrivate: false,
     })
 
-    const response = await fetch(url, {
+    if (files.length > 0) {
+      const uploadFormData = new FormData()
+
+      for (const file of files) {
+        uploadFormData.append("files", file, file.name)
+      }
+
+      const uploadResponse = await fetch(`${strapiUrl}/api/upload`, {
+        method: "POST",
+        headers: {
+          ...authHeader,
+        },
+        body: uploadFormData,
+      })
+
+      if (!uploadResponse.ok) {
+        const error = await uploadResponse.json().catch(() => ({}))
+
+        return NextResponse.json(
+          {
+            error: error?.error?.message ?? "Failed to upload quotation files",
+          },
+          { status: uploadResponse.status }
+        )
+      }
+
+      const uploadedFiles = (await uploadResponse.json()) as { id: number }[]
+      data.files = JSON.stringify(uploadedFiles.map((file) => file.id))
+    }
+
+    const response = await fetch(`${strapiUrl}/api/quotations`, {
       method: "POST",
       headers: {
+        "Content-Type": "application/json",
         ...authHeader,
       },
-      body: strapiFormData,
+      body: JSON.stringify({
+        data: {
+          ...data,
+          ...(data.files ? { files: JSON.parse(data.files) as number[] } : {}),
+        },
+      }),
     })
 
     if (!response.ok) {

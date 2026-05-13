@@ -64,20 +64,18 @@ export function AppSelect({
             <FormControl>
               <SelectTrigger
                 className={cn(
-                  "h-14! w-full rounded-none! border-gray-200 bg-white px-4",
+                  "[&_[data-slot=select-value]]:text-foreground h-14! w-full rounded-none! border-gray-200 bg-white px-4",
                   {
                     "border-secondary-400": fieldState.invalid,
-                    "text-muted-foreground": !field.value,
+                    "[&_[data-slot=select-value]]:text-muted-foreground":
+                      !field.value,
                   },
                   fieldClassName
                 )}
                 tabIndex={nativeProps.tabIndex}
                 onBlur={field.onBlur}
               >
-                <SelectValue
-                  placeholder={placeholder}
-                  className={cn(!field.value && "text-muted-foreground")}
-                />
+                <SelectValue placeholder={placeholder} />
               </SelectTrigger>
             </FormControl>
 

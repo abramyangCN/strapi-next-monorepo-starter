@@ -60,10 +60,15 @@
     "fileInput": {
       "label": "Sélectionner un fichier",
       "dragAndDrop": "Ajoutez un fichier par glisser-déposer ou sélectionnez en cliquant",
+      "clickToUpload": "Cliquer pour téléverser",
+      "orDragAndDrop": "ou glisser-déposer",
       "validFileTypes": "Le fichier doit être au format {validFileTypes}",
       "wrongFileType": "Ce type de fichier n'est pas pris en charge",
       "selectedFile": "Fichier sélectionné : {fileName}",
-      "removeFile": "Supprimer le fichier"
+      "removeFile": "Supprimer le fichier",
+      "anyFileType": "Tout type de fichier",
+      "acceptedFileTypes": "{fileTypes} (max. {maxSize} Mo par fichier)",
+      "maxSizeExceeded": "Certains fichiers dépassent la taille maximale de {maxSize} Mo"
     },
     "datePicker": {
       "label": "Sélectionner une date"
@@ -103,42 +108,44 @@
     },
 
     "zodValidation": {
-      "invalid_type": "Le type attendu est {expected}, mais reçu {received}",
+      "required": "Ce champ est obligatoire",
+      "invalid_type": "La valeur saisie n'est pas valide",
       "invalid_type_received_undefined": "Le champ est requis",
-      "invalid_literal": "Valeur invalide, attendu {expected}",
-      "invalid_union": "Valeur invalide",
+      "invalid_literal": "Veuillez sélectionner une valeur valide",
+      "invalid_union": "Veuillez sélectionner une valeur valide",
 
       "invalid_string": {
-        "regex": "Format invalide"
+        "regex": "Veuillez saisir une valeur valide",
+        "email": "Veuillez saisir une adresse e-mail valide"
       },
       "too_small": {
         "string": {
-          "exact": "La chaîne doit contenir exactement {minimum} caractères",
-          "inclusive": "La chaîne doit contenir au moins {minimum} caractères",
-          "not_inclusive": "La chaîne doit contenir plus de {minimum} caractères"
+          "exact": "Veuillez saisir exactement {minimum} caractères",
+          "inclusive": "Veuillez saisir au moins {minimum} caractères",
+          "not_inclusive": "Veuillez saisir plus de {minimum} caractères"
         },
         "number": {
-          "exact": "La valeur doit être exactement {minimum}",
-          "inclusive": "La valeur minimale est {minimum}",
-          "not_inclusive": "Le nombre doit être supérieur à {minimum}"
+          "exact": "Veuillez saisir exactement {minimum}",
+          "inclusive": "Veuillez saisir une valeur d'au moins {minimum}",
+          "not_inclusive": "Veuillez saisir une valeur supérieure à {minimum}"
         }
       },
       "too_big": {
         "string": {
-          "exact": "La chaîne doit contenir exactement {maximum} caractères",
-          "inclusive": "La chaîne doit contenir au maximum {maximum} caractères",
-          "not_inclusive": "La chaîne doit contenir moins de {maximum} caractères"
+          "exact": "Veuillez saisir exactement {maximum} caractères",
+          "inclusive": "Veuillez ne pas dépasser {maximum} caractères",
+          "not_inclusive": "Veuillez saisir moins de {maximum} caractères"
         },
         "number": {
-          "exact": "La valeur doit être exactement {maximum}",
-          "inclusive": "La valeur maximale est {maximum}",
-          "not_inclusive": "Le nombre doit être inférieur à {maximum}"
+          "exact": "Veuillez saisir exactement {maximum}",
+          "inclusive": "Veuillez saisir une valeur inférieure ou égale à {maximum}",
+          "not_inclusive": "Veuillez saisir une valeur inférieure à {maximum}"
         }
       },
       "custom": {
         "password": "Les mots de passe ne correspondent pas",
-        "passwordWithNumber": "La chaîne doit contenir au moins 1 chiffre",
-        "phoneNumber": "Ce champ doit contenir 9 chiffres"
+        "passwordWithNumber": "Le mot de passe doit contenir au moins un chiffre",
+        "phoneNumber": "Veuillez saisir un numéro de téléphone valide"
       }
     }
   },

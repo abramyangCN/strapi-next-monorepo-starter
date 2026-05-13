@@ -1,6 +1,7 @@
 "use client"
 
 import { Upload, X } from "lucide-react"
+import { useTranslations } from "next-intl"
 import type React from "react"
 import { useRef, useState } from "react"
 import { useFormContext } from "react-hook-form"
@@ -50,6 +51,7 @@ export function AppFileUpload({
   const { control } = useFormContext()
   const [files, setFiles] = useState<File[]>([])
   const fileInputRef = useRef<HTMLInputElement>(null)
+  const t = useTranslations("comps.fileInput")
 
   const handleFileChange = (
     event: React.ChangeEvent<HTMLInputElement>,
@@ -66,7 +68,7 @@ export function AppFileUpload({
     )
 
     if (invalidFiles.length > 0) {
-      alert(`Some files exceed the maximum size of ${maxSize}MB`)
+      alert(t("maxSizeExceeded", { maxSize }))
 
       return
     }
@@ -98,7 +100,10 @@ export function AppFileUpload({
     <FormField
       control={control}
       name={name}
-      render={({ field: { onChange, ...field }, fieldState }) => (
+      render={({
+        field: { onChange, value: _value, ...field },
+        fieldState,
+      }) => (
         <FormItem className={cn(containerClassName)}>
           <AppFormLabel
             fieldState={fieldState}
@@ -137,15 +142,18 @@ export function AppFileUpload({
                     <Upload className="h-8 w-8 text-gray-400 sm:h-10 sm:w-10" />
                     <div className="text-sm text-gray-600">
                       <span className="text-primary-700 font-medium">
-                        Click to upload
+                        {t("clickToUpload")}
                       </span>
                       <span className="hidden sm:inline">
                         {" "}
-                        or drag and drop
+                        {t("orDragAndDrop")}
                       </span>
                     </div>
                     <div className="text-xs text-gray-500">
-                      {accept || "Any file type"} (Max {maxSize}MB per file)
+                      {t("acceptedFileTypes", {
+                        fileTypes: accept || t("anyFileType"),
+                        maxSize,
+                      })}
                     </div>
                   </div>
                 </label>

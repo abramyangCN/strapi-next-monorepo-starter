@@ -60,10 +60,15 @@
     "fileInput": {
       "label": "Select file",
       "dragAndDrop": "Add file by dragging or select by clicking",
+      "clickToUpload": "Click to upload",
+      "orDragAndDrop": "or drag and drop",
       "validFileTypes": "File must be in {validFileTypes} format",
       "wrongFileType": "This file type is not supported",
       "selectedFile": "Selected file: {fileName}",
-      "removeFile": "Remove file"
+      "removeFile": "Remove file",
+      "anyFileType": "Any file type",
+      "acceptedFileTypes": "{fileTypes} (Max {maxSize}MB per file)",
+      "maxSizeExceeded": "Some files exceed the maximum size of {maxSize}MB"
     },
     "datePicker": {
       "label": "Select date"
@@ -103,42 +108,44 @@
     },
 
     "zodValidation": {
+      "required": "This field is required",
       "invalid_type": "Expected type is {expected}, but received {received}",
       "invalid_type_received_undefined": "Field is required",
-      "invalid_literal": "Invalid value, expected {expected}",
-      "invalid_union": "Invalid value",
+      "invalid_literal": "Please choose a valid value",
+      "invalid_union": "Please choose a valid value",
 
       "invalid_string": {
-        "regex": "Invalid format"
+        "regex": "Please enter a valid value",
+        "email": "Please enter a valid email address"
       },
       "too_small": {
         "string": {
-          "exact": "String must be exactly {minimum} characters",
-          "inclusive": "String must be at least {minimum} characters",
-          "not_inclusive": "String must be more than {minimum} characters"
+          "exact": "Please enter exactly {minimum} characters",
+          "inclusive": "Please enter at least {minimum} characters",
+          "not_inclusive": "Please enter more than {minimum} characters"
         },
         "number": {
-          "exact": "Value must be exactly {minimum}",
-          "inclusive": "Minimum value is {minimum}",
-          "not_inclusive": "Number must be greater than {minimum}"
+          "exact": "Please enter exactly {minimum}",
+          "inclusive": "Please enter a value of at least {minimum}",
+          "not_inclusive": "Please enter a value greater than {minimum}"
         }
       },
       "too_big": {
         "string": {
-          "exact": "String must be exactly {maximum} characters",
-          "inclusive": "String must be at most {maximum} characters",
-          "not_inclusive": "String must be less than {maximum} characters"
+          "exact": "Please enter exactly {maximum} characters",
+          "inclusive": "Please keep this under {maximum} characters",
+          "not_inclusive": "Please keep this below {maximum} characters"
         },
         "number": {
-          "exact": "Value must be exactly {maximum}",
-          "inclusive": "Maximum value is {maximum}",
-          "not_inclusive": "Number must be less than {maximum}"
+          "exact": "Please enter exactly {maximum}",
+          "inclusive": "Please enter a value no greater than {maximum}",
+          "not_inclusive": "Please enter a value less than {maximum}"
         }
       },
       "custom": {
         "password": "Passwords do not match",
-        "passwordWithNumber": "String must contain at least 1 number",
-        "phoneNumber": "This field must contain 9 numbers"
+        "passwordWithNumber": "Password must include at least one number",
+        "phoneNumber": "Please enter a valid phone number"
       }
     }
   },

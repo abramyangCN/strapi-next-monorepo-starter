@@ -20,7 +20,7 @@ type Props = {
   readonly containerClassName?: string
   readonly fieldClassName?: string
   readonly description?: React.ReactNode
-} & Omit<React.InputHTMLAttributes<HTMLInputElement>, "className">
+} & Omit<React.TextareaHTMLAttributes<HTMLTextAreaElement>, "className">
 
 export function AppTextArea({
   name,
@@ -48,6 +48,7 @@ export function AppTextArea({
             <div className="relative flex items-stretch overflow-hidden">
               <Textarea
                 {...field}
+                {...nativeProps}
                 value={field.value ?? ""}
                 onChange={field.onChange} // eslint-disable-line react/jsx-handler-names -- react-hook-form API
                 className={cn(
