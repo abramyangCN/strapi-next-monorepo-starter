@@ -46,66 +46,56 @@ export function AppSelect({
     <FormField
       control={control}
       name={name}
-      render={({ field, fieldState }) => {
-        const selectedOption = options.find(
-          (option) => option.value === field.value
-        )
+      render={({ field, fieldState }) => (
+        <FormItem className={cn(containerClassName)}>
+          <AppFormLabel
+            label={label}
+            fieldState={fieldState}
+            required={nativeProps.required}
+          />
 
-        return (
-          <FormItem className={cn(containerClassName)}>
-            <AppFormLabel
-              label={label}
-              fieldState={fieldState}
-              required={nativeProps.required}
-            />
-
-            <SelectComponent
-              name={field.name}
-              dir={(nativeProps.dir ?? "ltr") as "ltr" | "rtl"}
-              disabled={nativeProps.disabled}
-              required={nativeProps.required}
-              value={field.value || undefined}
-              onValueChange={field.onChange} // eslint-disable-line react/jsx-handler-names -- react-hook-form API
-            >
-              <FormControl>
-                <SelectTrigger
-                  className={cn(
-                    "text-foreground h-14! w-full rounded-none! border-gray-200 bg-white px-4",
-                    {
-                      "border-secondary-400": fieldState.invalid,
-                    },
-                    fieldClassName
-                  )}
-                  tabIndex={nativeProps.tabIndex}
-                  onBlur={field.onBlur}
-                >
-                  {selectedOption ? (
-                    <SelectValue>{selectedOption.label}</SelectValue>
-                  ) : (
-                    <span className="text-muted-foreground">{placeholder}</span>
-                  )}
-                </SelectTrigger>
-              </FormControl>
-
-              <SelectContent
+          <SelectComponent
+            {...field}
+            {...nativeProps}
+            dir={(nativeProps.dir ?? "ltr") as "ltr" | "rtl"}
+            onValueChange={field.onChange} // eslint-disable-line react/jsx-handler-names -- react-hook-form API
+            defaultValue={field.value}
+          >
+            <FormControl>
+              <SelectTrigger
                 className={cn(
-                  "max-h-40 overflow-y-auto rounded-none! bg-white drop-shadow-xl"
+                  "data-[placeholder]:text-muted-foreground data-[placeholder]:[&_[data-slot=select-value]]:text-muted-foreground h-14! w-full rounded-none! border-gray-200 bg-white px-4",
+                  {
+                    "border-secondary-400": fieldState.invalid,
+                    "text-muted-foreground": !field.value,
+                  },
+                  fieldClassName
                 )}
+                tabIndex={nativeProps.tabIndex}
+                onBlur={field.onBlur}
               >
-                {options.map((option) => (
-                  <SelectItem value={option.value} key={option.value}>
-                    {option.label}
-                  </SelectItem>
-                ))}
-              </SelectContent>
-            </SelectComponent>
+                <SelectValue placeholder={placeholder} />
+              </SelectTrigger>
+            </FormControl>
 
-            <AppFormDescription description={description} />
+            <SelectContent
+              className={cn(
+                "max-h-40 overflow-y-auto rounded-none! bg-white drop-shadow-xl"
+              )}
+            >
+              {options.map((option) => (
+                <SelectItem value={option.value} key={option.value}>
+                  {option.label}
+                </SelectItem>
+              ))}
+            </SelectContent>
+          </SelectComponent>
 
-            <FormMessage className="text-secondary-400" />
-          </FormItem>
-        )
-      }}
+          <AppFormDescription description={description} />
+
+          <FormMessage className="text-secondary-400" />
+        </FormItem>
+      )}
     />
   )
 }
