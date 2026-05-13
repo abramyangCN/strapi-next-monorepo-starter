@@ -15,6 +15,7 @@ import { ClientProviders } from "@/components/providers/ClientProviders"
 import { ServerProviders } from "@/components/providers/ServerProviders"
 import TrackingScripts from "@/components/providers/TrackingScripts"
 import { Toaster } from "@/components/ui/sonner"
+import { Toaster as AppToaster } from "@/components/ui/toaster"
 import { debugStaticParams } from "@/lib/build"
 import { fontRoboto } from "@/lib/fonts"
 import { routing } from "@/lib/navigation"
@@ -108,6 +109,7 @@ export default async function RootLayout({
               <TailwindIndicator />
 
               <Toaster />
+              <AppToaster />
 
               <ErrorBoundary hideFallback>
                 <StrapiFooter locale={locale} />
