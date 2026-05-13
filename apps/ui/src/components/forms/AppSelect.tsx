@@ -46,57 +46,66 @@ export function AppSelect({
     <FormField
       control={control}
       name={name}
-      render={({ field, fieldState }) => (
-        <FormItem className={cn(containerClassName)}>
-          <AppFormLabel
-            label={label}
-            fieldState={fieldState}
-            required={nativeProps.required}
-          />
+      render={({ field, fieldState }) => {
+        const selectedOption = options.find(
+          (option) => option.value === field.value
+        )
 
-          <SelectComponent
-            {...field}
-            {...nativeProps}
-            dir={(nativeProps.dir ?? "ltr") as "ltr" | "rtl"}
-            onValueChange={field.onChange} // eslint-disable-line react/jsx-handler-names -- react-hook-form API
-            defaultValue={field.value}
-          >
-            <FormControl>
-              <SelectTrigger
-                className={cn(
-                  "[&_[data-slot=select-value]]:text-foreground h-14! w-full rounded-none! border-gray-200 bg-white px-4",
-                  {
-                    "border-secondary-400": fieldState.invalid,
-                    "[&_[data-slot=select-value]]:text-muted-foreground":
-                      !field.value,
-                  },
-                  fieldClassName
-                )}
-                tabIndex={nativeProps.tabIndex}
-                onBlur={field.onBlur}
-              >
-                <SelectValue placeholder={placeholder} />
-              </SelectTrigger>
-            </FormControl>
+        return (
+          <FormItem className={cn(containerClassName)}>
+            <AppFormLabel
+              label={label}
+              fieldState={fieldState}
+              required={nativeProps.required}
+            />
 
-            <SelectContent
-              className={cn(
-                "max-h-40 overflow-y-auto rounded-none! bg-white drop-shadow-xl"
-              )}
+            <SelectComponent
+              name={field.name}
+              dir={(nativeProps.dir ?? "ltr") as "ltr" | "rtl"}
+              disabled={nativeProps.disabled}
+              required={nativeProps.required}
+              value={field.value || undefined}
+              onValueChange={field.onChange} // eslint-disable-line react/jsx-handler-names -- react-hook-form API
             >
-              {options.map((option) => (
-                <SelectItem value={option.value} key={option.value}>
-                  {option.label}
-                </SelectItem>
-              ))}
-            </SelectContent>
-          </SelectComponent>
+              <FormControl>
+                <SelectTrigger
+                  className={cn(
+                    "text-foreground h-14! w-full rounded-none! border-gray-200 bg-white px-4",
+                    {
+                      "border-secondary-400": fieldState.invalid,
+                    },
+                    fieldClassName
+                  )}
+                  tabIndex={nativeProps.tabIndex}
+                  onBlur={field.onBlur}
+                >
+                  {selectedOption ? (
+                    <SelectValue>{selectedOption.label}</SelectValue>
+                  ) : (
+                    <span className="text-muted-foreground">{placeholder}</span>
+                  )}
+                </SelectTrigger>
+              </FormControl>
 
-          <AppFormDescription description={description} />
+              <SelectContent
+                className={cn(
+                  "max-h-40 overflow-y-auto rounded-none! bg-white drop-shadow-xl"
+                )}
+              >
+                {options.map((option) => (
+                  <SelectItem value={option.value} key={option.value}>
+                    {option.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </SelectComponent>
 
-          <FormMessage className="text-secondary-400" />
-        </FormItem>
-      )}
+            <AppFormDescription description={description} />
+
+            <FormMessage className="text-secondary-400" />
+          </FormItem>
+        )
+      }}
     />
   )
 }
