@@ -12,7 +12,7 @@ import { cn } from "@/lib/styles"
 const localeTranslation: Record<string, string> = {
   en: "English",
   fr: "French",
-  cn: "Chinese",
+  cn: "中文",
 }
 
 function LocaleSwitcher({
@@ -77,7 +77,7 @@ function SuspensedLocaleSwitcher({
             )}
             onClick={() => handleLocaleChange(loc as Locale)}
           >
-            {loc}
+            {localeTranslation[loc]}
           </button>
         ))}
       </div>
@@ -94,7 +94,7 @@ function SuspensedLocaleSwitcher({
           className
         )}
       >
-        <span>{locale}</span>
+        <span>{localeTranslation[locale]}</span>
         <ChevronDown className="h-4 w-4" />
       </button>
       <div className="invisible absolute top-full left-0 z-10 min-w-max rounded-none bg-white whitespace-nowrap opacity-0 shadow-lg transition-all duration-200 group-hover:visible group-hover:opacity-100">
