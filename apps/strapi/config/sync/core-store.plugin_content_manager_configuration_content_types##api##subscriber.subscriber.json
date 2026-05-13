@@ -7,7 +7,7 @@
       "searchable": true,
       "pageSize": 10,
       "mainField": "email",
-      "defaultSortBy": "documentId",
+      "defaultSortBy": "email",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -110,7 +110,8 @@
         ]
       ],
       "list": [
-        "id"
+        "id",
+        "email"
       ]
     },
     "uid": "api::subscriber.subscriber"
