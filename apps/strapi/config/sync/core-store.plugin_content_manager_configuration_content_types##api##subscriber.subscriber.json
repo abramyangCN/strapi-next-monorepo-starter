@@ -6,8 +6,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "name",
-      "defaultSortBy": "name",
+      "mainField": "email",
+      "defaultSortBy": "documentId",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -15,48 +15,6 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "name": {
-        "edit": {
-          "label": "name",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "name",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "firstName": {
-        "edit": {
-          "label": "firstName",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "firstName",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "lastName": {
-        "edit": {
-          "label": "lastName",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "lastName",
           "searchable": true,
           "sortable": true
         }
@@ -71,90 +29,6 @@
         },
         "list": {
           "label": "email",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "phone": {
-        "edit": {
-          "label": "phone",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "phone",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "company": {
-        "edit": {
-          "label": "company",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "company",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "jobTitle": {
-        "edit": {
-          "label": "jobTitle",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "jobTitle",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "inquiryType": {
-        "edit": {
-          "label": "inquiryType",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "inquiryType",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "message": {
-        "edit": {
-          "label": "message",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "message",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "content": {
-        "edit": {
-          "label": "content",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "content",
           "searchable": true,
           "sortable": true
         }
@@ -227,65 +101,16 @@
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "firstName",
-        "lastName"
-      ],
       "edit": [
         [
-          {
-            "name": "name",
-            "size": 6
-          },
-          {
-            "name": "firstName",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "lastName",
-            "size": 6
-          },
           {
             "name": "email",
             "size": 6
           }
-        ],
-        [
-          {
-            "name": "phone",
-            "size": 6
-          },
-          {
-            "name": "company",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "jobTitle",
-            "size": 6
-          },
-          {
-            "name": "inquiryType",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "message",
-            "size": 6
-          }
-        ],
-        [
-          {
-            "name": "content",
-            "size": 12
-          }
         ]
+      ],
+      "list": [
+        "id"
       ]
     },
     "uid": "api::subscriber.subscriber"
