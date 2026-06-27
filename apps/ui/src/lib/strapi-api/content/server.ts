@@ -79,26 +79,67 @@ export async function fetchAllPages(
 
 export async function fetchNewsRootPage(locale: Locale) {
   try {
-    const response = await PublicStrapiClient.fetchMany("api::page.page", {
-      locale,
-      filters: {
-        isNewsListPage: {
-          $eq: true,
+    const legacyResponse = await PublicStrapiClient.fetchMany(
+      "api::page.page",
+      {
+        locale,
+        filters: {
+          isNewsListPage: {
+            $eq: true,
+          },
         },
-      },
-      fields: [
-        "title",
-        "breadcrumbTitle",
-        "fullPath",
-        "slug",
-        "locale",
-        "documentId",
-        // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      ] as any,
-      status: "published",
-    })
+        fields: [
+          "title",
+          "breadcrumbTitle",
+          "fullPath",
+          "slug",
+          "locale",
+          "documentId",
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ] as any,
+        status: "published",
+      }
+    )
 
-    return response.data[0] ?? null
+    if (legacyResponse.data[0] != null) {
+      return legacyResponse.data[0]
+    }
+
+    const newsListPageResponse = await PublicStrapiClient.fetchOne(
+      "api::news-list-page.news-list-page",
+      undefined,
+      {
+        locale,
+        fields: [
+          "title",
+          "breadcrumbTitle",
+          "slug",
+          "locale",
+          "documentId",
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        ] as any,
+        status: "published",
+      }
+    )
+
+    const newsListPage = newsListPageResponse?.data as {
+      title?: string | null
+      breadcrumbTitle?: string | null
+      slug?: string | null
+      locale?: string | null
+      documentId?: string | null
+    } | null
+
+    if (newsListPage == null) {
+      return null
+    }
+
+    const slug = newsListPage.slug?.replace(/^\/+/, "") || "news"
+
+    return {
+      ...newsListPage,
+      fullPath: `/${slug}`,
+    }
   } catch (e: unknown) {
     logNonBlockingError({
       message: `Error fetching news root page for locale '${locale}'`,

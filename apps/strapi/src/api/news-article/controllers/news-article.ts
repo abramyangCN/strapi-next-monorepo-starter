@@ -28,7 +28,7 @@ export default factories.createCoreController(
         let newsListFullPath = "/news"
 
         try {
-          const newsListPage = await strapi
+          const legacyNewsListPage = await strapi
             .documents("api::page.page")
             .findFirst({
               filters: { isNewsListPage: { $eq: true } },
@@ -43,13 +43,42 @@ export default factories.createCoreController(
               locale,
             })
 
-          if (newsListPage) {
-            newsListFullPath = newsListPage.fullPath || newsListFullPath
+          if (legacyNewsListPage) {
+            newsListFullPath = legacyNewsListPage.fullPath || newsListFullPath
             parentBreadcrumbs = await generateBreadcrumbs(
-              // generateBreadcrumbs expects a page document with fullPath/documentId/locale
-              newsListPage as never,
+              legacyNewsListPage as never,
               "api::page.page"
             )
+          } else {
+            const singleNewsListPage = await strapi
+              .documents("api::news-list-page.news-list-page")
+              .findFirst({
+                fields: [
+                  "title",
+                  "breadcrumbTitle",
+                  "slug",
+                  "documentId",
+                  "locale",
+                ],
+                locale,
+              })
+
+            if (singleNewsListPage) {
+              const newsSlug =
+                singleNewsListPage.slug?.replace(/^\/+/, "") || "news"
+
+              newsListFullPath = `/${newsSlug}`
+              parentBreadcrumbs = [
+                { title: "Home", fullPath: "/" },
+                {
+                  title:
+                    singleNewsListPage.breadcrumbTitle ||
+                    singleNewsListPage.title ||
+                    "News",
+                  fullPath: newsListFullPath,
+                },
+              ]
+            }
           }
         } catch (error) {
           strapi.log.warn("Failed to fetch news page for breadcrumb:", error)
