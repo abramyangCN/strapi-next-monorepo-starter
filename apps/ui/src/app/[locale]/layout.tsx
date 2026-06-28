@@ -15,6 +15,7 @@ import { ClientProviders } from "@/components/providers/ClientProviders"
 import { ServerProviders } from "@/components/providers/ServerProviders"
 import TrackingScripts from "@/components/providers/TrackingScripts"
 import { Toaster } from "@/components/ui/sonner"
+import { Toaster as AppToaster } from "@/components/ui/toaster"
 import { debugStaticParams } from "@/lib/build"
 import { fontRoboto } from "@/lib/fonts"
 import { routing } from "@/lib/navigation"
@@ -29,7 +30,7 @@ export function generateStaticParams() {
 
 export const metadata: Metadata = {
   title: {
-    template: "%s / Notum Technologies",
+    template: "%s",
     default: "",
   },
 }
@@ -88,7 +89,7 @@ export default async function RootLayout({
       </head>
       <body
         className={cn(
-          "min-h-screen bg-gray-100 font-sans antialiased",
+          "min-h-screen bg-white font-sans antialiased",
           fontRoboto.variable
         )}
       >
@@ -97,7 +98,7 @@ export default async function RootLayout({
           <StrapiPreviewListener />
           <ClientProviders>
             <div className="relative flex min-h-screen flex-col">
-              <ErrorBoundary showErrorMessage>
+              <ErrorBoundary hideFallback>
                 <StrapiNavbar locale={locale} />
               </ErrorBoundary>
 
@@ -108,6 +109,7 @@ export default async function RootLayout({
               <TailwindIndicator />
 
               <Toaster />
+              <AppToaster />
 
               <ErrorBoundary hideFallback>
                 <StrapiFooter locale={locale} />

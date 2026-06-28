@@ -12,6 +12,8 @@ export interface AppLinkProps
   readonly href: string
   readonly children?: React.ReactNode
   readonly openInNewTab?: boolean
+  /** @deprecated use openInNewTab instead */
+  readonly openExternalInNewTab?: boolean
   readonly startAdornment?: React.ReactNode
   readonly endAdornment?: React.ReactNode
 }
@@ -22,11 +24,13 @@ export function AppLink({
   children,
   endAdornment,
   startAdornment,
-  openInNewTab = false,
+  openInNewTab: openInNewTabProp = false,
+  openExternalInNewTab,
   variant = "link",
   size = "default",
   ...props
 }: AppLinkProps) {
+  const openInNewTab = openInNewTabProp || openExternalInNewTab || false
   const combinedClassName = cn(
     "group flex flex-row items-center gap-2",
     buttonVariants({ variant, size }),

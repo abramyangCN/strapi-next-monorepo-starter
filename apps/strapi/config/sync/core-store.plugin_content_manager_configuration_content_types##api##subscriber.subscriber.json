@@ -6,8 +6,8 @@
       "filterable": true,
       "searchable": true,
       "pageSize": 10,
-      "mainField": "name",
-      "defaultSortBy": "name",
+      "mainField": "email",
+      "defaultSortBy": "email",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -15,20 +15,6 @@
         "edit": {},
         "list": {
           "label": "id",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "name": {
-        "edit": {
-          "label": "name",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "name",
           "searchable": true,
           "sortable": true
         }
@@ -43,20 +29,6 @@
         },
         "list": {
           "label": "email",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "message": {
-        "edit": {
-          "label": "message",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "message",
           "searchable": true,
           "sortable": true
         }
@@ -118,32 +90,28 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
-      "list": [
-        "id",
-        "name",
-        "email",
-        "message"
-      ],
       "edit": [
         [
-          {
-            "name": "name",
-            "size": 6
-          },
           {
             "name": "email",
             "size": 6
           }
-        ],
-        [
-          {
-            "name": "message",
-            "size": 6
-          }
         ]
+      ],
+      "list": [
+        "id",
+        "email"
       ]
     },
     "uid": "api::subscriber.subscriber"

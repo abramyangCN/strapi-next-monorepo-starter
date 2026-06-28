@@ -1,0 +1,77 @@
+{
+  "kind": "collectionType",
+  "collectionName": "quotations",
+  "info": {
+    "singularName": "quotation",
+    "pluralName": "quotations",
+    "displayName": "Quotation",
+    "description": "Quotation requests from customers"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "attributes": {
+    "formType": {
+      "type": "enumeration",
+      "enum": ["low-volume", "prototyping"],
+      "required": true
+    },
+    "firstName": {
+      "type": "string",
+      "required": true
+    },
+    "lastName": {
+      "type": "string",
+      "required": true
+    },
+    "email": {
+      "type": "email",
+      "required": true
+    },
+    "phone": {
+      "type": "string",
+      "required": true
+    },
+    "company": {
+      "type": "string",
+      "required": true
+    },
+    "jobTitle": {
+      "type": "string"
+    },
+    "address": {
+      "type": "text",
+      "required": true
+    },
+    "quantityOfParts": {
+      "type": "string",
+      "required": true
+    },
+    "materials": {
+      "type": "string",
+      "required": true
+    },
+    "technology": {
+      "type": "string",
+      "required": true
+    },
+    "complianceCertificates": {
+      "type": "string"
+    },
+    "finish": {
+      "type": "string"
+    },
+    "surfaceCondition": {
+      "type": "string",
+      "required": true
+    },
+    "message": {
+      "type": "text"
+    },
+    "files": {
+      "type": "media",
+      "multiple": true,
+      "allowedTypes": ["images", "files", "videos"]
+    }
+  }
+}

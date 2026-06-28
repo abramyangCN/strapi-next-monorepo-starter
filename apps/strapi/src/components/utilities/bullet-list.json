@@ -1,0 +1,24 @@
+{
+  "collectionName": "components_utilities_bullet_lists",
+  "info": {
+    "displayName": "BulletList"
+  },
+  "options": {},
+  "attributes": {
+    "bullet": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "link": {
+      "type": "component",
+      "component": "utilities.link",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

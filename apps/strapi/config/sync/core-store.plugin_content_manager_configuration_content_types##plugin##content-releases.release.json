@@ -161,6 +161,14 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
@@ -168,7 +176,7 @@
         "id",
         "name",
         "releasedAt",
-        "actions"
+        "scheduledAt"
       ],
       "edit": [
         [
@@ -183,21 +191,21 @@
         ],
         [
           {
-            "name": "actions",
+            "name": "scheduledAt",
             "size": 6
           },
           {
-            "name": "scheduledAt",
+            "name": "timezone",
             "size": 6
           }
         ],
         [
           {
-            "name": "timezone",
+            "name": "status",
             "size": 6
           },
           {
-            "name": "status",
+            "name": "actions",
             "size": 6
           }
         ]

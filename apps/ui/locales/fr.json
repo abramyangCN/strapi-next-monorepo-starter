@@ -1,0 +1,316 @@
+{
+  "seo": {
+    "metaTitle": "Shantec Shanghai",
+    "metaDescription": "SEO-DESCRIPTION",
+    "metaImage": "SEO-IMAGE",
+    "metaRobots": "SEO-ROBOTS",
+    "keywords": "SEO-KEYWORDS",
+    "applicationName": "SEO-APPLICATION-NAME",
+    "og": {
+      "title": "SEO-OG-TITLE",
+      "description": "SEO-OG-DESCRIPTION",
+      "url": "SEO-OG-URL",
+      "siteName": "SEO-OG-SITE-NAME",
+      "image": "SEO-OG-IMAGE"
+    },
+    "twitter": {
+      "card": "SEO-TWITTER-CARD",
+      "title": "SEO-TWITTER-TITLE",
+      "description": "SEO-TWITTER-DESCRIPTION",
+      "siteId": "SEO-TWITTER-SITE-ID",
+      "creator": "SEO-TWITTER-CREATOR",
+      "creatorId": "SEO-TWITTER-CREATOR-ID",
+      "imageUrl": "SEO-TWITTER-IMAGE-URL"
+    }
+  },
+
+  "general": {
+    "noOptionsAvailable": "Aucune option disponible",
+    "search": "Rechercher",
+    "loading": "Chargement",
+    "cancel": "Annuler",
+    "close": "Fermer",
+    "submitForm": "Envoyer",
+    "saveChanges": "Enregistrer les modifications"
+  },
+
+  "tables": {
+    "previousPage": "Page précédente",
+    "nextPage": "Page suivante",
+    "lastPage": "Dernière page",
+    "firstPage": "Première page",
+    "rowsPerPage": "Lignes par page",
+    "pageXOfY": "Page {x} sur {y}",
+    "ascending": "Croissant",
+    "descending": "Décroissant",
+    "noData": "Aucune donnée"
+  },
+
+  "navbar": {
+    "account": "Compte",
+    "actions": {
+      "profile": "Profil",
+      "signOut": "Se déconnecter",
+      "changePassword": "Changer le mot de passe",
+      "signIn": "Se connecter"
+    }
+  },
+
+  "comps": {
+    "fileInput": {
+      "label": "Sélectionner un fichier",
+      "dragAndDrop": "Ajoutez un fichier par glisser-déposer ou sélectionnez en cliquant",
+      "clickToUpload": "Cliquer pour téléverser",
+      "orDragAndDrop": "ou glisser-déposer",
+      "validFileTypes": "Le fichier doit être au format {validFileTypes}",
+      "wrongFileType": "Ce type de fichier n'est pas pris en charge",
+      "selectedFile": "Fichier sélectionné : {fileName}",
+      "removeFile": "Supprimer le fichier",
+      "anyFileType": "Tout type de fichier",
+      "acceptedFileTypes": "{fileTypes} (max. {maxSize} Mo par fichier)",
+      "maxSizeExceeded": "Certains fichiers dépassent la taille maximale de {maxSize} Mo"
+    },
+    "datePicker": {
+      "label": "Sélectionner une date"
+    },
+    "dateRangePicker": {
+      "label": "Sélectionner une plage de dates"
+    },
+    "themeToggle": {
+      "label": "Basculer le thème"
+    },
+    "dialog": {
+      "confirmClose": "Voulez-vous fermer la boîte de dialogue ? Vous perdrez toutes les modifications non enregistrées."
+    },
+    "newsCard": {
+      "readMore": "En savoir plus"
+    }
+  },
+
+  "errors": {
+    "global": {
+      "title": "Une erreur inconnue s'est produite",
+      "tryAgain": "Réessayer",
+      "invalidContent": "Ce contenu ne peut pas être affiché",
+      "somethingWentWrong": "Quelque chose s'est mal passé 🥺"
+    },
+
+    "notFound": {
+      "title": "Page non trouvée",
+      "description": "La page que vous recherchez est introuvable.",
+      "solution": "Vérifiez que vous avez saisi la bonne URL ou retournez à la page d'accueil.",
+      "redirect": "Aller à la page d'accueil"
+    },
+
+    "forms": {
+      "errorsInForm": "Le formulaire contient des erreurs",
+      "checkFormForErrors": "Veuillez vérifier si des valeurs sont manquantes"
+    },
+
+    "zodValidation": {
+      "required": "Ce champ est obligatoire",
+      "invalid_type": "La valeur saisie n'est pas valide",
+      "invalid_type_received_undefined": "Le champ est requis",
+      "invalid_literal": "Veuillez sélectionner une valeur valide",
+      "invalid_union": "Veuillez sélectionner une valeur valide",
+
+      "invalid_string": {
+        "regex": "Veuillez saisir une valeur valide",
+        "email": "Veuillez saisir une adresse e-mail valide"
+      },
+      "too_small": {
+        "string": {
+          "exact": "Veuillez saisir exactement {minimum} caractères",
+          "inclusive": "Veuillez saisir au moins {minimum} caractères",
+          "not_inclusive": "Veuillez saisir plus de {minimum} caractères"
+        },
+        "number": {
+          "exact": "Veuillez saisir exactement {minimum}",
+          "inclusive": "Veuillez saisir une valeur d'au moins {minimum}",
+          "not_inclusive": "Veuillez saisir une valeur supérieure à {minimum}"
+        }
+      },
+      "too_big": {
+        "string": {
+          "exact": "Veuillez saisir exactement {maximum} caractères",
+          "inclusive": "Veuillez ne pas dépasser {maximum} caractères",
+          "not_inclusive": "Veuillez saisir moins de {maximum} caractères"
+        },
+        "number": {
+          "exact": "Veuillez saisir exactement {maximum}",
+          "inclusive": "Veuillez saisir une valeur inférieure ou égale à {maximum}",
+          "not_inclusive": "Veuillez saisir une valeur inférieure à {maximum}"
+        }
+      },
+      "custom": {
+        "password": "Les mots de passe ne correspondent pas",
+        "passwordWithNumber": "Le mot de passe doit contenir au moins un chiffre",
+        "phoneNumber": "Veuillez saisir un numéro de téléphone valide"
+      }
+    }
+  },
+
+  "contactForm": {
+    "firstNamePlaceholder": "Prénom*",
+    "lastNamePlaceholder": "Nom de famille*",
+    "emailPlaceholder": "Email*",
+    "phonePlaceholder": "Téléphone*",
+    "companyPlaceholder": "Société*",
+    "jobTitlePlaceholder": "Intitulé du poste",
+    "inquiryTypePlaceholder": "Contactez-nous à propos de...*",
+    "inquiryTypeGeneral": "Demande générale",
+    "inquiryTypeTechnical": "Support technique",
+    "inquiryTypeQuotation": "Demande de devis",
+    "inquiryTypePartnership": "Partenariat",
+    "inquiryTypeOther": "Autre",
+    "messagePlaceholder": "Rédigez un message*",
+    "gdpr": "En envoyant, vous acceptez la",
+    "submit": "ENVOYER",
+    "success": "Envoi réussi.",
+    "error": "Le formulaire n'a pas pu être envoyé. Veuillez réessayer plus tard.",
+    "gdprLink": "politique de traitement des données personnelles"
+  },
+
+  "quotationForm": {
+    "firstNamePlaceholder": "Prénom*",
+    "lastNamePlaceholder": "Nom de famille*",
+    "emailPlaceholder": "E-mail*",
+    "phonePlaceholder": "Téléphone*",
+    "companyPlaceholder": "Société*",
+    "jobTitlePlaceholder": "Intitulé du poste",
+    "addressPlaceholder": "Adresse*",
+    "quantityOfPartsPlaceholder": "Quantité de pièces*",
+    "materialsPlaceholder": "Matériaux*",
+    "technologyPlaceholder": "Technologie*",
+    "complianceCertificatesPlaceholder": "Certificats de conformité*",
+    "finishPlaceholder": "Finition*",
+    "surfaceConditionPlaceholder": "État de surface*",
+    "messagePlaceholder": "Rédigez un message",
+    "filesLabel": "Télécharger les dessins techniques ou fichiers CAD",
+    "filesDescription": "Formats acceptés : PDF, DWG, DXF, STEP, IGES, STL, OBJ (10 Mo max par fichier)",
+    "sampleDocumentLink": "Voir un document exemple",
+    "gdpr": "En envoyant, vous acceptez notre",
+    "gdprLink": "politique de confidentialité",
+    "submit": "FINALISER MA DEMANDE",
+    "submitting": "Envoi en cours...",
+    "success": "Envoi réussi.",
+    "error": "Échec de l'envoi de la demande"
+  },
+
+  "newsletterForm": {
+    "successTitle": "Succès",
+    "success": "Envoi réussi.",
+    "errorTitle": "Une erreur est survenue",
+    "error": "Nous n'avons pas pu finaliser votre inscription. Veuillez réessayer plus tard."
+  },
+
+  "auth": {
+    "signIn": {
+      "status": {
+        "fail": "Échec de la connexion",
+        "success": "Connexion réussie",
+        "checkCredentials": "Veuillez vérifier vos identifiants de connexion"
+      },
+      "errors": {
+        "CredentialsSignin": "Vous avez saisi des identifiants incorrects.",
+        "unexpectedError": "Échec de la connexion. Veuillez réessayer plus tard."
+      },
+      "header": "Connexion",
+      "description": "Entrez vos identifiants de connexion.",
+      "email": "Email",
+      "password": "Mot de passe",
+      "submit": "Se connecter",
+      "signingIn": "Connexion en cours...",
+      "forgotPassword": "Mot de passe oublié",
+      "createAccount": "Créer un compte"
+    },
+
+    "register": {
+      "status": {
+        "fail": "Échec de l'inscription",
+        "success": "Inscription réussie",
+        "checkCredentials": "Veuillez vérifier vos identifiants"
+      },
+      "errors": {
+        "credentials": "Identifiants incorrects fournis",
+        "unexpectedError": "Échec de l'inscription. Veuillez réessayer plus tard.",
+        "emailUsernameTaken": "L'email est déjà utilisé. Veuillez en choisir un autre."
+      },
+      "header": "Inscription",
+      "description": "Créez un compte pour accéder au système.",
+      "email": "Adresse e-mail",
+      "password": "Créer un mot de passe",
+      "checkPassword": "Confirmer le mot de passe",
+      "submit": "Créer un compte",
+      "forgotPassword": "Vous avez déjà un compte ? Connectez-vous.",
+      "checkEmail": "Suivez les instructions dans votre email pour confirmer votre adresse email.",
+      "signInLinkLinkDescription": "Vous avez déjà un compte ?",
+      "signInLink": "Se connecter"
+    },
+
+    "changePassword": {
+      "errors": {
+        "invalidCurrentPassword": "Le mot de passe actuel ne correspond pas",
+        "unexpectedError": "Une erreur inattendue s'est produite. Veuillez réessayer plus tard.",
+        "newPasswordSameAsCurrent": "Le nouveau mot de passe doit être différent du mot de passe actuel"
+      },
+      "successfullyChanged": "Mot de passe modifié avec succès",
+      "header": "Changer de mot de passe",
+      "description": "Choisissez un nouveau mot de passe.",
+      "currentPassword": "Mot de passe actuel",
+      "password": "Nouveau mot de passe",
+      "confirmPassword": "Confirmer le nouveau mot de passe",
+      "submit": "Changer le mot de passe"
+    },
+
+    "accountActivation": {
+      "successfullySet": "Compte activé avec succès. Vous pouvez maintenant vous connecter.",
+      "errors": {
+        "incorrectCodeProvided": "Un lien incorrect a été généré pour vous. Contactez le support."
+      },
+      "welcome": "Bienvenue",
+      "activateAccount": "Un nouveau compte a été créé avec l'email {email}.",
+      "invalidLink": "Ce lien n'est pas valide.",
+      "activate": "Activer le compte",
+      "header": "Définir le mot de passe",
+      "description": "Choisissez un mot de passe pour vous connecter.",
+      "submit": "Activer le compte",
+      "password": "Nouveau mot de passe",
+      "confirmPassword": "Confirmer le mot de passe"
+    },
+
+    "resetPassword": {
+      "successfullySet": "Mot de passe modifié avec succès.",
+      "header": "Réinitialiser le mot de passe",
+      "description": "Choisissez un nouveau mot de passe.",
+      "submit": "Définir le mot de passe",
+      "password": "Nouveau mot de passe",
+      "confirmPassword": "Confirmer le mot de passe",
+      "errors": {
+        "incorrectCodeProvided": "Code invalide ou expiré. Veuillez demander une réinitialisation du mot de passe à nouveau."
+      }
+    },
+
+    "forgotPassword": {
+      "passwordChangeEmailSent": "Un email avec les instructions de réinitialisation du mot de passe vous a été envoyé.",
+      "header": "Mot de passe oublié",
+      "description": "Entrez l'email que vous utilisez habituellement pour vous connecter. Nous vous enverrons les instructions pour réinitialiser votre mot de passe.",
+      "email": "Email",
+      "submit": "Récupérer le compte",
+      "errors": {
+        "failedToSendPasswordResetEmail": "Échec de l'envoi de l'email de réinitialisation du mot de passe"
+      }
+    },
+
+    "oauth": {
+      "orContinueWith": "Ou continuez avec",
+      "signingIn": "Connexion en cours...",
+      "signedInSuccessfully": "Connecté avec succès",
+      "redirecting": "Redirection...",
+      "errors": {
+        "signInFailed": "Échec de la connexion OAuth"
+      },
+      "withGithub": "Se connecter avec GitHub"
+    }
+  }
+}

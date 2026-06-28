@@ -1,0 +1,21 @@
+{
+    "collectionName": "components_utilities_text_blocks",
+    "info": {
+        "displayName": "Text Block",
+        "description": "A simple text block with title and description"
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string",
+            "required": true
+        },
+        "description": {
+            "type": "customField",
+            "customField": "plugin::ckeditor5.CKEditor",
+            "options": {
+                "preset": "defaultCkEditor"
+            }
+        }
+    }
+}

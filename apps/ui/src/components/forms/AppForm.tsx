@@ -9,6 +9,7 @@ import {
 } from "react-hook-form"
 
 import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
+import { cn } from "@/lib/styles"
 
 interface Props<T extends FieldValues = FieldValues> {
   readonly form: UseFormReturn<T>
@@ -20,6 +21,7 @@ interface Props<T extends FieldValues = FieldValues> {
   readonly onError?: SubmitErrorHandler<T>
   readonly children: React.ReactNode
   readonly className?: string
+  readonly fieldsetClassName?: string
   readonly id?: string
   readonly disabled?: boolean
 }
@@ -33,6 +35,7 @@ export function AppForm<T extends FieldValues = FieldValues>({
   className,
   id,
   form,
+  fieldsetClassName,
   disabled,
 }: Props<T>) {
   removeThisWhenYouNeedMe("AppForm")
@@ -47,7 +50,10 @@ export function AppForm<T extends FieldValues = FieldValues>({
         id={id}
         noValidate
       >
-        <fieldset disabled={disabled} className="space-y-4">
+        <fieldset
+          disabled={disabled}
+          className={cn("flex w-full flex-col gap-4", fieldsetClassName)}
+        >
           {children}
         </fieldset>
       </form>

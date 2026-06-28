@@ -1,0 +1,107 @@
+{
+  "key": "plugin_content_manager_configuration_components::sections.step",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "documentId",
+      "defaultSortBy": "documentId",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "form1": {
+        "edit": {
+          "label": "form1",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "form1",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "form2": {
+        "edit": {
+          "label": "form2",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "form2",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "steps": {
+        "edit": {
+          "label": "steps",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "steps",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "form1",
+        "form2",
+        "steps"
+      ],
+      "edit": [
+        [
+          {
+            "name": "form1",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "form2",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "steps",
+            "size": 12
+          }
+        ]
+      ]
+    },
+    "uid": "sections.step",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

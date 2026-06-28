@@ -6,7 +6,13 @@ import StrapiPageView from "@/components/layouts/StrapiPageView"
 import { createFallbackPath, debugStaticParams } from "@/lib/build"
 import { isDevelopment } from "@/lib/general-helpers"
 import { getMetadataFromStrapi } from "@/lib/metadata"
-import { fetchAllPages } from "@/lib/strapi-api/content/server"
+import {
+  fetchAllNews,
+  fetchAllPages,
+  fetchNews,
+  fetchNewsByFullPath,
+  fetchNewsRootPage,
+} from "@/lib/strapi-api/content/server"
 
 // Static/ISR page — no access to headers(), cookies(), or searchParams.
 // Use /[locale]/dynamic/[[...rest]] for pages that need runtime context.
@@ -48,13 +54,39 @@ export async function generateStaticParams({
     ]
   }
 
-  const results = await fetchAllPages("api::page.page", locale as Locale)
+  const [results, newsRootPage, newsResults] = await Promise.all([
+    fetchAllPages("api::page.page", locale as Locale),
+    fetchNewsRootPage(locale as Locale),
+    fetchAllNews(locale as Locale),
+  ])
+  const newsArticles = (newsResults?.data ?? []) as {
+    locale?: string | null
+    slug: string
+  }[]
 
-  const params =
-    results?.data.map((page) => ({
-      locale: page.locale as Locale,
-      rest: [page.slug],
-    })) ?? []
+  const pageParams =
+    results?.data.flatMap((page) =>
+      page.fullPath == null
+        ? []
+        : [
+            {
+              locale: page.locale as Locale,
+              rest: page.fullPath.split("/").filter(Boolean),
+            },
+          ]
+    ) ?? []
+
+  const newsRootFullPath = newsRootPage?.fullPath
+
+  const newsParams =
+    newsRootFullPath != null
+      ? newsArticles.map((article) => ({
+          locale: article.locale as Locale,
+          rest: [...newsRootFullPath.split("/").filter(Boolean), article.slug],
+        }))
+      : []
+
+  const params = [...pageParams, ...newsParams]
 
   debugStaticParams(params, "[[...rest]]")
 
@@ -75,7 +107,31 @@ export async function generateMetadata(
 
   const fullPath = ROOT_PAGE_PATH + (params.rest ?? []).join("/")
 
-  return getMetadataFromStrapi({ fullPath, locale })
+  const pageMetadata = await getMetadataFromStrapi({ fullPath, locale })
+
+  if (pageMetadata != null) {
+    return pageMetadata
+  }
+
+  const newsResponse = await fetchNewsByFullPath(fullPath, locale)
+  // eslint-disable-next-line unicorn/prefer-array-find
+  const slug = fullPath.split("/").filter(Boolean).pop()
+
+  if (newsResponse?.data && slug) {
+    const response = await fetchNews(slug, locale)
+    const data = response?.data as {
+      seo?: { metaTitle?: string; metaDescription?: string; keywords?: string }
+      title?: string
+    } | null
+
+    return {
+      title: data?.seo?.metaTitle ?? data?.title ?? "",
+      description: data?.seo?.metaDescription,
+      keywords: data?.seo?.keywords,
+    }
+  }
+
+  return null
 }
 
 export default function StaticStrapiPage(

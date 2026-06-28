@@ -1,82 +1,225 @@
-import type { Locale } from "next-intl"
-import { Fragment, use } from "react"
+import type { Data } from "@repo/strapi-types"
+import { Facebook, Instagram, Linkedin } from "lucide-react"
+import Image from "next/image"
 
 import { Container } from "@/components/elementary/Container"
-import StrapiImageWithLink from "@/components/page-builder/components/utilities/StrapiImageWithLink"
+import { NewsletterForm } from "@/components/elementary/forms/NewsletterForm"
+import { MoveUpRightSVG } from "@/components/elementary/icons"
 import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
+import { Divider } from "@/components/ui/divider"
+import { HtmlContent } from "@/components/ui/html-content"
 import { fetchFooter } from "@/lib/strapi-api/content/server"
-import { cn } from "@/lib/styles"
+import { formatStrapiMediaUrl } from "@/lib/strapi-helpers"
+import type { AppLocale } from "@/types/general"
 
-export function StrapiFooter({ locale }: { readonly locale: Locale }) {
-  const response = use(fetchFooter(locale))
-  const component = response?.data
+export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
+  const response = await fetchFooter(locale)
+  const component =
+    response?.data as Data.ContentType<"api::footer.footer"> | null
 
   if (component == null) {
     return null
   }
 
+  const { newsletter, affiliates, sections, contact, socialMedias } = component
+
+  // 分离 wechat 和其他社交媒体
+  const wechatMedia = socialMedias?.find((social) => social.social === "wechat")
+  const otherSocialMedias = socialMedias?.filter(
+    (social) => social.social !== "wechat"
+  )
+
   return (
-    <div className="w-full border-t bg-white/10 shadow-sm backdrop-blur transition-colors duration-300">
-      <Container className="pt-8 pb-4">
-        <div className="grid grid-cols-1 gap-6 pb-4 sm:grid-cols-[30%_1fr]">
-          <div className="flex flex-col space-y-4">
-            <StrapiImageWithLink
-              component={component.logoImage}
-              imageProps={{ hideWhenMissing: true }}
-            />
+    <footer className="bg-primary-700 w-full text-white">
+      {/* Newsletter Section */}
+      <Container className="flex flex-col gap-8 py-12 md:gap-12 md:py-40">
+        {newsletter && (
+          <div className="flex flex-col justify-start gap-6 md:flex-row md:items-start md:gap-8">
+            <h2 className="flex-1 shrink-0 text-2xl font-semibold md:text-3xl lg:text-5xl">
+              {newsletter.title}
+            </h2>
+            <div className="flex flex-col justify-start md:max-w-md">
+              <NewsletterForm
+                newsletter={{
+                  title: newsletter.title || "",
+                  button: newsletter.button || undefined,
+                  gdpr: newsletter.gdpr || undefined,
+                  placeholder: newsletter.placeholder || undefined,
+                }}
+              />
+              {newsletter.gdpr && (
+                <HtmlContent
+                  html={newsletter.gdpr}
+                  className="mt-3 text-sm text-white [&_a]:underline"
+                />
+              )}
+            </div>
           </div>
+        )}
+        <Divider />
 
-          <div className={cn("grid gap-8")}>
-            {component.sections?.map((section) => (
-              <div className="flex flex-col" key={section.id}>
-                <h3 className="pb-2 text-lg font-bold">{section.title}</h3>
-
-                {section.links?.map((link) => (
-                  <StrapiLink
-                    key={link.id}
-                    component={link}
-                    className="text-primary w-fit text-sm hover:underline"
-                  />
-                ))}
+        {/* Affiliates Section - Horizontal logos with descriptions */}
+        {affiliates && affiliates.length > 0 && (
+          <div className="flex w-full flex-col gap-8 md:flex-row md:flex-wrap md:items-center md:justify-center md:gap-16 lg:py-12">
+            {affiliates.map((affiliate, i) => (
+              <div
+                className="flex w-full flex-col items-start gap-6 md:flex-row md:items-center md:justify-between"
+                key={affiliate.id ?? i}
+              >
+                <div className="flex flex-col gap-3 md:gap-4">
+                  {affiliate.title && (
+                    <div className="text-3xl font-bold md:text-4xl lg:text-5xl">
+                      {affiliate.title}
+                    </div>
+                  )}
+                  {affiliate.description && (
+                    <div className="text-xs whitespace-pre text-white lg:text-base">
+                      {affiliate.description}
+                    </div>
+                  )}
+                </div>
+                <StrapiLink
+                  component={affiliate.logo?.link}
+                  className="group h-auto transition-opacity hover:opacity-80"
+                >
+                  <div className="flex items-center gap-4 md:gap-6">
+                    {affiliate.logo?.image?.media?.url && (
+                      <Image
+                        src={
+                          formatStrapiMediaUrl(
+                            affiliate.logo.image.media.url
+                          ) ?? ""
+                        }
+                        alt={affiliate.title ?? ""}
+                        width={affiliate.logo.image.media.width ?? 120}
+                        height={affiliate.logo.image.media.height ?? 60}
+                        className="w-50 object-contain md:w-60 lg:w-75"
+                      />
+                    )}
+                    <div className="text-primary-700 flex h-10 w-10 items-center justify-center rounded-full bg-white lg:h-12 lg:w-12">
+                      <MoveUpRightSVG className="size-10 lg:size-12" />
+                    </div>
+                  </div>
+                </StrapiLink>
               </div>
             ))}
           </div>
-        </div>
+        )}
 
-        <div className="flex items-center justify-between">
-          <div>
-            {component.copyRight && (
-              <p className="">
-                {component.copyRight.replace(
-                  "{YEAR}",
-                  new Date().getFullYear().toString()
+        {/* Main Footer Content */}
+        <div className="flex flex-col justify-between gap-8 md:flex-row md:gap-12 lg:gap-16">
+          <div className="flex shrink-0 flex-row items-start gap-6 md:flex-col md:gap-4">
+            {/* WeChat QR Code Section */}
+            {wechatMedia && (
+              <div className="relative">
+                {wechatMedia.icon?.url && (
+                  <Image
+                    src={formatStrapiMediaUrl(wechatMedia.icon.url) ?? ""}
+                    alt="WeChat QR Code"
+                    width={wechatMedia.icon?.width ?? 120}
+                    height={wechatMedia.icon?.height ?? 120}
+                    className="aspect-square w-28 rounded-lg object-contain md:w-40"
+                  />
                 )}
-              </p>
+              </div>
+            )}
+
+            {/* Other Social Media Links */}
+            {otherSocialMedias && otherSocialMedias.length > 0 && (
+              <div className="flex items-center gap-4">
+                {otherSocialMedias.map((social, i) => {
+                  const socialIconMap: Record<
+                    string,
+                    typeof Instagram | undefined
+                  > = {
+                    instagram: Instagram,
+                    facebook: Facebook,
+                    linkedin: Linkedin,
+                  }
+                  const SocialIcon = socialIconMap[social.social ?? ""]
+
+                  if (!SocialIcon) return null
+
+                  return (
+                    <div
+                      key={social.id ?? i}
+                      className="flex w-full justify-between"
+                    >
+                      {social.link?.href ? (
+                        <StrapiLink
+                          component={social.link}
+                          className="block p-0 transition-opacity hover:opacity-80"
+                        >
+                          <SocialIcon className="h-6 w-6 text-white" />
+                        </StrapiLink>
+                      ) : (
+                        <SocialIcon className="h-6 w-6 text-white" />
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
             )}
           </div>
 
-          <div className="flex flex-col items-end sm:flex-row sm:items-center sm:space-x-4">
-            {component.links?.map((link, i) => (
-              <Fragment key={link.id}>
-                <StrapiLink
-                  component={link}
-                  className="text-primary relative w-fit text-sm hover:underline"
-                />
-
-                {i < component.links!.length - 1 && (
-                  <span
-                    key={link.id + "_dot"}
-                    className="mx-2 hidden pt-0.5 sm:inline-block"
-                  >
-                    •
-                  </span>
-                )}
-              </Fragment>
+          <div className="grid grid-cols-2 gap-8 lg:flex lg:shrink-0 lg:gap-16">
+            {sections?.map((section, sectionIndex) => (
+              <div
+                key={section.id ?? sectionIndex}
+                className="flex shrink-0 flex-col items-start gap-4 md:gap-12"
+              >
+                <h3 className="min-h-7 shrink-0 text-lg font-semibold whitespace-nowrap md:text-xl">
+                  {section?.title}
+                </h3>
+                <div className="flex flex-col items-start gap-2">
+                  {section.links?.map((link, i) => (
+                    <StrapiLink
+                      key={link.id ?? i}
+                      component={link}
+                      className="p-0 text-sm text-white transition-colors"
+                    />
+                  ))}
+                </div>
+              </div>
             ))}
           </div>
+
+          {/* Contact Section */}
+          {contact && (
+            <div className="flex flex-col items-start gap-4 md:gap-12">
+              <h3 className="min-h-7 shrink-0 text-lg font-semibold whitespace-nowrap md:text-xl">
+                {contact.title}
+              </h3>
+              <div className="flex flex-col items-start gap-2">
+                {contact.phone && (
+                  <StrapiLink
+                    component={{
+                      id: "contact-phone",
+                      href: `tel:${contact.phone}`,
+                      label: contact.phone,
+                    }}
+                    className="p-0 text-sm text-white transition-colors"
+                  />
+                )}
+                {contact.email && (
+                  <StrapiLink
+                    component={{
+                      id: "contact-email",
+                      href: `mailto:${contact.email}`,
+                      label: contact.email,
+                    }}
+                    className="p-0 text-sm text-white transition-colors"
+                  />
+                )}
+                {contact.address && (
+                  <p className="py-1 whitespace-pre-line">{contact.address}</p>
+                )}
+              </div>
+            </div>
+          )}
         </div>
       </Container>
-    </div>
+    </footer>
   )
 }
 

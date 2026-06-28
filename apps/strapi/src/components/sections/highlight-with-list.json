@@ -1,0 +1,37 @@
+{
+    "collectionName": "components_sections_highlight_with_lists",
+    "info": {
+        "displayName": "Highlight with List",
+        "description": "A section with a highlighted card on the left and text list on the right"
+    },
+    "options": {},
+    "attributes": {
+        "highlightCard": {
+            "type": "component",
+            "component": "utilities.highlight-card",
+            "repeatable": false,
+            "required": true
+        },
+        "listItems": {
+            "type": "component",
+            "component": "utilities.text-block",
+            "repeatable": true
+        },
+        "enableBgColor": {
+            "type": "boolean",
+            "default": false
+        },
+        "bgColor": {
+            "type": "customField",
+            "customField": "plugin::color-picker.color",
+            "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+        },
+        "backgroundImage": {
+            "type": "media",
+            "multiple": false,
+            "allowedTypes": [
+                "images"
+            ]
+        }
+    }
+}

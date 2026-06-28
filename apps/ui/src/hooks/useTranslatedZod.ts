@@ -11,8 +11,21 @@ import type { z } from "zod"
 
 function resolveSizeMessage(
   prefix: "too_small" | "too_big",
-  issue: { origin: string; inclusive?: boolean; exact?: boolean }
+  issue: {
+    origin: string
+    inclusive?: boolean
+    exact?: boolean
+    minimum?: number | bigint
+  }
 ) {
+  if (
+    prefix === "too_small" &&
+    issue.origin === "string" &&
+    (issue.minimum === 1 || issue.minimum === 1n)
+  ) {
+    return "required"
+  }
+
   const sizeKey = issue.inclusive === true ? "inclusive" : "not_inclusive"
 
   if (issue.origin === "string") {
@@ -74,7 +87,10 @@ export function useTranslatedZod(zod: typeof z) {
           message = resolveSizeMessage("too_big", issue)
           break
         case "invalid_format":
-          message = "invalid_string.regex"
+          message =
+            issue.format === "email"
+              ? "invalid_string.email"
+              : "invalid_string.regex"
           break
         case "invalid_value":
           normalizedValues.expected = issue.values?.join(", ")

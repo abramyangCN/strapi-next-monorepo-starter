@@ -18,7 +18,6 @@ import {
   SelectTrigger,
   SelectValue,
 } from "@/components/ui/select"
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
 import { cn } from "@/lib/styles"
 
 type Props = {
@@ -41,8 +40,6 @@ export function AppSelect({
   description,
   ...nativeProps
 }: Props) {
-  removeThisWhenYouNeedMe("AppSelect")
-
   const { control } = useFormContext()
 
   return (
@@ -67,18 +64,25 @@ export function AppSelect({
             <FormControl>
               <SelectTrigger
                 className={cn(
-                  "w-full",
-                  { "border-red-600": fieldState.invalid },
+                  "h-14! w-full rounded-none! border-gray-200 bg-white px-4",
+                  {
+                    "border-secondary-400": fieldState.invalid,
+                    "text-[#888888]": !field.value,
+                  },
                   fieldClassName
                 )}
                 tabIndex={nativeProps.tabIndex}
-                onBlur={field.onBlur} // eslint-disable-line react/jsx-handler-names -- react-hook-form API
+                onBlur={field.onBlur}
               >
                 <SelectValue placeholder={placeholder} />
               </SelectTrigger>
             </FormControl>
 
-            <SelectContent className={cn("max-h-40 overflow-y-auto")}>
+            <SelectContent
+              className={cn(
+                "max-h-40 overflow-y-auto rounded-none! bg-white drop-shadow-xl"
+              )}
+            >
               {options.map((option) => (
                 <SelectItem value={option.value} key={option.value}>
                   {option.label}
@@ -89,7 +93,7 @@ export function AppSelect({
 
           <AppFormDescription description={description} />
 
-          <FormMessage />
+          <FormMessage className="text-secondary-400" />
         </FormItem>
       )}
     />

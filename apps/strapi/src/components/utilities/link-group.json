@@ -1,0 +1,15 @@
+{
+  "collectionName": "components_utilities_link_groups",
+  "info": {
+    "displayName": "LinkGroup"
+  },
+  "options": {},
+  "attributes": {
+    "links": {
+      "type": "component",
+      "component": "utilities.link",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

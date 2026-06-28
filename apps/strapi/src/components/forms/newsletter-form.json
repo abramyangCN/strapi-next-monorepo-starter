@@ -12,7 +12,17 @@
       "type": "text"
     },
     "gdpr": {
-      "type": "component",
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultCkEditor"
+      }
+    },
+    "placeholder": {
+      "type": "string"
+    },
+    "button": {
+      "type": "string",
       "repeatable": false,
       "component": "utilities.link"
     }

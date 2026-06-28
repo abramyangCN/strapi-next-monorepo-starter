@@ -1,0 +1,169 @@
+import type { Data } from "@repo/strapi-types"
+import Image from "next/image"
+
+import { Container } from "@/components/elementary/Container"
+import { MoveRightSVG } from "@/components/elementary/icons"
+import { Section } from "@/components/elementary/Section"
+import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
+import HtmlContent from "@/components/ui/html-content"
+import { cn } from "@/lib/styles"
+
+type GridImageComponent = {
+  style?: string
+  columns?: "2" | "3" | "4"
+  title?: string
+  description?: string
+  enableBgColor?: boolean
+  bgColor?: string
+  link?: Data.Component<"utilities.link"> | null
+  items: {
+    id?: number | string
+    title?: string
+    media?: { url: string; alternativeText?: string }
+    link?: Data.Component<"utilities.link"> | null
+  }[]
+}
+
+export default function StrapiGridImage({
+  component,
+}: {
+  readonly component: GridImageComponent
+}) {
+  if (!component || !component.items || component.items.length === 0) {
+    return null
+  }
+
+  const style = component.style || "left"
+  const columns = component.columns || "4"
+  const ctaGridClass =
+    columns === "2"
+      ? "aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d]"
+      : columns === "3"
+        ? "col-span-1 row-span-1 aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d]"
+        : "col-span-1 row-span-1 aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d] lg:col-start-4 lg:row-start-3"
+
+  // Style: Left or Right - Card + Grid layout
+  return (
+    <Section
+      className={cn(
+        style === "left" && "lg:mb-8",
+        style === "right" && "lg:mt-8",
+        component.enableBgColor && component.bgColor ? "" : undefined
+      )}
+      style={{
+        backgroundColor:
+          component.enableBgColor && component.bgColor
+            ? component.bgColor
+            : undefined,
+      }}
+    >
+      <Container>
+        <div
+          className={cn(
+            "flex flex-col items-start gap-8 lg:flex-row lg:gap-12",
+            style === "left" && "lg:items-end"
+          )}
+        >
+          {/* Text Card - Left side for 'left' style */}
+          {style === "left" && (
+            <div className="relative flex flex-col items-end justify-center lg:w-5/12">
+              <div className="bg-[#1a4d5c] px-6 py-10 text-white sm:px-8 sm:py-16 lg:absolute lg:-bottom-24 lg:px-12 lg:py-20">
+                {component.title && <HtmlContent html={component.title} />}
+
+                {component.description && (
+                  <HtmlContent html={component.description} />
+                )}
+              </div>
+            </div>
+          )}
+
+          {/* Grid Items */}
+          <div className="w-full lg:w-7/12">
+            <div
+              className={cn(
+                "grid gap-2 sm:gap-3 lg:gap-4",
+                columns === "2"
+                  ? "grid-cols-2"
+                  : columns === "3"
+                    ? "grid-cols-2 sm:grid-cols-3"
+                    : "grid-cols-3 md:grid-cols-4 lg:grid-cols-5"
+              )}
+            >
+              {component.items.map((item, index) => (
+                <div
+                  key={item.id ?? index}
+                  className="group relative aspect-square overflow-hidden bg-white shadow-sm transition-all hover:shadow-lg active:scale-95"
+                >
+                  {item.media && (
+                    <Image
+                      src={item.media.url}
+                      alt={item.media.alternativeText || item.title || ""}
+                      fill
+                      className="object-cover"
+                    />
+                  )}
+                  {item.title && (
+                    <div className="absolute inset-0 flex items-center justify-center bg-black/40 p-2 opacity-100 transition-opacity sm:opacity-0 sm:group-hover:opacity-100">
+                      <div className="flex flex-col items-center gap-3">
+                        <p className="text-center text-xs text-white sm:text-sm">
+                          {item.title}
+                        </p>
+                        {item.link?.label && (
+                          <span className="inline-flex items-center gap-2 border border-white px-3 py-1 text-[10px] font-medium tracking-wider text-white uppercase sm:text-xs">
+                            {item.link.label}
+                            <MoveRightSVG className="size-4" />
+                          </span>
+                        )}
+                      </div>
+                    </div>
+                  )}
+
+                  {item.link && (
+                    <StrapiLink
+                      component={item.link}
+                      className="absolute inset-0 z-10 h-auto"
+                    >
+                      <span className="sr-only">
+                        {item.link.label || item.title || "Open item"}
+                      </span>
+                    </StrapiLink>
+                  )}
+                </div>
+              ))}
+
+              {/* CTA Button as last grid item */}
+              {component.link && (
+                <div className={ctaGridClass}>
+                  <StrapiLink
+                    component={component.link}
+                    className="flex h-full w-full flex-col items-end gap-3 px-6 py-8 text-center sm:gap-4 sm:px-10 sm:py-12 lg:px-14 lg:py-16"
+                  >
+                    <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full border border-white transition-transform group-hover:translate-x-1 group-hover:opacity-30 sm:h-14 sm:w-14 lg:h-16 lg:w-16">
+                      <MoveRightSVG className="size-6 lg:size-8" />
+                    </div>
+                    <span className="text-base font-light tracking-wider uppercase sm:text-lg lg:text-xl">
+                      {component.link.label || "Get a Quote"}
+                    </span>
+                  </StrapiLink>
+                </div>
+              )}
+            </div>
+          </div>
+
+          {/* Text Card - Right side for 'right' style */}
+          {style === "right" && (
+            <div className="relative order-first flex flex-col justify-center lg:order-0 lg:w-5/12">
+              <div className="bg-[#1a4d5c] px-6 py-10 text-white sm:px-8 sm:py-16 lg:absolute lg:-top-24 lg:px-12 lg:py-20">
+                {component.title && <HtmlContent html={component.title} />}
+
+                {component.description && (
+                  <HtmlContent html={component.description} />
+                )}
+              </div>
+            </div>
+          )}
+        </div>
+      </Container>
+    </Section>
+  )
+}

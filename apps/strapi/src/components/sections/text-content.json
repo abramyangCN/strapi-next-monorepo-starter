@@ -1,0 +1,37 @@
+{
+    "collectionName": "components_sections_text_contents",
+    "info": {
+        "displayName": "Text Content",
+        "description": "A section with rich text content only"
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "content": {
+            "type": "customField",
+            "customField": "plugin::ckeditor5.CKEditor",
+            "options": {
+                "preset": "defaultCkEditor"
+            },
+            "required": true
+        },
+        "backgroundImage": {
+            "type": "media",
+            "multiple": false,
+            "allowedTypes": [
+                "images"
+            ]
+        },
+        "enableBgColor": {
+            "type": "boolean",
+            "default": false
+        },
+        "bgColor": {
+            "type": "customField",
+            "customField": "plugin::color-picker.color",
+            "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+        }
+    }
+}

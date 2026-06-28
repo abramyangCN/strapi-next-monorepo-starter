@@ -5,10 +5,10 @@
       "bulkable": true,
       "filterable": true,
       "searchable": true,
-      "pageSize": 20,
+      "pageSize": 10,
       "mainField": "source",
-      "defaultSortBy": "id",
-      "defaultSortOrder": "DESC"
+      "defaultSortBy": "source",
+      "defaultSortOrder": "ASC"
     },
     "metadatas": {
       "id": {
@@ -57,21 +57,6 @@
         },
         "list": {
           "label": "permanent",
-          "searchable": true,
-          "sortable": true
-        }
-      },
-      "page": {
-        "edit": {
-          "label": "page",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true,
-          "mainField": "title"
-        },
-        "list": {
-          "label": "page",
           "searchable": true,
           "sortable": true
         }
@@ -133,9 +118,23 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
+      "list": [
+        "id",
+        "source",
+        "destination",
+        "permanent"
+      ],
       "edit": [
         [
           {
@@ -151,19 +150,8 @@
           {
             "name": "permanent",
             "size": 4
-          },
-          {
-            "name": "page",
-            "size": 6
           }
         ]
-      ],
-      "list": [
-        "id",
-        "source",
-        "destination",
-        "permanent",
-        "createdAt"
       ]
     },
     "uid": "api::redirect.redirect"
