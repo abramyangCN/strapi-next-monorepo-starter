@@ -166,7 +166,7 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
             {sections?.map((section, sectionIndex) => (
               <div
                 key={section.id ?? sectionIndex}
-                className="flex shrink-0 flex-col items-start gap-4 md:gap-12"
+                className="flex shrink-0 flex-col items-start gap-4 md:gap-6"
               >
                 <h3 className="min-h-7 shrink-0 text-lg font-semibold whitespace-nowrap md:text-xl">
                   {section?.title}
@@ -186,7 +186,7 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
 
           {/* Contact Section */}
           {contact && (
-            <div className="flex flex-col items-start gap-4 md:gap-12">
+            <div className="flex flex-col items-start gap-4 md:gap-6">
               <h3 className="min-h-7 shrink-0 text-lg font-semibold whitespace-nowrap md:text-xl">
                 {contact.title}
               </h3>
