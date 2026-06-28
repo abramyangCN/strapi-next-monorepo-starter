@@ -40,7 +40,7 @@ export default function StrapiGridImage({
       ? "aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d]"
       : columns === "3"
         ? "col-span-1 row-span-1 aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d]"
-        : "col-span-1 row-span-1 aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d] lg:col-start-4 lg:row-start-3"
+        : "col-span-1 row-span-1 aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d] lg:col-start-4 lg:row-start-3 lg:col-span-2 lg:row-span-2"
 
   // Style: Left or Right - Card + Grid layout
   return (
