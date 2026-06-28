@@ -14,6 +14,10 @@ export default ({ env }) => {
       config: uploadConfig,
     },
 
+    "collection-exporter": {
+      enabled: true,
+    },
+
     "config-sync": {
       enabled: true,
     },
