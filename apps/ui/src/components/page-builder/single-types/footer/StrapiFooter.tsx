@@ -108,7 +108,7 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
 
         {/* Main Footer Content */}
         <div className="flex flex-col justify-between gap-8 md:flex-row md:gap-12 lg:gap-16">
-          <div className="flex flex-row items-start gap-6 md:flex-col md:gap-4">
+          <div className="flex shrink-0 flex-row items-start gap-6 md:flex-col md:gap-4">
             {/* WeChat QR Code Section */}
             {wechatMedia && (
               <div className="relative">
@@ -186,29 +186,33 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
 
           {/* Contact Section */}
           {contact && (
-            <div className="flex flex-col gap-4 lg:gap-16">
-              <h3 className="text-lg font-semibold md:text-xl">
+            <div className="flex flex-col items-start gap-4 md:gap-12">
+              <h3 className="min-h-7 shrink-0 text-lg font-semibold whitespace-nowrap md:text-xl">
                 {contact.title}
               </h3>
-              <div className="flex flex-col gap-2 text-sm md:text-base">
+              <div className="flex flex-col items-start gap-2">
                 {contact.phone && (
-                  <a
-                    href={`tel:${contact.phone}`}
-                    className="hover:text-secondary-400 h-9"
-                  >
-                    {contact.phone}
-                  </a>
+                  <StrapiLink
+                    component={{
+                      id: "contact-phone",
+                      href: `tel:${contact.phone}`,
+                      label: contact.phone,
+                    }}
+                    className="p-0 text-sm text-white transition-colors"
+                  />
                 )}
                 {contact.email && (
-                  <a
-                    href={`mailto:${contact.email}`}
-                    className="hover:text-secondary-400 h-9"
-                  >
-                    {contact.email}
-                  </a>
+                  <StrapiLink
+                    component={{
+                      id: "contact-email",
+                      href: `mailto:${contact.email}`,
+                      label: contact.email,
+                    }}
+                    className="p-0 text-sm text-white transition-colors"
+                  />
                 )}
                 {contact.address && (
-                  <p className="whitespace-pre-line">{contact.address}</p>
+                  <p className="py-1 whitespace-pre-line">{contact.address}</p>
                 )}
               </div>
             </div>

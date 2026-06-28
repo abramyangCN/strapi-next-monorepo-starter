@@ -73,16 +73,21 @@ export function MobileNav({
                   key={link.href ?? link.label}
                   className="flex flex-col items-start"
                 >
-                  <span className="px-4 py-2 text-base font-semibold text-white">
+                  <AppLink
+                    href={link.href ?? "/"}
+                    onClick={closeMenu}
+                    className="px-4 py-2 text-base font-semibold text-white hover:text-white/80"
+                    target={link.newTab ? "_blank" : undefined}
+                  >
                     {link.label}
-                  </span>
-                  <div className="flex flex-col items-start">
+                  </AppLink>
+                  <div className="flex flex-col items-start pl-4">
                     {link.links?.map((subLink) => (
                       <AppLink
                         key={subLink.href ?? subLink.label}
                         href={subLink.href ?? "/"}
                         onClick={closeMenu}
-                        className="text-sm font-medium text-white/80 transition-colors hover:text-white/80"
+                        className="py-1.5 text-sm font-medium text-white/80 transition-colors hover:text-white/60"
                         target={subLink.newTab ? "_blank" : undefined}
                       >
                         {subLink.label}

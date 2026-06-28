@@ -19,9 +19,10 @@ interface FeatureCardProps {
 function FeatureCard({ card }: FeatureCardProps) {
   return (
     <div className="border-primary-700 flex h-full flex-col gap-3 border bg-white p-4 shadow-lg transition-shadow hover:shadow-xl sm:gap-4 sm:p-6 md:p-8">
-      <h3 className="text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl">
+      {/* <h3 className="text-3xl font-bold text-gray-900 sm:text-4xl md:text-5xl lg:text-6xl">
         {card.title}
-      </h3>
+      </h3> */}
+      <HtmlContent html={card.title} />
       {card.description && (
         <HtmlContent
           html={card.description}

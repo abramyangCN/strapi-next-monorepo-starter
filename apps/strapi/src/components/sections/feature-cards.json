@@ -7,10 +7,18 @@
   "options": {},
   "attributes": {
     "title": {
-      "type": "string"
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultCkEditor"
+      }
     },
     "description": {
-      "type": "text"
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultCkEditor"
+      }
     },
     "cards": {
       "type": "component",

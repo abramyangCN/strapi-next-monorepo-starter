@@ -5,7 +5,7 @@ import { Container } from "@/components/elementary/Container"
 import { MoveRightSVG } from "@/components/elementary/icons"
 import { Section } from "@/components/elementary/Section"
 import StrapiLink from "@/components/page-builder/components/utilities/StrapiLink"
-import { StrapiSectionDescription } from "@/components/page-builder/components/utilities/StrapiSectionHeader"
+import HtmlContent from "@/components/ui/html-content"
 import { cn } from "@/lib/styles"
 
 type GridImageComponent = {
@@ -40,7 +40,7 @@ export default function StrapiGridImage({
       ? "aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d]"
       : columns === "3"
         ? "col-span-1 row-span-1 aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d]"
-        : "col-span-2 row-span-2 aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d] lg:col-start-4 lg:row-start-3"
+        : "col-span-1 row-span-1 aspect-square flex items-end justify-end bg-[#5fb89a] text-white transition-colors hover:bg-[#4fa688] active:bg-[#4a9a7d] lg:col-start-4 lg:row-start-3"
 
   // Style: Left or Right - Card + Grid layout
   return (
@@ -68,18 +68,10 @@ export default function StrapiGridImage({
           {style === "left" && (
             <div className="relative flex flex-col items-end justify-center lg:w-5/12">
               <div className="bg-[#1a4d5c] px-6 py-10 text-white sm:px-8 sm:py-16 lg:absolute lg:-bottom-24 lg:px-12 lg:py-20">
-                {component.title && (
-                  <h2 className="mb-6 text-4xl font-bold lg:text-5xl">
-                    {component.title}
-                  </h2>
-                )}
+                {component.title && <HtmlContent html={component.title} />}
+
                 {component.description && (
-                  <div className="prose prose-invert text-base leading-relaxed">
-                    <StrapiSectionDescription
-                      description={component.description}
-                      className="text-white"
-                    />
-                  </div>
+                  <HtmlContent html={component.description} />
                 )}
               </div>
             </div>
@@ -160,20 +152,12 @@ export default function StrapiGridImage({
 
           {/* Text Card - Right side for 'right' style */}
           {style === "right" && (
-            <div className="relative order-first flex flex-col justify-center lg:order-none lg:w-5/12">
+            <div className="relative order-first flex flex-col justify-center lg:order-0 lg:w-5/12">
               <div className="bg-[#1a4d5c] px-6 py-10 text-white sm:px-8 sm:py-16 lg:absolute lg:-top-24 lg:px-12 lg:py-20">
-                {component.title && (
-                  <h2 className="mb-6 text-4xl font-bold lg:text-5xl">
-                    {component.title}
-                  </h2>
-                )}
+                {component.title && <HtmlContent html={component.title} />}
+
                 {component.description && (
-                  <div className="prose prose-invert text-base leading-relaxed">
-                    <StrapiSectionDescription
-                      description={component.description}
-                      className="text-white"
-                    />
-                  </div>
+                  <HtmlContent html={component.description} />
                 )}
               </div>
             </div>
