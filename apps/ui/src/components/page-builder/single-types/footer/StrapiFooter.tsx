@@ -171,7 +171,7 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
                 <h3 className="min-h-7 shrink-0 text-lg font-semibold whitespace-nowrap md:text-xl">
                   {section?.title}
                 </h3>
-                <div className="flex flex-col items-start gap-1">
+                <div className="flex flex-col items-start">
                   {section.links?.map((link, i) => (
                     <StrapiLink
                       key={link.id ?? i}
@@ -190,7 +190,7 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
               <h3 className="min-h-7 shrink-0 text-lg font-semibold whitespace-nowrap md:text-xl">
                 {contact.title}
               </h3>
-              <div className="flex flex-col items-start gap-1">
+              <div className="flex flex-col items-start">
                 {contact.phone && (
                   <StrapiLink
                     component={{
