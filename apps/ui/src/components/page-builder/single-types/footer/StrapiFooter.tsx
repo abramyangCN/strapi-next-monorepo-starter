@@ -212,7 +212,9 @@ export async function StrapiFooter({ locale }: { readonly locale: AppLocale }) {
                   />
                 )}
                 {contact.address && (
-                  <p className="py-1 whitespace-pre-line">{contact.address}</p>
+                  <p className="py-1 text-sm font-medium whitespace-pre-line text-white transition-colors">
+                    {contact.address}
+                  </p>
                 )}
               </div>
             </div>

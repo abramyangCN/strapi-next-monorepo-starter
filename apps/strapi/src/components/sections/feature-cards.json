@@ -23,8 +23,7 @@
     "cards": {
       "type": "component",
       "component": "utilities.feature-card",
-      "repeatable": true,
-      "required": true
+      "repeatable": true
     },
     "columnCount": {
       "type": "enumeration",
