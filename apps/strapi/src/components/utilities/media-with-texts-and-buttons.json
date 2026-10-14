@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_utilities_media_with_texts_and_buttons",
+  "info": {
+    "displayName": "MediaWithTextsAndButtons"
+  },
+  "options": {},
+  "attributes": {
+    "media": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files",
+        "videos",
+        "audios"
+      ]
+    },
+    "title": {
+      "type": "text"
+    },
+    "description": {
+      "type": "text"
+    },
+    "buttons": {
+      "type": "component",
+      "component": "utilities.button",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

@@ -1,4 +1,5 @@
 import { NextIntlClientProvider } from "next-intl"
+import { getMessages } from "next-intl/server"
 import type React from "react"
 
 import { setupLibraries } from "@/lib/general-helpers"
@@ -11,5 +12,11 @@ interface Props {
 }
 
 export async function ServerProviders({ children }: Props) {
-  return <NextIntlClientProvider>{children}</NextIntlClientProvider>
+  const messages = await getMessages()
+
+  return (
+    <NextIntlClientProvider messages={messages}>
+      {children}
+    </NextIntlClientProvider>
+  )
 }

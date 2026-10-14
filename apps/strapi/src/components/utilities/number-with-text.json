@@ -1,0 +1,16 @@
+{
+  "collectionName": "components_utilities_number_with_texts",
+  "info": {
+    "displayName": "NumberWithText"
+  },
+  "options": {},
+  "attributes": {
+    "number": {
+      "type": "string"
+    },
+    "title": {
+      "type": "string"
+    }
+  },
+  "config": {}
+}

@@ -31,6 +31,7 @@
     "@notum-cz/strapi-plugin-tiptap-editor": "^1.0.1",
     "@repo/design-system": "workspace:*",
     "@repo/shared-data": "workspace:*",
+    "@strapi/data-transfer": "5.36.0",
     "@strapi/database": "5.36.0",
     "@strapi/design-system": "2.1.2",
     "@strapi/plugin-color-picker": "5.36.0",
@@ -50,7 +51,9 @@
     "react": "^18.0.0",
     "react-dom": "^18.0.0",
     "react-router-dom": "^6.0.0",
+    "strapi-plugin-collection-exporter": "^1.2.0",
     "strapi-plugin-config-sync": "2.1.0",
+    "strapi-provider-upload-oss": "^0.2.1",
     "styled-components": "^6.0.0",
     "vitest": "^4.0.18"
   },

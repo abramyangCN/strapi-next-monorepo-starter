@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_elements_office_locations",
+  "info": {
+    "displayName": "OfficeLocation",
+    "description": "Office location with image, name and address"
+  },
+  "options": {},
+  "attributes": {
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "address": {
+      "type": "text",
+      "required": true
+    },
+    "location": {
+      "type": "string"
+    }
+  }
+}

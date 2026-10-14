@@ -1,0 +1,181 @@
+{
+  "key": "plugin_content_manager_configuration_components::sections.feature-cards",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "title",
+      "defaultSortBy": "title",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "title",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "description": {
+        "edit": {
+          "label": "description",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "description",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "cards": {
+        "edit": {
+          "label": "cards",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "cards",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "columnCount": {
+        "edit": {
+          "label": "columnCount",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "columnCount",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "enableBgColor": {
+        "edit": {
+          "label": "enableBgColor",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "enableBgColor",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "bgColor": {
+        "edit": {
+          "label": "bgColor",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "bgColor",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "backgroundImage": {
+        "edit": {
+          "label": "backgroundImage",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "backgroundImage",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "title",
+        "description",
+        "cards"
+      ],
+      "edit": [
+        [
+          {
+            "name": "title",
+            "size": 6
+          },
+          {
+            "name": "description",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "cards",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "columnCount",
+            "size": 6
+          },
+          {
+            "name": "enableBgColor",
+            "size": 4
+          }
+        ],
+        [
+          {
+            "name": "bgColor",
+            "size": 6
+          },
+          {
+            "name": "backgroundImage",
+            "size": 6
+          }
+        ]
+      ]
+    },
+    "uid": "sections.feature-cards",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

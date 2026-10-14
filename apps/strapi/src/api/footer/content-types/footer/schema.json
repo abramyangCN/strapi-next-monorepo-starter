@@ -16,43 +16,55 @@
     }
   },
   "attributes": {
+    "newsletter": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "forms.newsletter-form",
+      "repeatable": false
+    },
+    "affiliates": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "elements.footer-affiliate",
+      "repeatable": true
+    },
     "sections": {
       "type": "component",
-      "repeatable": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "elements.footer-item"
+      "component": "elements.footer-item",
+      "repeatable": true
     },
-    "links": {
+    "contact": {
       "type": "component",
-      "repeatable": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "utilities.link"
+      "component": "elements.footer-contact",
+      "repeatable": false
     },
-    "copyRight": {
-      "pluginOptions": {
-        "i18n": {
-          "localized": true
-        }
-      },
-      "type": "string"
-    },
-    "logoImage": {
+    "socialMedias": {
       "type": "component",
-      "repeatable": false,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
       },
-      "component": "utilities.image-with-link"
+      "component": "elements.social-media",
+      "repeatable": true
     }
   }
 }

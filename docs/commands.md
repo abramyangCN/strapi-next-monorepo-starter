@@ -50,3 +50,36 @@ pnpm tests:playwright:e2e:test              # Playwright E2E tests
 pnpm tests:playwright:e2e:test:interactive  # Playwright UI mode
 pnpm tests:playwright:axe                   # Accessibility tests (axe-core)
 ```
+
+## Deployment Helper
+
+```bash
+DEPLOY_SERVER=user@host ./scripts/deploy-shantec.sh all
+```
+
+This keeps a full git checkout on the server at `~/shantec/repo`, updates it from the configured branch, then syncs local build artifacts (`.next`, `dist`, shared package builds) into that repo before restarting the apps.
+
+To build and deploy with env files stored outside the repository:
+
+```bash
+ENV_SOURCE_DIR=~/.deploy-secrets/shantec \
+DEPLOY_SERVER=user@host \
+./scripts/deploy-shantec.sh all --sync-env
+```
+
+Expected layout:
+
+```bash
+~/.deploy-secrets/shantec/ui/.env.local
+~/.deploy-secrets/shantec/strapi/.env
+```
+
+Optional overrides:
+
+```bash
+REPO_URL=git@github.com:owner/repo.git
+DEPLOY_BRANCH=develop
+REMOTE_REPO_DIR=shantec/repo
+```
+
+Use `--skip-build`, `--skip-restart`, or `--no-install` when needed.

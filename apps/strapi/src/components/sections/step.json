@@ -1,0 +1,25 @@
+{
+  "collectionName": "components_sections_steps",
+  "info": {
+    "displayName": "Step"
+  },
+  "options": {},
+  "attributes": {
+    "form1": {
+      "type": "component",
+      "component": "utilities.link",
+      "repeatable": false
+    },
+    "form2": {
+      "type": "component",
+      "component": "utilities.link",
+      "repeatable": false
+    },
+    "steps": {
+      "type": "component",
+      "component": "utilities.text-with-number",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

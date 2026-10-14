@@ -2,30 +2,22 @@ import type { Data } from "@repo/strapi-types"
 
 import { Container } from "@/components/elementary/Container"
 import { ContactForm } from "@/components/elementary/forms/ContactForm"
-import { Typography } from "@/components/typography"
-import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
 
 export function StrapiContactForm({
   component,
 }: {
   readonly component: Data.Component<"forms.contact-form">
 }) {
-  removeThisWhenYouNeedMe("StrapiContactForm")
-
   return (
     <div className="bg-white" id="form-section">
-      <Container className="flex flex-col gap-10 lg:flex-row lg:gap-40">
-        <div className="flex flex-1">
-          <div className="flex max-w-[400px] flex-col gap-10">
-            {component.title && (
-              <Typography tag="h3">{component.title}</Typography>
-            )}
-            {component.description && (
-              <Typography>{component.description}</Typography>
-            )}
-          </div>
-        </div>
-        <div className="flex flex-1">
+      <Container className="grid grid-cols-12">
+        <div className="col-span-12 flex flex-col gap-8 bg-white p-10 drop-shadow-xl lg:col-span-8 lg:col-start-3">
+          {component.title && (
+            <div
+              className="text-5xl"
+              dangerouslySetInnerHTML={{ __html: component.title }}
+            />
+          )}
           <ContactForm
             gdpr={{
               href: component.gdpr?.href ?? undefined,

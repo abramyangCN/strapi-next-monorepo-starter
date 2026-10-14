@@ -1,0 +1,34 @@
+{
+    "collectionName": "components_utilities_highlight_cards",
+    "info": {
+        "displayName": "Highlight Card",
+        "description": "A highlighted card with title, description and button"
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "string"
+        },
+        "description": {
+            "type": "customField",
+            "customField": "plugin::ckeditor5.CKEditor",
+            "options": {
+                "preset": "defaultCkEditor"
+            }
+        },
+        "button": {
+            "type": "component",
+            "component": "utilities.link",
+            "repeatable": false
+        },
+        "enableCardBgColor": {
+            "type": "boolean",
+            "default": false
+        },
+        "cardBgColor": {
+            "type": "customField",
+            "customField": "plugin::color-picker.color",
+            "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+        }
+    }
+}

@@ -60,6 +60,42 @@
           "searchable": false,
           "sortable": false
         }
+      },
+      "placeholder": {
+        "edit": {
+          "label": "placeholder",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "placeholder",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "button": {
+        "edit": {
+          "label": "button",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "button",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
@@ -67,7 +103,7 @@
         "id",
         "title",
         "description",
-        "gdpr"
+        "placeholder"
       ],
       "edit": [
         [
@@ -84,6 +120,16 @@
           {
             "name": "gdpr",
             "size": 12
+          }
+        ],
+        [
+          {
+            "name": "placeholder",
+            "size": 6
+          },
+          {
+            "name": "button",
+            "size": 6
           }
         ]
       ]

@@ -430,6 +430,51 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   }
 }
 
+export interface ApiContactContact extends Struct.CollectionTypeSchema {
+  collectionName: "contacts"
+  info: {
+    description: "Contact form submissions"
+    displayName: "Contact"
+    pluralName: "contacts"
+    singularName: "contact"
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    company: Schema.Attribute.String & Schema.Attribute.Required
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    email: Schema.Attribute.Email & Schema.Attribute.Required
+    firstName: Schema.Attribute.String & Schema.Attribute.Required
+    inquiryType: Schema.Attribute.Enumeration<
+      [
+        "general-inquiry",
+        "technical-support",
+        "quotation-request",
+        "partnership",
+        "other",
+      ]
+    > &
+      Schema.Attribute.Required
+    jobTitle: Schema.Attribute.String
+    lastName: Schema.Attribute.String & Schema.Attribute.Required
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::contact.contact"
+    > &
+      Schema.Attribute.Private
+    message: Schema.Attribute.Text & Schema.Attribute.Required
+    phone: Schema.Attribute.String & Schema.Attribute.Required
+    publishedAt: Schema.Attribute.DateTime
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
 export interface ApiFooterFooter extends Struct.SingleTypeSchema {
   collectionName: "footers"
   info: {
@@ -447,7 +492,13 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
     }
   }
   attributes: {
-    copyRight: Schema.Attribute.String &
+    affiliates: Schema.Attribute.Component<"elements.footer-affiliate", true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    contact: Schema.Attribute.Component<"elements.footer-contact", false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true
@@ -456,15 +507,9 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
-    links: Schema.Attribute.Component<"utilities.link", true> &
-      Schema.Attribute.SetPluginOptions<{
-        i18n: {
-          localized: true
-        }
-      }>
     locale: Schema.Attribute.String
     localizations: Schema.Attribute.Relation<"oneToMany", "api::footer.footer">
-    logoImage: Schema.Attribute.Component<"utilities.image-with-link", false> &
+    newsletter: Schema.Attribute.Component<"forms.newsletter-form", false> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true
@@ -472,6 +517,12 @@ export interface ApiFooterFooter extends Struct.SingleTypeSchema {
       }>
     publishedAt: Schema.Attribute.DateTime
     sections: Schema.Attribute.Component<"elements.footer-item", true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    socialMedias: Schema.Attribute.Component<"elements.social-media", true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true
@@ -543,7 +594,7 @@ export interface ApiNavbarNavbar extends Struct.SingleTypeSchema {
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
-    links: Schema.Attribute.Component<"utilities.link", true> &
+    links: Schema.Attribute.Component<"utilities.sub-link", true> &
       Schema.Attribute.SetPluginOptions<{
         i18n: {
           localized: true
@@ -558,6 +609,178 @@ export interface ApiNavbarNavbar extends Struct.SingleTypeSchema {
         }
       }>
     publishedAt: Schema.Attribute.DateTime
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
+export interface ApiNewsArticleNewsArticle extends Struct.CollectionTypeSchema {
+  collectionName: "news_articles"
+  info: {
+    description: "News articles collection"
+    displayName: "News"
+    pluralName: "news-articles"
+    singularName: "news-article"
+  }
+  options: {
+    draftAndPublish: true
+  }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
+  attributes: {
+    category: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    content: Schema.Attribute.DynamicZone<
+      [
+        "sections.image-with-cta-button",
+        "sections.horizontal-images",
+        "sections.heading-with-cta-button",
+        "sections.carousel",
+        "sections.animated-logo-row",
+        "sections.carousel-with-next",
+        "forms.newsletter-form",
+        "forms.contact-form",
+        "utilities.ck-editor-content",
+      ]
+    > &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    excerpt: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    featuredImage: Schema.Attribute.Media<"images"> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }>
+    locale: Schema.Attribute.String
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::news-article.news-article"
+    >
+    publishedAt: Schema.Attribute.DateTime
+    seo: Schema.Attribute.Component<"seo-utilities.seo", false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    tags: Schema.Attribute.Relation<"manyToMany", "api::tag.tag">
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
+export interface ApiNewsListPageNewsListPage extends Struct.SingleTypeSchema {
+  collectionName: "news_list_pages"
+  info: {
+    description: "Configuration for the news listing page"
+    displayName: "News List Page"
+    pluralName: "news-list-pages"
+    singularName: "news-list-page"
+  }
+  options: {
+    draftAndPublish: true
+  }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
+  attributes: {
+    breadcrumbTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    heroImage: Schema.Attribute.Media<"images"> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }>
+    locale: Schema.Attribute.String
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::news-list-page.news-list-page"
+    >
+    publishedAt: Schema.Attribute.DateTime
+    sectionDescription: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    sectionTitle: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    seo: Schema.Attribute.Component<"seo-utilities.seo", false> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    slug: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }> &
+      Schema.Attribute.DefaultTo<"news">
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
@@ -599,9 +822,26 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
         "sections.animated-logo-row",
         "forms.newsletter-form",
         "forms.contact-form",
+        "forms.quotation-form",
         "utilities.ck-editor-content",
         "utilities.ck-editor-text",
         "utilities.tip-tap-rich-text",
+        "sections.hero-carousel",
+        "sections.carousel-with-next",
+        "sections.image-with-bullets",
+        "sections.latest-news",
+        "sections.news-list",
+        "sections.step",
+        "sections.contact",
+        "sections.office",
+        "sections.feature-cards",
+        "sections.grid-image",
+        "sections.highlight-with-list",
+        "sections.animated-numbers",
+        "sections.timeline",
+        "sections.image-with-text",
+        "sections.text-content",
+        "sections.media-showcase",
       ]
     > &
       Schema.Attribute.SetPluginOptions<{
@@ -619,6 +859,13 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
+    isNewsListPage: Schema.Attribute.Boolean &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: false
+        }
+      }> &
+      Schema.Attribute.DefaultTo<false>
     locale: Schema.Attribute.String
     localizations: Schema.Attribute.Relation<"oneToMany", "api::page.page">
     parent: Schema.Attribute.Relation<"manyToOne", "api::page.page">
@@ -643,6 +890,51 @@ export interface ApiPagePage extends Struct.CollectionTypeSchema {
           localized: true
         }
       }>
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
+export interface ApiQuotationQuotation extends Struct.CollectionTypeSchema {
+  collectionName: "quotations"
+  info: {
+    description: "Quotation requests from customers"
+    displayName: "Quotation"
+    pluralName: "quotations"
+    singularName: "quotation"
+  }
+  options: {
+    draftAndPublish: false
+  }
+  attributes: {
+    address: Schema.Attribute.Text & Schema.Attribute.Required
+    company: Schema.Attribute.String & Schema.Attribute.Required
+    complianceCertificates: Schema.Attribute.String
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    email: Schema.Attribute.Email & Schema.Attribute.Required
+    files: Schema.Attribute.Media<"images" | "files" | "videos", true>
+    finish: Schema.Attribute.String
+    firstName: Schema.Attribute.String & Schema.Attribute.Required
+    formType: Schema.Attribute.Enumeration<["low-volume", "prototyping"]> &
+      Schema.Attribute.Required
+    jobTitle: Schema.Attribute.String
+    lastName: Schema.Attribute.String & Schema.Attribute.Required
+    locale: Schema.Attribute.String & Schema.Attribute.Private
+    localizations: Schema.Attribute.Relation<
+      "oneToMany",
+      "api::quotation.quotation"
+    > &
+      Schema.Attribute.Private
+    materials: Schema.Attribute.String & Schema.Attribute.Required
+    message: Schema.Attribute.Text
+    phone: Schema.Attribute.String & Schema.Attribute.Required
+    publishedAt: Schema.Attribute.DateTime
+    quantityOfParts: Schema.Attribute.String & Schema.Attribute.Required
+    surfaceCondition: Schema.Attribute.String & Schema.Attribute.Required
+    technology: Schema.Attribute.String & Schema.Attribute.Required
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
@@ -690,8 +982,6 @@ export interface ApiSubscriberSubscriber extends Struct.CollectionTypeSchema {
     draftAndPublish: false
   }
   attributes: {
-    content: Schema.Attribute.Text &
-      Schema.Attribute.CustomField<"plugin::tiptap-editor.RichText">
     createdAt: Schema.Attribute.DateTime
     createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
@@ -702,9 +992,61 @@ export interface ApiSubscriberSubscriber extends Struct.CollectionTypeSchema {
       "api::subscriber.subscriber"
     > &
       Schema.Attribute.Private
-    message: Schema.Attribute.Text
-    name: Schema.Attribute.String
     publishedAt: Schema.Attribute.DateTime
+    updatedAt: Schema.Attribute.DateTime
+    updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+  }
+}
+
+export interface ApiTagTag extends Struct.CollectionTypeSchema {
+  collectionName: "tags"
+  info: {
+    description: "Tags for categorizing content"
+    displayName: "Tag"
+    pluralName: "tags"
+    singularName: "tag"
+  }
+  options: {
+    draftAndPublish: false
+  }
+  pluginOptions: {
+    i18n: {
+      localized: true
+    }
+  }
+  attributes: {
+    createdAt: Schema.Attribute.DateTime
+    createdBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
+      Schema.Attribute.Private
+    description: Schema.Attribute.Text &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    locale: Schema.Attribute.String
+    localizations: Schema.Attribute.Relation<"oneToMany", "api::tag.tag">
+    name: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
+    news_articles: Schema.Attribute.Relation<
+      "manyToMany",
+      "api::news-article.news-article"
+    >
+    publishedAt: Schema.Attribute.DateTime
+    slug: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.Unique &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true
+        }
+      }>
     updatedAt: Schema.Attribute.DateTime
     updatedBy: Schema.Attribute.Relation<"oneToOne", "admin::user"> &
       Schema.Attribute.Private
@@ -1222,12 +1564,17 @@ declare module "@strapi/strapi" {
       "admin::transfer-token": AdminTransferToken
       "admin::transfer-token-permission": AdminTransferTokenPermission
       "admin::user": AdminUser
+      "api::contact.contact": ApiContactContact
       "api::footer.footer": ApiFooterFooter
       "api::internal-job.internal-job": ApiInternalJobInternalJob
       "api::navbar.navbar": ApiNavbarNavbar
+      "api::news-article.news-article": ApiNewsArticleNewsArticle
+      "api::news-list-page.news-list-page": ApiNewsListPageNewsListPage
       "api::page.page": ApiPagePage
+      "api::quotation.quotation": ApiQuotationQuotation
       "api::redirect.redirect": ApiRedirectRedirect
       "api::subscriber.subscriber": ApiSubscriberSubscriber
+      "api::tag.tag": ApiTagTag
       "plugin::content-releases.release": PluginContentReleasesRelease
       "plugin::content-releases.release-action": PluginContentReleasesReleaseAction
       "plugin::i18n.locale": PluginI18NLocale

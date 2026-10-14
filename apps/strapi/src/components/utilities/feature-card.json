@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_utilities_feature_cards",
+  "info": {
+    "displayName": "Feature Card",
+    "description": "A single feature card with title and description"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "customField",
+      "customField": "plugin::ckeditor5.CKEditor",
+      "options": {
+        "preset": "defaultCkEditor"
+      }
+    }
+  }
+}

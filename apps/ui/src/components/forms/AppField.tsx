@@ -65,9 +65,9 @@ export function AppField({
                   }
                 }}
                 className={cn(
-                  "w-full",
+                  "h-14 w-full rounded-none! border-gray-200 bg-white px-4",
                   {
-                    "border-red-600": fieldState.invalid,
+                    "border-secondary-400": fieldState.invalid,
                     "rounded-md border": !endAdornment,
                     "rounded-l-md border-y border-l": !!endAdornment,
                   },

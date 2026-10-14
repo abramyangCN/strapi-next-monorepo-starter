@@ -1,0 +1,207 @@
+{
+  "key": "plugin_content_manager_configuration_components::sections.contact",
+  "value": {
+    "settings": {
+      "bulkable": true,
+      "filterable": true,
+      "searchable": true,
+      "pageSize": 10,
+      "mainField": "documentId",
+      "defaultSortBy": "documentId",
+      "defaultSortOrder": "ASC"
+    },
+    "metadatas": {
+      "id": {
+        "edit": {},
+        "list": {
+          "label": "id",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "rightContent": {
+        "edit": {
+          "label": "rightContent",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "rightContent",
+          "searchable": true,
+          "sortable": true
+        }
+      },
+      "title": {
+        "edit": {
+          "label": "title",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "title",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "slogan": {
+        "edit": {
+          "label": "slogan",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "slogan",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "formTitle": {
+        "edit": {
+          "label": "formTitle",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "formTitle",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "gdpr": {
+        "edit": {
+          "label": "gdpr",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "gdpr",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "phone": {
+        "edit": {
+          "label": "phone",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "phone",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "email": {
+        "edit": {
+          "label": "email",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "email",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "address": {
+        "edit": {
+          "label": "address",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "address",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
+      }
+    },
+    "layouts": {
+      "list": [
+        "id",
+        "rightContent",
+        "gdpr",
+        "phone"
+      ],
+      "edit": [
+        [
+          {
+            "name": "rightContent",
+            "size": 6
+          }
+        ],
+        [
+          {
+            "name": "title",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "slogan",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "formTitle",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "gdpr",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "phone",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "email",
+            "size": 12
+          }
+        ],
+        [
+          {
+            "name": "address",
+            "size": 12
+          }
+        ]
+      ]
+    },
+    "uid": "sections.contact",
+    "isComponent": true
+  },
+  "type": "object",
+  "environment": null,
+  "tag": null
+}

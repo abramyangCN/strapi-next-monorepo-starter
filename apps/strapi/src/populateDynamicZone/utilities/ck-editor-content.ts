@@ -1,1 +1,5 @@
-export default true
+export default {
+  populate: {
+    link: true,
+  },
+}

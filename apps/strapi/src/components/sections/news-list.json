@@ -1,0 +1,17 @@
+{
+  "collectionName": "components_sections_news_list",
+  "info": {
+    "displayName": "News List",
+    "description": "Section to display all news articles on a page"
+  },
+  "options": {},
+  "attributes": {
+    "sectionTitle": {
+      "type": "string",
+      "required": true
+    },
+    "sectionDescription": {
+      "type": "text"
+    }
+  }
+}

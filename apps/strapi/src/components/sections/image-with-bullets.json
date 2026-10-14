@@ -1,0 +1,29 @@
+{
+  "collectionName": "components_sections_image_with_bullets",
+  "info": {
+    "displayName": "ImageWithBullets"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "image": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images",
+        "files"
+      ]
+    },
+    "bullets": {
+      "type": "component",
+      "component": "utilities.bullet-list",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

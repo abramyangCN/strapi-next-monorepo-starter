@@ -7,7 +7,7 @@
       "searchable": true,
       "pageSize": 10,
       "mainField": "id",
-      "defaultSortBy": "id",
+      "defaultSortBy": "documentId",
       "defaultSortOrder": "ASC"
     },
     "metadatas": {
@@ -17,20 +17,6 @@
           "label": "id",
           "searchable": true,
           "sortable": true
-        }
-      },
-      "links": {
-        "edit": {
-          "label": "links",
-          "description": "",
-          "placeholder": "",
-          "visible": true,
-          "editable": true
-        },
-        "list": {
-          "label": "links",
-          "searchable": false,
-          "sortable": false
         }
       },
       "logoImage": {
@@ -43,6 +29,20 @@
         },
         "list": {
           "label": "logoImage",
+          "searchable": false,
+          "sortable": false
+        }
+      },
+      "links": {
+        "edit": {
+          "label": "links",
+          "description": "",
+          "placeholder": "",
+          "visible": true,
+          "editable": true
+        },
+        "list": {
+          "label": "links",
           "searchable": false,
           "sortable": false
         }
@@ -104,24 +104,33 @@
           "searchable": true,
           "sortable": true
         }
+      },
+      "documentId": {
+        "edit": {},
+        "list": {
+          "label": "documentId",
+          "searchable": true,
+          "sortable": true
+        }
       }
     },
     "layouts": {
       "list": [
         "id",
+        "logoImage",
         "links",
-        "logoImage"
+        "createdAt"
       ],
       "edit": [
         [
           {
-            "name": "links",
+            "name": "logoImage",
             "size": 12
           }
         ],
         [
           {
-            "name": "logoImage",
+            "name": "links",
             "size": 12
           }
         ]

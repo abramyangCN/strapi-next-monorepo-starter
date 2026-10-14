@@ -1,0 +1,20 @@
+{
+  "collectionName": "components_sections_animated_numbers",
+  "info": {
+    "displayName": "AnimatedNumbers"
+  },
+  "options": {},
+  "attributes": {
+    "numberGroup": {
+      "type": "component",
+      "component": "utilities.number-with-text",
+      "repeatable": true
+    },
+    "background": {
+      "type": "customField",
+      "customField": "plugin::color-picker.color",
+      "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+    }
+  },
+  "config": {}
+}

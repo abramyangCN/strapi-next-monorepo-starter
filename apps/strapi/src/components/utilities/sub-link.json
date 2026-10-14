@@ -1,0 +1,26 @@
+{
+  "collectionName": "components_utilities_sub_links",
+  "info": {
+    "displayName": "SubLink"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": false
+    },
+    "newTab": {
+      "type": "boolean"
+    },
+    "links": {
+      "type": "component",
+      "component": "utilities.link",
+      "repeatable": true
+    }
+  },
+  "config": {}
+}

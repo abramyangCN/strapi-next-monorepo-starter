@@ -1,0 +1,39 @@
+{
+  "collectionName": "components_forms_quotation_forms",
+  "info": {
+    "displayName": "QuotationForm",
+    "description": "Form for quotation requests (Low-volume production & Prototyping)"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "formType": {
+      "type": "enumeration",
+      "enum": [
+        "low-volume",
+        "prototyping"
+      ],
+      "default": "low-volume",
+      "required": true
+    },
+    "gdpr": {
+      "type": "component",
+      "repeatable": false,
+      "component": "utilities.link"
+    },
+    "buttonText": {
+      "type": "string",
+      "default": "FINALIZE MY REQUEST"
+    },
+    "sampleDocumentLink": {
+      "type": "component",
+      "repeatable": false,
+      "component": "utilities.link"
+    }
+  }
+}

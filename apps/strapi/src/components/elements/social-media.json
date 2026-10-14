@@ -1,0 +1,31 @@
+{
+  "collectionName": "components_elements_social_medias",
+  "info": {
+    "displayName": "SocialMedia"
+  },
+  "options": {},
+  "attributes": {
+    "social": {
+      "type": "enumeration",
+      "enum": [
+        "wechat",
+        "instagram",
+        "facebook",
+        "linkedin"
+      ]
+    },
+    "link": {
+      "type": "component",
+      "component": "utilities.link",
+      "repeatable": false
+    },
+    "icon": {
+      "type": "media",
+      "multiple": false,
+      "allowedTypes": [
+        "images"
+      ]
+    }
+  },
+  "config": {}
+}

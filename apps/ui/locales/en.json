@@ -1,6 +1,6 @@
 {
   "seo": {
-    "metaTitle": "SEO-TITLE",
+    "metaTitle": "Shantec Shanghai",
     "metaDescription": "SEO-DESCRIPTION",
     "metaImage": "SEO-IMAGE",
     "metaRobots": "SEO-ROBOTS",
@@ -60,10 +60,15 @@
     "fileInput": {
       "label": "Select file",
       "dragAndDrop": "Add file by dragging or select by clicking",
+      "clickToUpload": "Click to upload",
+      "orDragAndDrop": "or drag and drop",
       "validFileTypes": "File must be in {validFileTypes} format",
       "wrongFileType": "This file type is not supported",
       "selectedFile": "Selected file: {fileName}",
-      "removeFile": "Remove file"
+      "removeFile": "Remove file",
+      "anyFileType": "Any file type",
+      "acceptedFileTypes": "{fileTypes} (Max {maxSize}MB per file)",
+      "maxSizeExceeded": "Some files exceed the maximum size of {maxSize}MB"
     },
     "datePicker": {
       "label": "Select date"
@@ -76,6 +81,9 @@
     },
     "dialog": {
       "confirmClose": "Do you want to close the dialog? You will lose all unsaved changes."
+    },
+    "newsCard": {
+      "readMore": "Read more"
     }
   },
 
@@ -100,57 +108,100 @@
     },
 
     "zodValidation": {
+      "required": "This field is required",
       "invalid_type": "Expected type is {expected}, but received {received}",
       "invalid_type_received_undefined": "Field is required",
-      "invalid_literal": "Invalid value, expected {expected}",
-      "invalid_union": "Invalid value",
+      "invalid_literal": "Please choose a valid value",
+      "invalid_union": "Please choose a valid value",
 
       "invalid_string": {
-        "regex": "Invalid format"
+        "regex": "Please enter a valid value",
+        "email": "Please enter a valid email address"
       },
       "too_small": {
         "string": {
-          "exact": "String must be exactly {minimum} characters",
-          "inclusive": "String must be at least {minimum} characters",
-          "not_inclusive": "String must be more than {minimum} characters"
+          "exact": "Please enter exactly {minimum} characters",
+          "inclusive": "Please enter at least {minimum} characters",
+          "not_inclusive": "Please enter more than {minimum} characters"
         },
         "number": {
-          "exact": "Value must be exactly {minimum}",
-          "inclusive": "Minimum value is {minimum}",
-          "not_inclusive": "Number must be greater than {minimum}"
+          "exact": "Please enter exactly {minimum}",
+          "inclusive": "Please enter a value of at least {minimum}",
+          "not_inclusive": "Please enter a value greater than {minimum}"
         }
       },
       "too_big": {
         "string": {
-          "exact": "String must be exactly {maximum} characters",
-          "inclusive": "String must be at most {maximum} characters",
-          "not_inclusive": "String must be less than {maximum} characters"
+          "exact": "Please enter exactly {maximum} characters",
+          "inclusive": "Please keep this under {maximum} characters",
+          "not_inclusive": "Please keep this below {maximum} characters"
         },
         "number": {
-          "exact": "Value must be exactly {maximum}",
-          "inclusive": "Maximum value is {maximum}",
-          "not_inclusive": "Number must be less than {maximum}"
+          "exact": "Please enter exactly {maximum}",
+          "inclusive": "Please enter a value no greater than {maximum}",
+          "not_inclusive": "Please enter a value less than {maximum}"
         }
       },
       "custom": {
         "password": "Passwords do not match",
-        "passwordWithNumber": "String must contain at least 1 number",
-        "phoneNumber": "This field must contain 9 numbers"
+        "passwordWithNumber": "Password must include at least one number",
+        "phoneNumber": "Please enter a valid phone number"
       }
     }
   },
 
   "contactForm": {
-    "name": "First name and last name",
-    "namePlaceholder": "John Doe",
-    "email": "Email",
-    "emailPlaceholder": "john.doe@gmail.com",
-    "message": "Message",
-    "gdpr": "I agree to the processing of personal data",
-    "submit": "Send",
-    "success": "The form has been sent successfully.",
+    "firstNamePlaceholder": "First name*",
+    "lastNamePlaceholder": "Last name*",
+    "emailPlaceholder": "Email*",
+    "phonePlaceholder": "Phone*",
+    "companyPlaceholder": "Company*",
+    "jobTitlePlaceholder": "Job title",
+    "inquiryTypePlaceholder": "Contact us about...*",
+    "inquiryTypeGeneral": "General inquiry",
+    "inquiryTypeTechnical": "Technical support",
+    "inquiryTypeQuotation": "Quotation request",
+    "inquiryTypePartnership": "Partnership",
+    "inquiryTypeOther": "Other",
+    "messagePlaceholder": "Write a message*",
+    "gdpr": "By submitting you agree to the",
+    "submit": "SEND",
+    "success": "Submitted successfully.",
     "error": "The form could not be sent. Please try again later.",
-    "gdprLink": "Read more about the processing of personal data"
+    "gdprLink": "personal data processing policy"
+  },
+
+  "quotationForm": {
+    "firstNamePlaceholder": "First Name*",
+    "lastNamePlaceholder": "Last Name*",
+    "emailPlaceholder": "E-mail*",
+    "phonePlaceholder": "Phone*",
+    "companyPlaceholder": "Company*",
+    "jobTitlePlaceholder": "Job title",
+    "addressPlaceholder": "Address*",
+    "quantityOfPartsPlaceholder": "Quantity of Parts*",
+    "materialsPlaceholder": "Materials*",
+    "technologyPlaceholder": "Technology*",
+    "complianceCertificatesPlaceholder": "Compliance Certificates*",
+    "finishPlaceholder": "Finish*",
+    "surfaceConditionPlaceholder": "Surface Condition*",
+    "messagePlaceholder": "Write Message",
+    "filesLabel": "Upload Technical Drawings or CAD Files",
+    "filesDescription": "Accepted formats: PDF, DWG, DXF, STEP, IGES, STL, OBJ (Max 10MB per file)",
+    "sampleDocumentLink": "View sample document",
+    "gdpr": "By submitting, you agree to our",
+    "gdprLink": "Privacy Policy",
+    "submit": "FINALIZE MY REQUEST",
+    "submitting": "Submitting...",
+    "success": "Submitted successfully.",
+    "error": "Failed to submit request"
+  },
+
+  "newsletterForm": {
+    "successTitle": "Success",
+    "success": "Submitted successfully.",
+    "errorTitle": "Something went wrong",
+    "error": "We couldn't complete your subscription. Please try again later."
   },
 
   "auth": {

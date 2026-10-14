@@ -1,0 +1,45 @@
+{
+    "collectionName": "components_sections_media_showcases",
+    "info": {
+        "displayName": "Media Showcase",
+        "description": "A section to showcase an image or video with optional caption"
+    },
+    "options": {},
+    "attributes": {
+        "title": {
+            "type": "customField",
+            "customField": "plugin::ckeditor5.CKEditor",
+            "options": {
+                "preset": "defaultCkEditor"
+            }
+        },
+        "media": {
+            "type": "media",
+            "multiple": false,
+            "required": true,
+            "allowedTypes": [
+                "images",
+                "videos"
+            ]
+        },
+        "caption": {
+            "type": "text"
+        },
+        "backgroundImage": {
+            "type": "media",
+            "multiple": false,
+            "allowedTypes": [
+                "images"
+            ]
+        },
+        "enableBgColor": {
+            "type": "boolean",
+            "default": false
+        },
+        "bgColor": {
+            "type": "customField",
+            "customField": "plugin::color-picker.color",
+            "regex": "^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$"
+        }
+    }
+}

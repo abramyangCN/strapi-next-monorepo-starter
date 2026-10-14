@@ -33,7 +33,7 @@ export const config = {
     "/",
     // Set a cookie to remember the previous locale for
     // all requests that have a locale prefix
-    `/(cs|en)/:path*`,
+    `/(en|fr|cn)/:path*`,
 
     // Skip all paths that should not be internationalized
     // eslint-disable-next-line unicorn/prefer-string-raw

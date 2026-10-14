@@ -1,6 +1,5 @@
 import type { Data } from "@repo/strapi-types"
 
-import AppLink from "@/components/elementary/AppLink"
 import { Container } from "@/components/elementary/Container"
 import { NewsletterForm } from "@/components/elementary/forms/NewsletterForm"
 import { removeThisWhenYouNeedMe } from "@/lib/general-helpers"
@@ -21,18 +20,14 @@ export function StrapiNewsletterForm({
         </div>
         <div className="flex w-full max-w-[560px] flex-1 items-end align-bottom">
           <div className="w-fll mt-1 flex w-full flex-col gap-1">
-            <NewsletterForm />
-            <div className="mt-2 flex items-center">
-              {component.gdpr?.href && (
-                <AppLink
-                  openInNewTab={Boolean(component.gdpr.newTab)}
-                  className="text-blue-700 underline"
-                  href={component.gdpr.href}
-                >
-                  {component.gdpr.label}
-                </AppLink>
-              )}
-            </div>
+            <NewsletterForm
+              newsletter={{
+                title: component.title || "",
+                button: component?.button || "",
+                placeholder: component?.placeholder || "",
+              }}
+            />
+            <div className="mt-2 flex items-center" />
           </div>
         </div>
       </Container>

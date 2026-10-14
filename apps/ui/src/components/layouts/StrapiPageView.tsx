@@ -2,14 +2,12 @@ import { ROOT_PAGE_PATH } from "@repo/shared-data"
 import { notFound } from "next/navigation"
 import type { Locale } from "next-intl"
 import { setRequestLocale } from "next-intl/server"
-import { use } from "react"
 
-import { Breadcrumbs } from "@/components/elementary/Breadcrumbs"
-import { Container } from "@/components/elementary/Container"
 import { ErrorBoundary } from "@/components/elementary/ErrorBoundary"
+import NewsArticleView from "@/components/layouts/NewsArticleView"
 import { PageContentComponents } from "@/components/page-builder"
 import StrapiStructuredData from "@/components/page-builder/components/seo-utilities/StrapiStructuredData"
-import { fetchPage } from "@/lib/strapi-api/content/server"
+import { fetchNewsByFullPath, fetchPage } from "@/lib/strapi-api/content/server"
 import { cn } from "@/lib/styles"
 
 interface Props {
@@ -20,16 +18,28 @@ interface Props {
   searchParams?: Record<string, string | string[] | undefined>
 }
 
-export default function StrapiPageView({ params, searchParams }: Props) {
+export default async function StrapiPageView({ params, searchParams }: Props) {
   const locale = params.locale as Locale
 
   setRequestLocale(locale)
 
   const fullPath = ROOT_PAGE_PATH + (params.rest ?? []).join("/")
-  const response = use(fetchPage(fullPath, locale))
+  const response = await fetchPage(fullPath, locale)
 
   const data = response?.data
+
   if (data?.content == null) {
+    const newsResponse = await fetchNewsByFullPath(fullPath, locale)
+
+    if (newsResponse?.data) {
+      // eslint-disable-next-line unicorn/prefer-array-find
+      const articleSlug = fullPath.split("/").filter(Boolean).pop()
+
+      if (articleSlug) {
+        return <NewsArticleView locale={locale} slug={articleSlug} />
+      }
+    }
+
     notFound()
   }
 
@@ -40,14 +50,6 @@ export default function StrapiPageView({ params, searchParams }: Props) {
       <StrapiStructuredData structuredData={data?.seo?.structuredData} />
 
       <main className={cn("flex w-full flex-col overflow-hidden")}>
-        <Container>
-          <Breadcrumbs
-            breadcrumbs={response?.meta?.breadcrumbs}
-            className="mt-6 mb-6"
-            locale={locale}
-          />
-        </Container>
-
         {content
           .filter((comp) => comp != null)
           .map((comp) => {
@@ -73,6 +75,7 @@ export default function StrapiPageView({ params, searchParams }: Props) {
                     component={comp}
                     pageParams={params}
                     page={restPageData}
+                    meta={response?.meta}
                     searchParams={searchParams}
                   />
                 </div>

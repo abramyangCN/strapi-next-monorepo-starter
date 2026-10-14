@@ -1,14 +1,21 @@
 export default ({ env }) => {
+  const aliOssConfig = prepareAliOssConfig(env)
   const awsS3Config = prepareAwsS3Config(env)
-  if (!awsS3Config) {
+  const uploadConfig = aliOssConfig ?? awsS3Config ?? localUploadConfig
+
+  if (!aliOssConfig && !awsS3Config) {
     console.warn(
-      "AWS S3 upload configuration is not complete. Local file storage will be used."
+      "Upload provider configuration is not complete. Local file storage will be used."
     )
   }
 
   return {
     upload: {
-      config: awsS3Config ?? localUploadConfig,
+      config: uploadConfig,
+    },
+
+    "collection-exporter": {
+      enabled: true,
     },
 
     "config-sync": {
@@ -82,6 +89,34 @@ const prepareAwsS3Config = (env) => {
         upload: {},
         uploadStream: {},
         delete: {},
+      },
+    }
+  }
+}
+
+const prepareAliOssConfig = (env) => {
+  const accessKeyId = env("ALI_ACCESS_KEY_ID")
+  const accessKeySecret = env("ALI_ACCESS_KEY_SECRET")
+  const region = env("ALI_REGION")
+  const bucket = env("ALI_BUCKET")
+  const ossRequirements = [accessKeyId, accessKeySecret, region, bucket]
+  const ossRequirementsOk = ossRequirements.every(
+    (req) => req != null && req !== ""
+  )
+
+  if (ossRequirementsOk) {
+    return {
+      provider: "strapi-provider-upload-oss",
+      providerOptions: {
+        accessKeyId,
+        accessKeySecret,
+        region,
+        bucket,
+        uploadPath: env("ALI_UPLOAD_PATH"),
+        baseUrl: env("ALI_BASE_URL"),
+        timeout: env("ALI_TIMEOUT"),
+        secure: env("ALI_OSS_SECURE"),
+        internal: env.bool("ALI_OSS_INTERNAL", false),
       },
     }
   }

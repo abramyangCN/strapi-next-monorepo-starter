@@ -1,0 +1,21 @@
+{
+  "collectionName": "components_elements_footer_affiliates",
+  "info": {
+    "displayName": "FooterAffiliate"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string"
+    },
+    "description": {
+      "type": "text"
+    },
+    "logo": {
+      "type": "component",
+      "component": "utilities.image-with-link",
+      "repeatable": false
+    }
+  },
+  "config": {}
+}

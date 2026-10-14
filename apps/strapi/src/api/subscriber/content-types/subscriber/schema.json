@@ -11,18 +11,8 @@
   },
   "pluginOptions": {},
   "attributes": {
-    "name": {
-      "type": "string"
-    },
     "email": {
       "type": "email"
-    },
-    "message": {
-      "type": "text"
-    },
-    "content": {
-      "type": "customField",
-      "customField": "plugin::tiptap-editor.RichText"
     }
   }
 }
